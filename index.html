@@ -1,12 +1,917 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- 자바스크립트 -->
+<script>
+	// 섹션 활성화 함수
+	function activateSection(sectionId) {
+		// 모든 섹션 비활성화
+		document.querySelectorAll('section').forEach(section => {
+			section.classList.remove('active');
+		});
+		
+		// 모든 네비게이션 링크 비활성화
+		document.querySelectorAll('.nav-links a').forEach(link => {
+			link.classList.remove('active');
+		});
+		
+		// 선택한 섹션 활성화
+		document.getElementById(sectionId).classList.add('active');
+		
+		// 선택한 네비게이션 링크 활성화
+		document.querySelector(`.nav-links a[href="#${sectionId}"]`).classList.add('active');
+	}
+	
+	// URL 해시가 변경될 때 해당 섹션으로 이동
+	window.addEventListener('hashchange', function() {
+		const sectionId = window.location.hash.substring(1);
+		if (sectionId) {
+			activateSection(sectionId);
+		}
+	});
+	
+	// 초기 페이지 로드 시 URL 해시에 따른 섹션 활성화
+	window.addEventListener('load', function() {
+		const sectionId = window.location.hash.substring(1);
+		if (sectionId) {
+			activateSection(sectionId);
+		} else {
+			// 기본적으로 소개 섹션 활성화
+			activateSection('intro');
+		}
+	});
+	
+	// Google Scholar 관련 변수들
+	let allPublications = []; // 모든 출판물 데이터
+	let filteredPublications = []; // 필터링된 출판물
+	let currentSort = 'year'; // 현재 정렬 방식 (연도순)
+	let currentFilter = 'all'; // 현재 필터 (전체)
+	
+	// Google Scholar에서 논문 정보 불러오기
+	function loadPublicationsFromScholar() {
+		const scholarId = document.getElementById('scholarId').value.trim();
+		if (!scholarId) {
+			alert('Google Scholar ID를 입력해주세요.');
+			return;
+		}
+		
+		// 로딩 표시기 보이기
+		document.getElementById('loadingPublications').style.display = 'block';
+		
+		// 실제 구현 시에는 서버사이드에서 Google Scholar <!DOCTYPE html>
+<html lang="ko">
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>연구실 웹사이트</title>
+<style>
+	/* 기본 스타일 */
+	body {
+		font-family: 'Noto Sans KR', Arial, sans-serif;
+		margin: 0;
+		padding: 0;
+		line-height: 1.6;
+		color: #333;
+	}
+	
+	/* 헤더 스타일 */
+	header {
+		background-color: #1a237e;
+		color: white;
+		padding: 20px 0;
+		text-align: center;
+		box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+	}
+	
+	.header-container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 20px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	
+	.logo {
+		font-size: 28px;
+		font-weight: bold;
+	}
+	
+	/* 네비게이션 스타일 */
+	nav {
+		background-color: #283593;
+		position: sticky;
+		top: 0;
+		z-index: 100;
+	}
+	
+	.nav-container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 20px;
+	}
+	
+	.nav-links {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+	}
+	
+	.nav-links li {
+		margin: 0;
+	}
+	
+	.nav-links a {
+		color: white;
+		text-decoration: none;
+		padding: 15px 20px;
+		display: block;
+		transition: background-color 0.3s;
+	}
+	
+	.nav-links a.active, .nav-links a:hover {
+		background-color: #1a237e;
+	}
+	
+	/* 콘텐츠 섹션 스타일 */
+	section {
+		padding: 60px 20px;
+		max-width: 1200px;
+		margin: 0 auto;
+		min-height: 500px;
+		display: none;
+	}
+	
+	section.active {
+		display: block;
+	}
+	
+	h2 {
+		color: #1a237e;
+		margin-bottom: 30px;
+		padding-bottom: 10px;
+		border-bottom: 2px solid #1a237e;
+	}
+	
+	/* 소개 섹션 스타일 */
+	.intro-content {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 30px;
+	}
+	
+	.intro-text {
+		flex: 1;
+		min-width: 300px;
+	}
+	
+	.intro-image {
+		flex: 1;
+		min-width: 300px;
+		border-radius: 8px;
+		overflow: hidden;
+		box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+	}
+	
+	.intro-image img {
+		width: 100%;
+		height: auto;
+		display: block;
+	}
+	
+	/* 뉴스 섹션 스타일 */
+	.news-item {
+		margin-bottom: 30px;
+		padding-bottom: 20px;
+		border-bottom: 1px solid #eee;
+	}
+	
+	.news-date {
+		color: #666;
+		font-size: 14px;
+	}
+	
+	.news-title {
+		font-size: 20px;
+		margin: 5px 0;
+		color: #1a237e;
+	}
+	
+	/* 출판물 섹션 스타일 */
+	.scholar-container {
+		margin-bottom: 30px;
+		padding: 20px;
+		background-color: #f5f5f5;
+		border-radius: 8px;
+	}
+	
+	.scholar-input {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+		align-items: center;
+		margin-bottom: 20px;
+	}
+	
+	.scholar-input input {
+		padding: 10px 12px;
+		border: 1px solid #ddd;
+		border-radius: 4px;
+		width: 250px;
+		font-size: 16px;
+	}
+	
+	.scholar-input button {
+		padding: 10px 15px;
+		background-color: #3f51b5;
+		color: white;
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+		transition: background-color 0.3s;
+		font-size: 16px;
+	}
+	
+	.scholar-input button:hover {
+		background-color: #1a237e;
+	}
+	
+	.profile-header {
+		display: flex;
+		align-items: center;
+		gap: 20px;
+		padding: 15px;
+		background-color: white;
+		border-radius: 8px;
+		box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+	}
+	
+	.profile-photo {
+		width: 100px;
+		height: 100px;
+		border-radius: 50%;
+		overflow: hidden;
+		background-color: #e0e0e0;
+	}
+	
+	.profile-photo img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+	
+	.profile-info {
+		flex: 1;
+	}
+	
+	.profile-info h3 {
+		margin: 0 0 5px 0;
+		color: #1a237e;
+	}
+	
+	.profile-info p {
+		margin: 5px 0;
+		color: #555;
+	}
+	
+	.publication-controls {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		margin-bottom: 20px;
+		gap: 15px;
+	}
+	
+	.view-options {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+	}
+	
+	.view-options button {
+		padding: 8px 15px;
+		background-color: #e0e0e0;
+		color: #333;
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+		transition: all 0.3s;
+	}
+	
+	.view-options button:hover {
+		background-color: #c0c0c0;
+	}
+	
+	.view-options button.active {
+		background-color: #3f51b5;
+		color: white;
+	}
+	
+	.search-box {
+		flex: 1;
+		min-width: 200px;
+		max-width: 300px;
+	}
+	
+	.search-box input {
+		width: 100%;
+		padding: 8px 12px;
+		border: 1px solid #ddd;
+		border-radius: 4px;
+	}
+	
+	.loading-indicator {
+		text-align: center;
+		padding: 30px;
+		background-color: #f9f9f9;
+		border-radius: 8px;
+		margin-bottom: 20px;
+	}
+	
+	.spinner {
+		border: 4px solid rgba(0, 0, 0, 0.1);
+		width: 36px;
+		height: 36px;
+		border-radius: 50%;
+		border-left-color: #3f51b5;
+		animation: spin 1s linear infinite;
+		margin: 15px auto 0;
+	}
+	
+	@keyframes spin {
+		0% { transform: rotate(0deg); }
+		100% { transform: rotate(360deg); }
+	}
+	
+	#publications-container {
+		background-color: white;
+		border-radius: 8px;
+		box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+		padding: 10px;
+	}
+	
+	.empty-state {
+		text-align: center;
+		padding: 30px;
+		color: #666;
+		font-style: italic;
+	}
+	
+	.publication-item {
+		margin-bottom: 20px;
+		padding: 15px;
+		border-bottom: 1px solid #eee;
+		transition: background-color 0.3s;
+	}
+	
+	.publication-item:hover {
+		background-color: #f9f9f9;
+	}
+	
+	.publication-item:last-child {
+		border-bottom: none;
+	}
+	
+	.publication-authors {
+		font-style: italic;
+		margin-bottom: 5px;
+		color: #666;
+	}
+	
+	.publication-title {
+		font-weight: bold;
+		margin-bottom: 5px;
+		color: #1a237e;
+	}
+	
+	.publication-title a {
+		color: #1a237e;
+		text-decoration: none;
+	}
+	
+	.publication-title a:hover {
+		text-decoration: underline;
+	}
+	
+	.publication-journal {
+		color: #444;
+		margin-bottom: 5px;
+	}
+	
+	.publication-metrics {
+		font-size: 14px;
+		color: #666;
+		display: flex;
+		align-items: center;
+		gap: 15px;
+	}
+	
+	.citation-count {
+		display: flex;
+		align-items: center;
+		gap: 5px;
+	}
+	
+	/* 인원 섹션 스타일 */
+	.people-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+		gap: 30px;
+	}
+	
+	.people-card {
+		background-color: #f9f9f9;
+		border-radius: 8px;
+		overflow: hidden;
+		box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+		transition: transform 0.3s;
+	}
+	
+	.people-card:hover {
+		transform: translateY(-5px);
+	}
+	
+	.people-image {
+		width: 100%;
+		height: 200px;
+		overflow: hidden;
+	}
+	
+	.people-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+	
+	.people-info {
+		padding: 15px;
+	}
+	
+	.people-name {
+		font-size: 18px;
+		font-weight: bold;
+		color: #1a237e;
+		margin-bottom: 5px;
+	}
+	
+	.people-title {
+		color: #555;
+		margin-bottom: 10px;
+		font-style: italic;
+	}
+	
+	/* 푸터 스타일 */
+	footer {
+		background-color: #1a237e;
+		color: white;
+		padding: 30px 0;
+		text-align: center;
+	}
+	
+	.footer-container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 20px;
+	}
+	
+	.contact-info {
+		margin-top: 20px;
+	}
+	
+	/* 반응형 디자인 */
+	@media (max-width: 768px) {
+		.nav-links {
+			flex-direction: column;
+		}
+		
+		.intro-content {
+			flex-direction: column;
+		}
+		
+		.intro-image {
+			order: -1;
+		}
+		
+		.people-grid {
+			grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+		}
+		
+		.publication-controls {
+			flex-direction: column;
+		}
+		
+		.search-box {
+			max-width: none;
+			width: 100%;
+		}
+		
+		.profile-header {
+			flex-direction: column;
+			text-align: center;
+		}
+		
+		.scholar-input {
+			flex-direction: column;
+			align-items: stretch;
+		}
+		
+		.scholar-input input,
+		.scholar-input button {
+			width: 100%;
+		}
+	}
+</style>
 </head>
 <body>
-  <p>Hello, World!</p>
+<!-- 헤더 -->
+<header>
+	<div class="header-container">
+		<div class="logo">연구실 이름</div>
+	</div>
+</header>
+
+<!-- 네비게이션 -->
+<nav>
+	<div class="nav-container">
+		<ul class="nav-links">
+			<li><a href="#intro" class="active" onclick="activateSection('intro')">소개</a></li>
+			<li><a href="#news" onclick="activateSection('news')">News</a></li>
+			<li><a href="#publications" onclick="activateSection('publications')">Publications</a></li>
+			<li><a href="#people" onclick="activateSection('people')">People</a></li>
+		</ul>
+	</div>
+</nav>
+
+<!-- 소개 섹션 -->
+<section id="intro" class="active">
+	<h2>연구실 소개</h2>
+	<div class="intro-content">
+		<div class="intro-text">
+			<p>저희 연구실은 혁신적인 연구를 통해 과학 기술 발전에 기여하는 것을 목표로 합니다. 주요 연구 분야는 다음과 같습니다:</p>
+			<ul>
+				<li>인공지능 및 기계학습</li>
+				<li>데이터 마이닝 및 분석</li>
+				<li>자연어 처리 및 컴퓨터 비전</li>
+				<li>분산 시스템 및 클라우드 컴퓨팅</li>
+			</ul>
+			<p>저희 연구실은 산학협력을 통해 실제 문제를 해결하는 데 중점을 두고 있으며, 국내외 유수 기업 및 연구기관과 협력하고 있습니다.</p>
+			<p>연구실에 관심이 있으신 분들은 언제든지 연락주시기 바랍니다. 교수님 및 연구원들과 함께 미래 기술의 발전에 기여할 수 있는 기회를 제공합니다.</p>
+		</div>
+		<div class="intro-image">
+			<img src="/api/placeholder/600/400" alt="연구실 전경">
+		</div>
+	</div>
+</section>
+
+<!-- 뉴스 섹션 -->
+<section id="news">
+	<h2>News</h2>
+	<div class="news-item">
+		<div class="news-date">2025년 5월 15일</div>
+		<h3 class="news-title">국제 학술대회 논문 채택</h3>
+		<p>본 연구실의 홍길동 연구원의 논문 "AI 기반 데이터 분석 시스템"이 ICML 2025에 채택되었습니다.</p>
+	</div>
+	<div class="news-item">
+		<div class="news-date">2025년 4월 10일</div>
+		<h3 class="news-title">산학협력 프로젝트 시작</h3>
+		<p>ABC 기업과 함께 "차세대 AI 시스템 구축"을 위한 산학협력 프로젝트를 시작하였습니다.</p>
+	</div>
+	<div class="news-item">
+		<div class="news-date">2025년 3월 1일</div>
+		<h3 class="news-title">신입 연구원 모집</h3>
+		<p>2025년 후반기 프로젝트를 위한 석사 및 박사 과정 연구원을 모집합니다. 관심 있는 분들은 이메일로 문의해주세요.</p>
+	</div>
+</section>
+
+<!-- 출판물 섹션 -->
+<section id="publications">
+	<h2>Publications</h2>
+	<div class="scholar-container">
+		<div class="scholar-input">
+			<label for="scholarId">교수님 Google Scholar ID:</label>
+			<input type="text" id="scholarId" placeholder="예: xC7HP5QAAAAJ" value="">
+			<button onclick="loadPublicationsFromScholar()">논문 목록 불러오기</button>
+		</div>
+		
+		<div class="scholar-profile" id="scholarProfile" style="display: none;">
+			<div class="profile-header">
+				<div class="profile-photo" id="scholarPhoto"></div>
+				<div class="profile-info">
+					<h3 id="scholarName">교수명</h3>
+					<p id="scholarAffiliation">소속</p>
+					<p id="scholarMetrics">인용수: <span id="citationCount">0</span> | h-index: <span id="hIndex">0</span></p>
+					<a id="scholarLink" href="#" target="_blank">Google Scholar 프로필 방문</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="publication-controls">
+		<div class="view-options">
+			<button class="active" onclick="filterPublications('all')">전체 논문</button>
+			<button onclick="filterPublications('recent')">최근 5년</button>
+			<button onclick="sortPublications('year')">연도순</button>
+			<button onclick="sortPublications('cited')">인용순</button>
+		</div>
+		<div class="search-box">
+			<input type="text" id="pubSearchInput" placeholder="논문 검색..." onkeyup="searchPublications()">
+		</div>
+	</div>
+	
+	<div class="loading-indicator" id="loadingPublications" style="display: none;">
+		<p>Google Scholar에서 논문 정보를 가져오는 중...</p>
+		<div class="spinner"></div>
+	</div>
+	
+	<div id="publications-container">
+		<!-- 여기에 Google Scholar에서 가져온 출판물 목록이 표시됩니다 -->
+		<p class="empty-state">교수님의 Google Scholar ID를 입력하고 '논문 목록 불러오기' 버튼을 클릭하세요.</p>
+	</div>
+</section>
+
+<!-- 인원 섹션 -->
+<section id="people">
+	<h2>People</h2>
+	<div class="people-grid">
+		<div class="people-card">
+			<div class="people-image">
+				<img src="/api/placeholder/300/300" alt="김교수">
+			</div>
+			<div class="people-info">
+				<div class="people-name">김교수</div>
+				<div class="people-title">연구실장, 교수</div>
+				<p>인공지능 및 기계학습 전문가</p>
+				<p>Email: professor@university.ac.kr</p>
+			</div>
+		</div>
+		<div class="people-card">
+			<div class="people-image">
+				<img src="/api/placeholder/300/300" alt="이연구">
+			</div>
+			<div class="people-info">
+				<div class="people-name">이연구</div>
+				<div class="people-title">박사 후 연구원</div>
+				<p>자연어 처리 전문</p>
+				<p>Email: researcher1@university.ac.kr</p>
+			</div>
+		</div>
+		<div class="people-card">
+			<div class="people-image">
+				<img src="/api/placeholder/300/300" alt="박박사">
+			</div>
+			<div class="people-info">
+				<div class="people-name">박박사</div>
+				<div class="people-title">박사과정</div>
+				<p>분산 시스템 연구</p>
+				<p>Email: phd1@university.ac.kr</p>
+			</div>
+		</div>
+		<div class="people-card">
+			<div class="people-image">
+				<img src="/api/placeholder/300/300" alt="최석사">
+			</div>
+			<div class="people-info">
+				<div class="people-name">최석사</div>
+				<div class="people-title">석사과정</div>
+				<p>데이터 마이닝 연구</p>
+				<p>Email: master1@university.ac.kr</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- 푸터 -->
+<footer>
+	<div class="footer-container">
+		<h3>연구실 이름</h3>
+		<div class="contact-info">
+			<p>주소: 서울특별시 대학로 123, 대학교 공과대학 3호관 305호</p>
+			<p>전화: 02-123-4567 | 이메일: lab@university.ac.kr</p>
+		</div>
+		<p>&copy; 2025 연구실 이름. All rights reserved.</p>
+	</div>
+</footer>
+
+<!-- 자바스크립트 -->
+<script>
+	// 섹션 활성화 함수
+	function activateSection(sectionId) {
+		// 모든 섹션 비활성화
+		document.querySelectorAll('section').forEach(section => {
+			section.classList.remove('active');
+		});
+		
+		// 모든 네비게이션 링크 비활성화
+		document.querySelectorAll('.nav-links a').forEach(link => {
+			link.classList.remove('active');
+		});
+		
+		// 선택한 섹션 활성화
+		document.getElementById(sectionId).classList.add('active');
+		
+		// 선택한 네비게이션 링크 활성화
+		document.querySelector(`.nav-links a[href="#${sectionId}"]`).classList.add('active');
+	}
+	
+	// URL 해시가 변경될 때 해당 섹션으로 이동
+	window.addEventListener('hashchange', function() {
+		const sectionId = window.location.hash.substring(1);
+		if (sectionId) {
+			activateSection(sectionId);
+		}
+	});
+	
+	// 초기 페이지 로드 시 URL 해시에 따른 섹션 활성화
+	window.addEventListener('load', function() {
+		const sectionId = window.location.hash.substring(1);
+		if (sectionId) {
+			activateSection(sectionId);
+		} else {
+			// 기본적으로 소개 섹션 활성화
+			activateSection('intro');
+		}
+	});
+	
+	// 출판물 관련 함수
+	let publications = []; // 출판물 데이터를 저장할 배열
+	let currentView = 'recent'; // 현재 보기 모드 (최근, 인용 순, 전체)
+	
+	// Google Scholar에서 논문 정보 가져오기 
+	function fetchPublications() {
+		const scholarId = document.getElementById('scholarId').value.trim();
+		if (!scholarId) {
+			alert('Google Scholar ID를 입력해주세요.');
+			return;
+		}
+		
+		// 로딩 표시기 보이기
+		document.getElementById('loadingPublications').style.display = 'block';
+		
+		// 실제 구현에서는 서버에 요청을 보내 Google Scholar에서 데이터를 가져와야 합니다.
+		// 여기서는 예시로 데이터를 시뮬레이션합니다.
+		setTimeout(() => {
+			simulateFetchedPublications(scholarId);
+			// 로딩 표시기 숨기기
+			document.getElementById('loadingPublications').style.display = 'none';
+		}, 1500);
+	}
+	
+	// Google Scholar에서 가져온 데이터 시뮬레이션 (실제로는 서버에서 처리)
+	function simulateFetchedPublications(scholarId) {
+		// 예시 데이터 생성
+		publications = [
+			{
+				title: "Deep Learning Approaches for Natural Language Processing",
+				authors: "Kim, Y.G., Lee, P.K., Park, S.J.",
+				journal: "Journal of AI Research",
+				year: 2025,
+				citations: 45,
+				url: "#"
+			},
+			{
+				title: "A Survey on Recent Advancements in Machine Learning Algorithms",
+				authors: "Park, S.J., Kim, Y.G.",
+				journal: "IEEE Trans. on Machine Learning",
+				year: 2024,
+				citations: 78,
+				url: "#"
+			},
+			{
+				title: "Efficient Data Processing in Distributed Computing Environments",
+				authors: "Lee, P.K., Jung, H.J., Hong, G.D.",
+				journal: "IEEE Trans. on Distributed Computing",
+				year: 2024,
+				citations: 32,
+				url: "#"
+			},
+			{
+				title: "Security Enhancement Techniques for Cloud Computing",
+				authors: "Jung, H.J., Lee, P.K.",
+				journal: "Security and Privacy",
+				year: 2023,
+				citations: 55,
+				url: "#"
+			},
+			{
+				title: "Graph Neural Networks for Social Network Analysis",
+				authors: "Kim, Y.G., Choi, J.M., Park, S.J.",
+				journal: "Neural Information Processing Systems (NeurIPS)",
+				year: 2023,
+				citations: 67,
+				url: "#"
+			},
+			{
+				title: "Reinforcement Learning in Robotics: A Comprehensive Review",
+				authors: "Park, S.J., Lee, P.K.",
+				journal: "Robotics and Autonomous Systems",
+				year: 2022,
+				citations: 120,
+				url: "#"
+			},
+			{
+				title: "Privacy-Preserving Machine Learning: Challenges and Opportunities",
+				authors: "Lee, P.K., Kim, Y.G., Jung, H.J.",
+				journal: "Privacy and Security Journal",
+				year: 2022,
+				citations: 89,
+				url: "#"
+			},
+			{
+				title: "Federated Learning for IoT Applications",
+				authors: "Jung, H.J., Kim, Y.G.",
+				journal: "IoT Journal",
+				year: 2021,
+				citations: 145,
+				url: "#"
+			}
+		];
+		
+		renderPublications();
+		
+		// 성공 메시지 표시
+		alert(`"${scholarId}" ID로 Google Scholar에서 ${publications.length}개의 논문을 가져왔습니다.`);
+	}
+	
+	// 출판물 목록 렌더링
+	function renderPublications() {
+		const container = document.getElementById('publications-container');
+		
+		// 정렬된 출판물 목록 가져오기
+		const sortedPublications = getSortedPublications();
+		
+		// HTML 생성
+		let html = '';
+		sortedPublications.forEach(pub => {
+			html += `
+			<div class="publication-item">
+				<div class="publication-authors">${pub.authors}</div>
+				<div class="publication-title">
+					<a href="${pub.url}" target="_blank">${pub.title}</a>
+				</div>
+				<div class="publication-journal">${pub.journal}, ${pub.year}</div>
+				<div class="publication-metrics">인용 수: ${pub.citations} | 게재일: ${pub.year}</div>
+			</div>`;
+		});
+		
+		container.innerHTML = html;
+	}
+	
+	// 현재 보기 모드에 따라 정렬된 출판물 목록 반환
+	function getSortedPublications() {
+		let sorted = [...publications];
+		
+		switch(currentView) {
+			case 'recent':
+				sorted.sort((a, b) => b.year - a.year); // 최신순
+				break;
+			case 'cited':
+				sorted.sort((a, b) => b.citations - a.citations); // 인용순
+				break;
+			case 'all':
+				// 기본은 최신순
+				sorted.sort((a, b) => b.year - a.year);
+				break;
+		}
+		
+		return sorted;
+	}
+	
+	// 보기 모드 변경
+	function changeView(view) {
+		currentView = view;
+		
+		// 버튼 활성화 상태 변경
+		document.querySelectorAll('.view-options button').forEach(btn => {
+			btn.classList.remove('active');
+		});
+		document.querySelector(`.view-options button[onclick="changeView('${view}')"]`).classList.add('active');
+		
+		// 데이터가 있으면 출판물 목록 다시 렌더링
+		if (publications.length > 0) {
+			renderPublications();
+		}
+	}
+</script>
+		// 선택한 네비게이션 링크 활성화
+		document.querySelector(`.nav-links a[href="#${sectionId}"]`).classList.add('active');
+	}
+	
+	// URL 해시가 변경될 때 해당 섹션으로 이동
+	window.addEventListener('hashchange', function() {
+		const sectionId = window.location.hash.substring(1);
+		if (sectionId) {
+			activateSection(sectionId);
+		}
+	});
+	
+	// 초기 페이지 로드 시 URL 해시에 따른 섹션 활성화
+	window.addEventListener('load', function() {
+		const sectionId = window.location.hash.substring(1);
+		if (sectionId) {
+			activateSection(sectionId);
+		} else {
+			// 기본적으로 소개 섹션 활성화
+			activateSection('intro');
+		}
+	});
+</script>
 </body>
 </html>
