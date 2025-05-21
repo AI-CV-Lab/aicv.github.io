@@ -234,6 +234,75 @@
     const newsForm = document.getElementById('newsForm');
     const newsList = document.getElementById('newsList');
 
+    function updateAdminUI() {
+		if (isAdmin) {
+			newsForm.style.display = "";
+			Array.from(document.getElementsByClassName('news-item-remove')).forEach(btn => btn.style.display = '');
+			adminLoginBtn.style.display = "none";
+			adminLogoutBtn.style.display = "";
+		} else {
+			newsForm.style.display = "none";
+			Array.from(document.getElementsByClassName('news-item-remove')).forEach(btn => btn.style.display = 'none');
+			adminLoginBtn.style.display = "";
+			adminLogoutBtn.style.display = "none";
+		}
+	}
+
+    adminLoginBtn.onclick = function() {
+      const pass = prompt("관리자 비밀번호를 입력하세요:");
+      if (pass === ADMIN_PASS) {
+        isAdmin = true;
+        updateAdminUI();
+      } else if (pass !== null) {
+        alert("비밀번호가 틀렸습니다.");
+      }
+    };
+    adminLogoutBtn.onclick = function() {
+      isAdmin = false;
+      updateAdminUI();
+    };
+
+    // News (편집 권한 연동)
+    // function loadNews() {
+    //   const news = JSON.parse(localStorage.getItem('milab_news') || '[]');
+    //   newsList.innerHTML = '';
+    //   news.forEach((item, idx) => {
+    //     const li = document.createElement('li');
+    //     li.className = 'news-item';
+    //     li.innerHTML = `
+    //       <div style="flex:1;">
+    //         <div class="news-item-title">${item.title}</div>
+    //         <div class="news-item-date">${item.date}</div>
+    //         <div class="news-item-content">${item.content}</div>
+    //       </div>
+    //       <button class="news-item-remove" title="Delete" onclick="removeNews(${idx})" style="display:none;">✕</button>
+    //     `;
+    //     newsList.appendChild(li);
+    //   });
+    //   updateAdminUI();
+    // }
+    // function saveNews(news) {
+    //   localStorage.setItem('milab_news', JSON.stringify(news));
+    //   loadNews();
+    // }
+    // newsForm.addEventListener('submit', function(e){
+    //   e.preventDefault();
+    //   const title = document.getElementById('newsTitle').value.trim();
+    //   const content = document.getElementById('newsContent').value.trim();
+    //   if (!title || !content) return;
+    //   const news = JSON.parse(localStorage.getItem('milab_news') || '[]');
+    //   const date = new Date().toLocaleDateString('en-CA', {year:'numeric',month:'2-digit',day:'2-digit'});
+    //   news.unshift({title, content, date});
+    //   saveNews(news);
+    //   this.reset();
+    // });
+    // window.removeNews = function(idx) {
+    //   if (!isAdmin) return;
+    //   const news = JSON.parse(localStorage.getItem('milab_news') || '[]');
+    //   news.splice(idx, 1);
+    //   saveNews(news);
+    // }
+    // 최초 로드
 	// 뉴스 불러오기(조회)
 	function loadNews() {
 	fetch(NEWS_API_URL)
@@ -272,76 +341,6 @@
 		this.reset();
 	});
 	});
-
-    function updateAdminUI() {
-		if (isAdmin) {
-			newsForm.style.display = "";
-			Array.from(document.getElementsByClassName('news-item-remove')).forEach(btn => btn.style.display = '');
-			adminLoginBtn.style.display = "none";
-			adminLogoutBtn.style.display = "";
-		} else {
-			newsForm.style.display = "none";
-			Array.from(document.getElementsByClassName('news-item-remove')).forEach(btn => btn.style.display = 'none');
-			adminLoginBtn.style.display = "";
-			adminLogoutBtn.style.display = "none";
-		}
-	}
-
-    adminLoginBtn.onclick = function() {
-      const pass = prompt("관리자 비밀번호를 입력하세요:");
-      if (pass === ADMIN_PASS) {
-        isAdmin = true;
-        updateAdminUI();
-      } else if (pass !== null) {
-        alert("비밀번호가 틀렸습니다.");
-      }
-    };
-    adminLogoutBtn.onclick = function() {
-      isAdmin = false;
-      updateAdminUI();
-    };
-
-    // News (편집 권한 연동)
-    function loadNews() {
-      const news = JSON.parse(localStorage.getItem('milab_news') || '[]');
-      newsList.innerHTML = '';
-      news.forEach((item, idx) => {
-        const li = document.createElement('li');
-        li.className = 'news-item';
-        li.innerHTML = `
-          <div style="flex:1;">
-            <div class="news-item-title">${item.title}</div>
-            <div class="news-item-date">${item.date}</div>
-            <div class="news-item-content">${item.content}</div>
-          </div>
-          <button class="news-item-remove" title="Delete" onclick="removeNews(${idx})" style="display:none;">✕</button>
-        `;
-        newsList.appendChild(li);
-      });
-      updateAdminUI();
-    }
-    function saveNews(news) {
-      localStorage.setItem('milab_news', JSON.stringify(news));
-      loadNews();
-    }
-    newsForm.addEventListener('submit', function(e){
-      e.preventDefault();
-      const title = document.getElementById('newsTitle').value.trim();
-      const content = document.getElementById('newsContent').value.trim();
-      if (!title || !content) return;
-      const news = JSON.parse(localStorage.getItem('milab_news') || '[]');
-      const date = new Date().toLocaleDateString('en-CA', {year:'numeric',month:'2-digit',day:'2-digit'});
-      news.unshift({title, content, date});
-      saveNews(news);
-      this.reset();
-    });
-    window.removeNews = function(idx) {
-      if (!isAdmin) return;
-      const news = JSON.parse(localStorage.getItem('milab_news') || '[]');
-      news.splice(idx, 1);
-      saveNews(news);
-    }
-    // 최초 로드
     loadNews();
 
     // ----- Publications: 예시 데이터 -----
