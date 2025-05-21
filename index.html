@@ -226,6 +226,7 @@
     }));
 
     // ----- News: 관리자 기능 -----
+	const NEWS_API_URL = "https://script.google.com/macros/s/AKfycbxdfLycEaXnm91mGMyWQ6-F2iwXO4l-WqPwTNGTFLAyppgnrPxfDc4oBD3w1yUIMuvbBA/exec";
     const ADMIN_PASS = "viplab4135"; // 원하는 비밀번호로 수정 가능
     let isAdmin = false;
     const adminLoginBtn = document.getElementById('adminLoginBtn');
@@ -233,19 +234,58 @@
     const newsForm = document.getElementById('newsForm');
     const newsList = document.getElementById('newsList');
 
+	// 뉴스 불러오기(조회)
+	function loadNews() {
+	fetch(NEWS_API_URL)
+		.then(res => res.json())
+		.then(news => {
+		newsList.innerHTML = '';
+		news.forEach((item, idx) => {
+			const li = document.createElement('li');
+			li.className = 'news-item';
+			li.innerHTML = `
+			<div style="flex:1;">
+				<div class="news-item-title">${item.title}</div>
+				<div class="news-item-date">${item.date}</div>
+				<div class="news-item-content">${item.content}</div>
+			</div>
+			`;
+			newsList.appendChild(li);
+		});
+		updateAdminUI();
+		});
+	}
+
+	// 뉴스 등록(추가)
+	newsForm.addEventListener('submit', function(e){
+	e.preventDefault();
+	const title = document.getElementById('newsTitle').value.trim();
+	const content = document.getElementById('newsContent').value.trim();
+	if (!title || !content) return;
+	const date = new Date().toLocaleDateString('en-CA', {year:'numeric',month:'2-digit',day:'2-digit'});
+	fetch(NEWS_API_URL, {
+		method: "POST",
+		body: JSON.stringify({title, content, date}),
+		headers: {"Content-Type":"application/json"}
+	}).then(() => {
+		loadNews();
+		this.reset();
+	});
+	});
+
     function updateAdminUI() {
-      if (isAdmin) {
-        newsForm.style.display = "";
-        Array.from(document.getElementsByClassName('news-item-remove')).forEach(btn => btn.style.display = '');
-        adminLoginBtn.style.display = "none";
-        adminLogoutBtn.style.display = "";
-      } else {
-        newsForm.style.display = "none";
-        Array.from(document.getElementsByClassName('news-item-remove')).forEach(btn => btn.style.display = 'none');
-        adminLoginBtn.style.display = "";
-        adminLogoutBtn.style.display = "none";
-      }
-    }
+		if (isAdmin) {
+			newsForm.style.display = "";
+			Array.from(document.getElementsByClassName('news-item-remove')).forEach(btn => btn.style.display = '');
+			adminLoginBtn.style.display = "none";
+			adminLogoutBtn.style.display = "";
+		} else {
+			newsForm.style.display = "none";
+			Array.from(document.getElementsByClassName('news-item-remove')).forEach(btn => btn.style.display = 'none');
+			adminLoginBtn.style.display = "";
+			adminLogoutBtn.style.display = "none";
+		}
+	}
 
     adminLoginBtn.onclick = function() {
       const pass = prompt("관리자 비밀번호를 입력하세요:");
@@ -1260,6 +1300,7 @@
     //   `;
     //   pubList.appendChild(li);
     // });
+	// loadNews();
   </script>
 </body>
 </html>
