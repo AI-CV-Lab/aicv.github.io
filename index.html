@@ -84,6 +84,7 @@
 </head>
 <body>
   <nav class="nav">
+	<img src="images/Logo.png" alt="Lab Logo" class="nav-logo">
     <span class="tab active" data-tab="home">Home</span>
     <span class="tab" data-tab="news">News</span>
     <span class="tab" data-tab="publications">Publications</span>
@@ -91,6 +92,7 @@
   </nav>
 
   <div class="container" id="home-tab">
+	<img src="images/signal.jpg" alt="Lab Main Visual" class="home-main-image">
     <div class="lab-title">Artificial Intelligence & Computer Vision Lab.</div>
     <div class="lab-slogan">Konkuk University, Korea</div>
     <div class="lab-description">
@@ -130,7 +132,7 @@
     <div class="section-title">Professor</div>
     <div class="professor">
       <div class="member-card">
-        <img src="https://randomuser.me/api/portraits/men/15.jpg" alt="Prof. Hyun Park">
+        <img src="images/empty.png" alt="Prof. Hyun Park">
         <div class="member-name">Eun Yi Kim</div>
         <div class="member-role">Professor</div>
         <div class="member-email">eykim@konkuk.ac.kr</div>
@@ -139,43 +141,43 @@
     <div class="section-title">Current Members</div>
     <div class="current-members">
       <div class="member-card">
-        <img src="images/증명사진.jpg" alt="Hyojin Jon">
+        <img src="images/empty.png" alt="yealimoh">
         <div class="member-name">Yealim Oh</div>
         <div class="member-role">Master Student</div>
         <div class="member-email">dodoh0125@konkuk.ac.kr</div>
       </div>
       <div class="member-card">
-        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Yuna Kim">
+        <img src="image/전효진.jpg" alt="hyojinjon">
         <div class="member-name">Hyo Jin Jon</div>
         <div class="member-role">Master Student</div>
         <div class="member-email">hyojin2011@konkuk.ac.kr</div>
       </div>
       <div class="member-card">
-        <img src="https://randomuser.me/api/portraits/men/34.jpg" alt="Hyojin Jon">
+        <img src="images/empty.png" alt="hyuntaekjung">
         <div class="member-name">Hyuntaek Jung</div>
         <div class="member-role">Master Student</div>
         <div class="member-email">busan199@konkuk.ac.kr</div>
       </div>
       <div class="member-card">
-        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Yuna Kim">
+        <img src="images/empty.png" alt="hyunseokim">
         <div class="member-name">Hyunseo Kim</div>
         <div class="member-role">Master Student</div>
         <div class="member-email">hs11015@konkuk.ac.kr</div>
       </div>
       <div class="member-card">
-        <img src="https://randomuser.me/api/portraits/men/34.jpg" alt="Hyojin Jon">
+        <img src="images/empty.png" alt="heejaechoi">
         <div class="member-name">Heejae Choi</div>
         <div class="member-role">Master Student</div>
         <div class="member-email">qkw1205@konkuk.ac.kr</div>
       </div>
       <div class="member-card">
-        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Yuna Kim">
+        <img src="images/empty.png" alt="sinwooham">
         <div class="member-name">Sinwoo Ham</div>
         <div class="member-role">Master Student</div>
         <div class="member-email">gka0656@konkuk.ac.kr</div>
       </div>
 	  <div class="member-card">
-        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Yuna Kim">
+        <img src="images/empty.png" alt="juniljeon">
         <div class="member-name">Junil Jeon</div>
         <div class="member-role">Undergraduate Student</div>
         <div class="member-email">jeonjunil@konkuk.ac.kr</div>
@@ -224,7 +226,7 @@
     }));
 
     // ----- News: 관리자 기능 -----
-    const ADMIN_PASS = "labadmin123"; // 원하는 비밀번호로 수정 가능
+    const ADMIN_PASS = "viplab4135"; // 원하는 비밀번호로 수정 가능
     let isAdmin = false;
     const adminLoginBtn = document.getElementById('adminLoginBtn');
     const adminLogoutBtn = document.getElementById('adminLogoutBtn');
@@ -305,36 +307,927 @@
     // ----- Publications: 예시 데이터 -----
     const pubData = [
       {
-        title: "EVo-CLIP: Efficient CLIP-based Video Action Recognition for Domain Adaptation",
-        authors: "Hyojin Jon, Yuna Kim, Hyun Park",
-        venue: "IEEE TPAMI, 2025",
-        link: "https://arxiv.org/abs/2404.12345"
+        title: "Watermark and Trademark Prompts Boost Video Action Recognition in Visual-Language Models",
+        authors: "L Jin, H Jung, HJ Jon, EY Kim",
+        venue: "Mathematics 13 (9), 1365",
+		type:"Journal",
+		date: 2025,
+        link: ""
       },
       {
-        title: "Omni-Emotion2Vec: Multimodal Emotion Representation Learning from Podcasts",
-        authors: "Hyojin Jon, Jihye Cho, Minsoo Lee",
-        venue: "INTERSPEECH, 2024",
-        link: "https://arxiv.org/abs/2401.67890"
+        title: "Detecting Hearing Impairment through Localizing Abnormal Speech Patterns",
+        authors: "L Jin, D Min, CH Yu, JE Shin, EY Kim",
+        venue: "IEEE Signal Processing Letters",
+		type:"Journal",
+		date:2025,
+        link: ""
       },
       {
-        title: "Domain Generalization in Video Understanding",
-        authors: "Yuna Kim, Hyun Park",
-        venue: "CVPR, 2024",
+        title: "Identifying Alzheimer’s Disease Across Cognitive Impairment Spectrum Using Acoustic Features Only",
+        authors: "HJ Jon, H Jung, L Jin, EY Kim",
+        venue: "International Conference on Pattern Recognition, 402-413",
+		type:"Conference",
+		date:2025,
+        link: ""
+      },
+      {
+        title: "EEG-RegNet: Regressive Emotion Recognition in Continuous VAD Space Using EEG Signals",
+        authors: "HJ Jon, L Jin, H Jung, H Kim, EY Kim",
+        venue: "Mathematics 13 (1), 87",
+		type:"Journal",
+		date:2024,
+        link: ""
+      },
+      {
+        title: "Consen: Complementary and simultaneous ensemble for alzheimer’s disease detection and mmse score prediction",
+        authors: "L Jin, Y Oh, H Kim, H Jung, HJ Jon, JE Shin, EY Kim",
+        venue: "ICASSP 2023-2023 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)",
+		type:"Conference",
+		date:2023,
+        link: ""
+      },
+      {
+        title: "E-EmotiConNet: EEG-based emotion recognition with context information",
+        authors: "L Jin, EY Kim",
+        venue: "2022 International Joint Conference on Neural Networks (IJCNN), 1-8",
+		type:"Conference",
+		date:2022,
+        link: ""
+      },
+      {
+        title: "GViT: Locality enhanced vision transformer using spectral graph convolutional network",
+        authors: "L Jin, EY Kim",
+        venue: "2022 International Joint Conference on Neural Networks (IJCNN), 1-6",
+		type:"Conference",
+		date:2022,
+        link: ""
+      },
+      {
+        title: "Interpretable Cross-Subject EEG-Based Emotion Recognition Using Channel-Wise Features†",
+        authors: "L Jin, EY Kim",
+        venue: "Sensors 20 (23), 6719",
+		type:"Journal",
+		date:2020,
+        link: ""
+      },
+      {
+        title: "Eeg-based user identification using channel-wise features",
+        authors: "L Jin, J Chang, E Kim",
+        venue: "Pattern Recognition: 5th Asian Conference, ACPR 2019, Auckland, New Zealand, November 26–29, 2019, Revised Selected Papers, Part II 5",
+		type:"Conference",
+		date:2020,
+        link: ""
+      },
+	  {
+        title: "Monitoring Mood Trends of Twitter Users using Multi-modal Analysis method of Texts and Images",
+        authors: "EY Kim, E Ko",
+        venue: "Journal of the Korea Convergence Society 9 (1), 419-431",
+		type:"Journal",
+		date:2018,
+        link: ""
+      },
+      {
+        title: "A vision-based wayfinding system for visually impaired people using situation awareness and activity-based instructions",
+        authors: "E Ko, EY Kim",
+        venue: "Sensors 17 (8), 1882",
+		type:"Journal",
+		date:2017,
+        link: ""
+      },
+      {
+        title: "Vision‐based wheelchair navigation using geometric AdaBoost learning",
+        authors: "EY Kim",
+        venue: "Electronics Letters 53 (8), 534-536",
+		date:2017,
+		type:"Journal",
+        link: ""
+      },
+      {
+        title: "Summarizing Social Image Search Results using Human Affects",
+        authors: "E Ko, EY Kim, Y Yu",
+        venue: "Companion Proceedings of the 22nd International Conference on Intelligent User Interfaces",
+		date:2017,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "MRF model based real‐time traffic flow prediction with support vector regression",
+        authors: "EY Kim",
+        venue: "Electronics Letters 53 (4), 243-245",
+		date:2017,
+		type:"Journal",
+        link: ""
+      },
+      {
+        title: "Wheelchair navigation system for disabled and elderly people",
+        authors: "EY Kim",
+        venue: "Sensors 16 (11), 1806",
+		date:2016,
+		type:"Journal",
+        link: ""
+      },
+      {
+        title: "Canonical image selection based on human affects in photographic images",
+        authors: "EY Kim, E Ko",
+        venue: "Image and Vision Computing 54, 83-98",
+		date:2016,
+		type:"Journal",
+        link: ""
+      },
+      {
+        title: "Outdoor Context Awareness Device That Enables Mobile Phone Users to Walk Safely through Urban Intersections.",
+        authors: "J Hwang, Y Ji, N Kwak, EY Kim",
+        venue: "ICPRAM, 526-533",
+		date:2016,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "3D Markov process for traffic flow prediction in real-time",
+        authors: "E Ko, J Ahn, EY Kim",
+        venue: "Sensors 16 (2), 147",
+		date:2016,
+		type:"Journal",
+        link: ""
+      },
+      {
+        title: "Identifying depressive users in Twitter using multimodal analysis",
+        authors: "K Kang, C Yoon, EY Kim",
+        venue: "2016 international conference on big data and smart computing (BigComp), 231-238",
+		date:2016,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Discovering visual features for recognizing user's sentiments in social images",
+        authors: "E Ko, C Yoon, EY Kim",
+        venue: "2016 international conference on big data and smart computing (bigcomp), 378-381",
+		date:2016,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Highway traffic flow prediction using support vector regression and Bayesian classifier",
+        authors: "J Ahn, E Ko, EY Kim",
+        venue: "2016 International conference on big data and smart computing (BigComp), 239-244",
+		date:2016,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Predicting spatiotemporal traffic flow based on support vector regression and Bayesian classifier",
+        authors: "JY Ahn, E Ko, EY Kim",
+        venue: "2015 IEEE fifth international conference on big data and cloud computing",
+		date:2015,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Recognizing the sentiments of web images using hand-designed features",
+        authors: "E Ko, EY Kim",
+        venue: "2015 IEEE 14th International Conference on Cognitive Informatics & Cognitive Computing (ICCI* CC)",
+		date:2015,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Generating summaries for photographic images based on human affects",
+        authors: "EY Kim, E Ko",
+        venue: "2015 IEEE 14th International Conference on Cognitive Informatics & Cognitive Computing (ICCI* CC)",
+		date:2015,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Building Image Sentiment Dataset with an Online Rating Game",
+        authors: "C Yoon, KH Kang, EY Kim",
+        venue: "Proceedings of the 20th International Conference on Intelligent User Interfaces",
+		date:2015,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Real-time highway traffic flow estimation based on 3D Markov Random Field",
+        authors: "J Ahn, E Ko, EY Kim",
+        venue: "17th International IEEE Conference on Intelligent Transportation Systems (ITSC)",
+		date:2014,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "An intelligent wheelchair to enable safe mobility of the disabled people with motor and cognitive impairments",
+        authors: "Y Ji, M Lee, EY Kim",
+        venue: "European Conference on Computer Vision, 702-715",
+		date:2014,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Finding Relationships between Human Affects and Colors Using SVD and pLSA",
+        authors: "U Akhmedjanov, E Ko, Y Shin, EY Kim",
+        venue: "Mobile, Ubiquitous, and Intelligent Computing: MUSIC 2013, 347-351",
+		date:2014,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Mining salient images from a large-scale blogosphere",
+        authors: "X Chen, M Chen, H Shin, EY Kim",
+        venue: "8th International Conference for Internet Technology and Secured Transactions (ICITST-2013)",
+		date:2013,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Image Battle System: Collecting more trustable ground truth for Affect-based image indexing system",
+        authors: "U Akhmedjanov, E Ko, EY Kim",
+        venue: "Procedia-Social and Behavioral Sciences 97, 571-579",
+		date:2013,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "An intelligent wheelchair using situation awareness and obstacle detection",
+        authors: "Y Ji, J Hwang, EY Kim",
+        venue: "Procedia-social and behavioral sciences 97, 620-628",
+		date:2013,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Genetic algorithm-based reconstruction of old films corrupted by scratches and blotches",
+        authors: "EY Kim, K Kim, B Kim",
+        venue: "Pattern Recognition Letters 34 (2), 226-237",
+		date:2013,
+		type:"Journal",
+        link: ""
+      },
+      {
+        title: "Affect-Based Retrieval of Landscape Images Using Probabilistic Affective Model",
+        authors: "Y Shin, EY Kim, TE Sung",
+        venue: "Human-Computer Interaction. Towards Intelligent and Implicit Interaction: 15th International Conference, HCI International 2013, Las Vegas, NV, USA, July 21-26, 2013, Proceedings, Part V 15",
+		date:2013,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Monocular vision-based collision avoidance system",
+        authors: "J Hwang, Y Ji, EY Kim",
+        venue: "Proceedings of the 14th international conference on Human-computer interaction with mobile devices and services companion",
+		date:2012,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Intelligent situation awareness on the EYECANE",
+        authors: "J Hwang, Y Ji, EY Kim",
+        venue: "Pacific Rim International Conference on Artificial Intelligence, 740-745",
+		date:2012,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Outdoor situation recognition using support vector machine for the blind and the visually impaired",
+        authors: "J Hwang, K Kim, EY Kim",
+        venue: "PRICAI 2012: Trends in Artificial Intelligence: 12th Pacific Rim International Conference on Artificial Intelligence, Kuching, Malaysia, September 3-7, 2012. Proceedings 12",
+		date:2012,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Situation-based indoor wayfinding system for the visually impaired",
+        authors: "E Ko, JS Ju, EY Kim",
+        venue: "The proceedings of the 13th international ACM SIGACCESS conference on Computers and accessibility",
+		date:2011,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "VFH-based Navigation using Monocular Vision",
+        authors: "SH Park, JH Hwang, JS Ju, EJ Ko, JT Ryu, EY Kim",
+        venue: "Journal of Korea Society of Industrial Information Systems 16 (2), 65-72",
+		date:2011,
+		type:"Journal",
+        link: ""
+      },
+      {
+        title: "Automatic restoration of scratch in old archive",
+        authors: "K Kim, B Kim, EY Kim",
+        venue: "2010 20th International Conference on Pattern Recognition, 468-471",
+		date:2010,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Affective prediction in photographic images using probabilistic affective model",
+        authors: "Y Shin, EY Kim",
+        venue: "Proceedings of the ACM International Conference on Image and Video Retrieval",
+		date:2010,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Automatic textile image annotation by predicting emotional concepts from visual features",
+        authors: "Y Shin, Y Kim, EY Kim",
+        venue: "Image and Vision Computing 28 (3), 526-537",
+		date:2010,
+		type:"Journal",
+        link: ""
+      },
+      {
+        title: "Film line scratch detection using texture and shape information",
+        authors: "K Kim, EY Kim",
+        venue: "Pattern recognition letters 31 (3), 250-258",
+		date:2010,
+		type:"Journal",
+        link: ""
+      },
+      {
+        title: "Real Time Monocular Navigation using VFH",
+        authors: "J Jo, JS Ju, E Ko, EY Kim",
+        venue: "Proceedings of the Korea Information Processing Society Conference, 348-351",
+		date:2010,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Vision-based Real-Time Traffic Emission Monitoring System",
+        authors: "Y Shin, J Jung, D Yoo, D Park, EY Kim, JH Woo, SB Lim, JS Ju",
+        venue: "Proceedings of the Korea Information Processing Society Conference, 439-442",
+		date:2010,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Vision based interface system for hands free control of an intelligent wheelchair",
+        authors: "JS Ju, Y Shin, EY Kim",
+        venue: "Journal of neuroengineering and rehabilitation 6, 1-17",
+		date:2009,
+		type:"Journal",
+        link: ""
+      },
+      {
+        title: "Reconstruction of degraded images using genetic algoritm for archive film restoration",
+        authors: "B Kim, K Kim, EY Kim",
+        venue: "2009 16th IEEE International Conference on Image Processing (ICIP), 2765-2768",
+		date:2009,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "EYECane: Navigating with camera embedded white cane for visually impaired person",
+        authors: "JS Ju, E Ko, EY Kim",
+        venue: "Proceedings of the 11th international ACM SIGACCESS conference on Computers and accessibility",
+		date:2009,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Intelligent wheelchair using head tilt and mouth shape",
+        authors: "JS Ju, Y Shin, EY Kim",
+        venue: "Electronics letters 45 (17), 873-875",
+		date:2009,
+		type:"Journal",
+        link: ""
+      },
+      {
+        title: "Personalized digital TV content recommendation with integration of user behavior profiling and multimodal content rating",
+        authors: "H Shin, M Lee, EY Kim",
+        venue: "IEEE Transactions on Consumer Electronics 55 (3), 1417-1423",
+		date:2009,
+		type:"Journal",
+        link: ""
+      },
+      {
+        title: "Efficient page layout analysis on small devices",
+        authors: "E Han, C Wong, K Jung, K Lee, E Kim",
+        venue: "Journal of Zhejiang University-SCIENCE A 10, 800-804",
+		date:2009,
+		type:"Journal",
+        link: ""
+      },
+      {
+        title: "A Data Management System for Distributed Real-Time Emissions and Air Pollutants Monitoring System",
+        authors: "J Kim, YL Jin, SB Lim, K Jeong, JH Woo, EY Kim",
+        venue: "2009 First Asian Conference on Intelligent Information and Database Systems",
+		date:2009,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Intelligent wheelchair (IW) interface using face and mouth recognition",
+        authors: "JS Ju, Y Shin, EY Kim",
+        venue: "Proceedings of the 14th international conference on Intelligent user interfaces",
+		date:2009,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "EBIR: Emotion-based image retrieval",
+        authors: "Y Kim, Y Shin, S Kim, EY Kim, H Shin",
+        venue: "2009 Digest of Technical Papers International Conference on Consumer Electronics",
+		date:2009,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "An intelligent wheelchair to enable mobility of severely disabled and elder people",
+        authors: "E Ko, JS Ju, EY Kim, NS Goo",
+        venue: "2009 Digest of Technical Papers International Conference on Consumer Electronics",
+		date:2009,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Development of Path Finding System using K-means clustering for Intelligent Wheelchair",
+        authors: "D Kwak, J Lee, JS Ju, E Ko, EY Kim",
+        venue: "Proceedings of the Korea Information Processing Society Conference, 381-382",
+		date:2009,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Automatic Film Restoration Using Distributed Genetic Algorithm",
+        authors: "BG Kim, KT Kim, EY Kim",
+        venue: "Journal of the Institute of Electronics Engineers of Korea SP 46 (2), 1-9",
+		date:2009,
+		type:"Journal",
+        link: ""
+      },
+      {
+        title: "Discovering and browsing of power users by social relationship analysis in large-scale online communities",
+        authors: "H Shin, Z Xu, EY Kim",
+        venue: "2008 IEEE/WIC/ACM International Conference on Web Intelligence and Intelligent Agent Technology",
+		date:2008,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Welfare interface implementation using multiple facial features tracking for the disabled people",
+        authors: "Y Shin, JS Ju, EY Kim",
+        venue: "Pattern Recognition Letters 29 (13), 1784-1796",
+		date:2008,
+		type:"Journal",
+        link: ""
+      },
+      {
+        title: "Emotion recognition using color and pattern in textile images",
+        authors: "NY Kim, Y Shin, Y Kim, EY Kim",
+        venue: "2008 IEEE Conference on Cybernetics and Intelligent Systems, 1100-1105",
+		date:2008,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Film line scratch detection using neural network and morphological filter",
+        authors: "K Kim, EY Kim",
+        venue: "2008 IEEE Conference on Cybernetics and Intelligent Systems, 1007-1011",
+		date:2008,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Mobile robot control using hand-shape recognition",
+        authors: "JS Chang, EY Kim, HJ Kim",
+        venue: "Transactions of the Institute of Measurement and Control 30 (2), 143-152",
+		date:2008,
+		type:"Journal",
+        link: ""
+      },
+      {
+        title: "Intelligent wheelchair using face and mouth shape recognition",
+        authors: "JS Ju, YH Shin, EY Kim, SH Park",
+        venue: "2008 Digest of Technical Papers-International Conference on Consumer Electronics",
+		date:2008,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Automatic Textile-Image Classification System using Human Emotion",
+        authors: "YR Kim, YH Shin, EY Kim",
+        venue: "Proceedings of the Korean Information Science Society Conference, 561-564",
+		date:2008,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Welfare Interface using Multiple Facial Features Tracking",
+        authors: "JS Ju, YH Shin, EY Kim",
+        venue: "Journal of the Institute of Electronics Engineers of Korea SP 45 (1), 75-83",
+		date:2008,
+		type:"Journal",
+        link: ""
+      },
+      {
+        title: "Mobile robot control using hand shape recognition",
+        authors: "YR Kim, EY Kim, JS Chang, SH Park",
+        venue: "Journal of the Institute of Electronics Engineers of Korea CI 45 (4), 34-40",
+		date:2008,
+		type:"",
+        link: ""
+      },
+      {
+        title: "Automatic film line scratch removal system based on spatial information",
+        authors: "K Kim, E yi Kim",
+        venue: "2007 IEEE International Symposium on Consumer Electronics, 1-5",
+		date:2007,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "A Visual Navigation using color and texture",
+        authors: "JS Ju, EY Kim, E Ko",
+        venue: "Proceedings of the 23th IEEE Conference on Computer Vision and Pattern Recognition, San Francisco, CA, USA",
+		date:2007,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Emotion-based textile indexing system using pattern recognition",
+        authors: "NY Kim, Y Shin, EY Kim",
+        venue: "IEEE International Symposium on Consumer Electron 1 (1), 1-6",
+		date:2007,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Computer interface to use eye and mouse movement",
+        authors: "EY Kim, SH Park, BJ Shin",
+        venue: "International Conference on Multimedia Modeling, 471-478",
+		date:2007,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Digital film line scratch restoration based on Spatial Information",
+        authors: "KT Kim, EC Ko, EY Kim",
+        venue: "Proceedings of the Korean Information Science Society Conference, 454-459",
+		date:2007,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Eye Tracking using Neural Network and Mean-shift",
+        authors: "SK Kang, KT Kim, YH Shin, NY Kim, EY Kim",
+        venue: "Journal of the Institute of Electronics Engineers of Korea CI 44 (1), 56-63",
+		date:2007,
+		type:"Journal",
+        link: ""
+      },
+      {
+        title: "Emotion Recognition System using Neural networks in Textile images",
+        authors: "NY Kim, YH Shin, S Kim, J Kim, KJ Jeong, HJ Koo, EY Kim",
+        venue: "Journal of KIISE: Software and Applications 34 (9), 869-879",
+		date:2007,
+		type:"Journal",
+        link: ""
+      },
+      {
+        title: "Automatic Facial Expression Recognition using Tree Structures for Human Computer Interaction",
+        authors: "YH Shin, JS Ju, EY Kim, T Kurata, AK Jain, SH Park, KC Jung",
+        venue: "Journal of Korea Society of Industrial Information Systems 12 (3), 60-68",
+		date:2007,
+		type:"Journal",
+        link: ""
+      },
+      {
+        title: "ACMs-based Human Shape Extraction and Tracking System for Human Identification",
+        authors: "SH Park, KS Kwon, EY Kim, HJ Kim",
+        venue: "Journal of Korea Society of Industrial Information Systems 12 (5), 39-46",
+		date:2007,
+		type:"Journal",
+        link: ""
+      },
+      {
+        title: "“Shooting a Bird”: Game System Using Facial Feature for the Handicapped People",
+        authors: "J Ju, Y Shin, EY Kim",
+        venue: "Human-Computer Interaction. HCI Intelligent Multimodal Interaction Environments: 12th International Conference, HCI International 2007, Beijing, China, July 22-27, 2007, Proceedings, Part III 12",
+		date:2007,
+		type:"Conference",
+        link: ""
+      },
+	  {
+		title: "Human shape tracking for gait recognition using active contours with mean shift",
+		authors: "KS Kwon, SH Park, EY Kim, HJ Kim",
+		venue: "Human-Computer Interaction. HCI Intelligent Multimodal Interaction Environments: 12th International Conference, HCI International 2007, Beijing, China, July 22-27, 2007, Proceedings, Part III 12",
+		date:2007,
+		type:"Conference",
+		link: ""
+	  },
+      {
+		  title: "Emotion-based textile indexing using neural networks",
+		  authors: "NY Kim, Y Shin, EY Kim",
+		  venue: "Human-Computer Interaction. HCI Intelligent Multimodal Interaction Environments: 12th International Conference, HCI International 2007, Beijing, China, July 22-27, 2007, Proceedings, Part III 12",
+		  date:2007,
+		  type:"Conference",
+		  link: ""
+		},
+		{
+			title: "Lip contour extraction using level set curve evolution with shape constraint",
+			authors: "JS Chang, EY Kim, SH Park",
+			venue: "Human-Computer Interaction. HCI Intelligent Multimodal Interaction Environments: 12th International Conference, HCI International 2007, Beijing, China, July 22-27, 2007, Proceedings, Part III 12",
+			date:2007,
+			type:"Conference",
+			link: ""
+		},
+		{
+		  title: "Facial boundary detection with an active contour model",
+		  authors: "JS Chang, EY Kim, HJ Kim",
+		  venue: "Pattern recognition letters 28 (1), 64-74",
+		  date:2007,
+		  type:"Journal",
+		  link: ""
+		},
+      {
+        title: "Welfare interface using multiple facial features tracking",
+        authors: "Y Shin, EY Kim",
+        venue: "Australasian Joint Conference on Artificial Intelligence, 453-462",
+		date:2006,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Hand shape recognition using a mean-shift embedded active contour (MEAC)",
+        authors: "EY Kim",
+        venue: "International Conference on Artificial Reality and Telexistence, 1333-1341",
+		date:2006,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Computer interface using eye tracking for handicapped people",
+        authors: "EY Kim, SH Park",
+        venue: "International Conference on Intelligent Data Engineering and Automated Learning",
+		date:2006,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Automatic video segmentation using genetic algorithms",
+        authors: "EY Kim, SH Park",
+        venue: "Pattern Recognition Letters 27 (11), 1252-1265",
+		date:2006,
+		type:"Journal",
+        link: ""
+      },
+      {
+        title: "Eye tracking using neural network and mean-shift",
+        authors: "EY Kim, SK Kang",
+        venue: "International Conference on Computational Science and Its Applications",
+		date:2006,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Film Line Scratch Detection using a Neural Network based Texture Classifier",
+        authors: "KT Kim, EY Kim",
+        venue: "Journal of the Institute of Electronics Engineers of Korea CI 43 (6), 26-33",
+		date:2006,
+		type:"Journal",
+        link: ""
+      },
+      {
+        title: "Eye Region Detection Method in Rotated Face using Global Orientation Information",
+        authors: "Chang-Hyuk Jang, An-Jin Park, Kurata Takeshi, K Jain Anil, Se-Hyun Park, Eun-Yi Kim, Jong-Yeol Yang, Kee-Chul Jung",
+        venue: "Journal of Korea Society of Industrial Information Systems",
+		date:2006,
+		type:"Journal",
+        link: ""
+      },
+      {
+        title: "Hidden Markov Model for Gesture Recognition",
+        authors: "HS Park, EY Kim, HJ Kim",
+        venue: "Journal of the Institute of Electronics Engineers of Korea CI 43 (1), 17-26",
+		date:2006,
+		type:"Journal",
+        link: ""
+      },
+      {
+        title: "Emotion-based textile indexing using colors, texture and patterns",
+        authors: "S Kim, EY Kim, K Jeong, J Kim",
+        venue: "Advances in Visual Computing: Second International Symposium, ISVC 2006 Lake Tahoe, NV, USA, November 6-8, 2006. Proceedings, Part II 2",
+		date:2006,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Real time hand tracking based on active contour model",
+        authors: "JS Chang, EY Kim, KC Jung, HJ Kim",
+        venue: "International Conference on Computational Science and Its Applications, 999-1006",
+		date:2005,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Eye mouse: mouse implementation using eye tracking",
+        authors: "EY Kim, SK Kang, K Jung, HJ Kim",
+        venue: "2005 Digest of Technical Papers. International Conference on Consumer Electronics, 2005. ICCE.",
+		date:2005,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Facial Boundary Detection using an Active Contour Model",
+        authors: "EY Kim",
+        venue: "Journal of the Institute of Electronics Engineers of Korea CI",
+		date:2005,
+		type:"Journal",
+        link: ""
+      },
+      {
+        title: "Genetic algorithms for video segmentation",
+        authors: "EY Kim, K Jung",
+        venue: "Pattern Recognition 38 (1), 59-73",
+		date:2005,
+		type:"Journal",
+        link: ""
+      },
+      {
+        title: "Film line scratch detection using neural network",
+        authors: "SK Kang, EY Kim, K Jung, HJ Kim",
+        venue: "Advances in Multimedia Information Processing-PCM 2004: 5th Pacific Rim Conference on Multimedia, Tokyo, Japan, November 30-December 3, 2004. Proceedings, Part II 5",
+		date:2005,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Object tracking using mean shift and active contours",
+        authors: "JS Chang, EY Kim, KC Jung, HJ Kim",
+        venue: "Innovations in Applied Artificial Intelligence: 18th International Conference on Industrial and Engineering Applications of Artificial Intelligence and Expert Systems, IEA/AIE 2005, Bari, Italy, June 22-24, 2005. Proceedings 18",
+		date:2005,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Robot Competition Using Gesture Based Interface",
+        authors: "HS Park, EY Kim, HJ Kim",
+        venue: "Innovations in Applied Artificial Intelligence: 18th International Conference on Industrial and Engineering Applications of Artificial Intelligence and Expert Systems, IEA/AIE 2005, Bari, Italy, June 22-24, 2005. Proceedings 18",
+		date:2005,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "HMM-based gesture recognition for robot control",
+        authors: "HS Park, EY Kim, SS Jang, SH Park, MH Park, HJ Kim",
+        venue: "Pattern Recognition and Image Analysis: Second Iberian Conference, IbPRIA 2005, Estoril, Portugal, June 7-9, 2005, Proceedings, Part I 2",
+		date:2005,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Emotion-based textile indexing using colors and texture",
+        authors: "EY Kim, S Kim, H Koo, K Jeong, J Kim",
+        venue: "Fuzzy Systems and Knowledge Discovery: Second International Conference, FSKD 2005, Changsha, China, August 27-29, 2005, Proceedings, Part I 2",
+		date:2005,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "An HMM based gesture recognition for perceptual user interface",
+        authors: "HS Park, EY Kim, SS Jang, HJ Kim",
+        venue: "Pacific-Rim Conference on Multimedia, 1027-1034",
+		date:2004,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Video segmentation using genetic algorithms with automatic parameter adaptation",
+        authors: "EY Kim",
+        venue: "Electronics Letters 40 (24), 1530-1531",
+		date:2004,
+		type:"Journal",
+        link: ""
+      },
+      {
+        title: "Recognition of human action for game system",
+        authors: "HS Park, EY Kim, SS Jang, HJ Kim",
+        venue: "International Conference on AI, Simulation, and Planning in High Autonomy Systems",
+		date:2004,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Object detection and removal using genetic algorithms",
+        authors: "EY Kim, K Jung",
+        venue: "Pacific Rim International Conference on Artificial Intelligence, 411-421",
+		date:2004,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Automatic text extraction for content-based image indexing",
+        authors: "K Jung, EY Kim",
+        venue: "Pacific-Asia Conference on Knowledge Discovery and Data Mining, 497-507",
+		date:2004,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Spatiotemporal parameter adaptation in genetic algorithm-based video segmentation",
+        authors: "SK Kang, EY Kim, HJ Kim",
+        venue: "PRICAI 2004: Trends in Artificial Intelligence: 8th Pacific Rim International Conference on Artificial Intelligence, Auckland, New Zealand, August 9-13, 2004. Proceedings 8",
+		date:2004,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Face detection with active contours using color information",
+        authors: "JS Chang, EY Kim, HJ Kim",
+        venue: "Conference on Technology Transfer, 334-343",
+		date:2003,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Motion segmentation using distributed genetic algorithms",
+        authors: "EY Kim, SH Park",
+        venue: "Iberian Conference on Pattern Recognition and Image Analysis, 378-385",
+		date:2003,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Automatic object-based video segmentation using distributed genetic algorithms",
+        authors: "EY Kim, SH Park",
+        venue: "International Conference on Computational Science and Its Applications, 312-321",
+		date:2003,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Automatic extraction of moving objects using distributed genetic algorithms",
+        authors: "EY Kim, SH Park",
+        venue: "International Conference on Intelligent Data Engineering and Automated Learning",
+		date:2003,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "A Gesture-based interface for interactive computer games",
+        authors: "HS Park, H Kang, KC Jung, EY Kim, MH Park, HJ Kim",
+        venue: "Proceedings of the Korean Information Science Society Conference, 631-633",
+		date:2003,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "A genetic algorithm with automatic parameter adaptation for video segmentation",
+        authors: "EY Kim, SH Park",
+        venue: "Computer Analysis of Images and Patterns: 10th International Conference, CAIP 2003, Groningen, The Netherlands, August 25-27, 2003. Proceedings 10",
+		date:2003,
+		type:"Conference",
+        link: ""
+      },
+      {
+        title: "Genetic algorithm-based video segmentation with adaptive population size",
+        authors: "SH Park, EY Kim, BJ Cho",
+        venue: "Pattern Recognition: 25th DAGM Symposium, Magdeburg, Germany, September 10-12, 2003. Proceedings 25",
+		date:2003,
+		type:"Conference",
         link: ""
       }
     ];
+
+	const journals = pubData.filter(pub => pub.type === "Journal").sort((a, b) => b.date - a.date);
+
+	const conferences = pubData.filter(pub => pub.type === "Conference").sort((a, b) => b.date - a.date);
+
     const pubList = document.getElementById('pubList');
-    pubList.innerHTML = '';
-    pubData.forEach(pub => {
-      const li = document.createElement('li');
-      li.className = 'pub-item';
-      li.innerHTML = `
-        <div class="pub-title">${pub.title}${pub.link ? `<a href="${pub.link}" target="_blank" class="pub-link">[link]</a>` : ''}</div>
-        <div class="pub-authors">${pub.authors}</div>
-        <div class="pub-venue">${pub.venue}</div>
-      `;
-      pubList.appendChild(li);
-    });
+	pubList.innerHTML = `
+	  	<div style="font-size:1.2em;font-weight:600;color:#444;margin:2em 0 1em 0;">Conferences</div>
+		<ul class="pub-list">
+			${conferences.length === 0 ? `<li style="color:#aaa;">No conference papers yet.</li>` :
+			conferences.map(pub => `
+				<li class="pub-item">
+				<div class="pub-title">${pub.title}${pub.link ? `<a href="${pub.link}" target="_blank" class="pub-link">[link]</a>` : ''}</div>
+				<div class="pub-authors">${pub.authors}</div>
+				<div class="pub-venue">${pub.venue} (${pub.date})</div>
+				</li>
+			`).join('')}
+		</ul>
+		<div style="font-size:1.2em;font-weight:600;color:#444;margin:2em 0 1em 0;">Journals</div>
+		<ul class="pub-list">
+			${journals.length === 0 ? `<li style="color:#aaa;">No journal papers yet.</li>` :
+			journals.map(pub => `
+				<li class="pub-item">
+				<div class="pub-title">${pub.title}${pub.link ? `<a href="${pub.link}" target="_blank" class="pub-link">[link]</a>` : ''}</div>
+				<div class="pub-authors">${pub.authors}</div>
+				<div class="pub-venue">${pub.venue} (${pub.date})</div>
+				</li>
+			`).join('')}
+		</ul>
+		`;
+    // pubList.innerHTML = '';
+    // pubData.forEach(pub => {
+    //   const li = document.createElement('li');
+    //   li.className = 'pub-item';
+    //   li.innerHTML = `
+    //     <div class="pub-title">${pub.title}${pub.link ? `<a href="${pub.link}" target="_blank" class="pub-link">[link]</a>` : ''}</div>
+    //     <div class="pub-authors">${pub.authors}</div>
+    //     <div class="pub-venue">${pub.venue}</div>
+    //   `;
+    //   pubList.appendChild(li);
+    // });
   </script>
 </body>
 </html>
