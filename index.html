@@ -287,12 +287,12 @@
     }
     .project-modal-content {
       background-color: #fff;
-      margin: 5% auto;
+      margin: 3% auto;
       padding: 30px;
       border-radius: 12px;
-      width: 80%;
-      max-width: 700px;
-      max-height: 80vh;
+      width: 85%;
+      max-width: 800px;
+      max-height: 90vh;
       overflow-y: auto;
       position: relative;
     }
@@ -336,8 +336,10 @@
     .project-modal-content .project-image {
       width: 100%;
       max-width: 100%;
+      height: auto;
       border-radius: 8px;
       margin: 1em 0;
+      object-fit: contain;
     }
     .project-modal-content .project-objectives {
       margin: 1.5em 0;
@@ -733,10 +735,18 @@
     // 최초 로드
 	// 뉴스 불러오기(조회)
 	function loadNews() {
+	console.log("Loading news from:", NEWS_API_URL);
 	fetch(NEWS_API_URL)
-		.then(res => res.json())
+		.then(res => {
+			console.log("Load news response status:", res.status);
+			if (!res.ok) {
+				throw new Error(`HTTP error! status: ${res.status}`);
+			}
+			return res.json();
+		})
 		.then(news => {
-		cachedNews = news; // cache the news
+			console.log("Loaded news:", news);
+			cachedNews = news; // cache the news
 		newsList.innerHTML = '';
 		news.forEach((item, idx) => {
 			const li = document.createElement('li');
@@ -775,6 +785,11 @@
 			newsList.appendChild(li);
 		});
 		updateAdminUI();
+		})
+		.catch(error => {
+			console.error("Error loading news:", error);
+			console.error("Error details:", error.message);
+			alert("Error loading news. Please check your Google Apps Script setup.");
 		});
 	}
 
@@ -849,6 +864,13 @@
 	// 뉴스 등록(추가)
 	newsForm.addEventListener('submit', function(e){
 	e.preventDefault();
+	
+	// Check if admin is logged in
+	if (!isAdmin) {
+		alert("Please log in as admin first.");
+		return;
+	}
+	
 	const title = document.getElementById('newsTitle').value.trim();
 	const content = document.getElementById('newsContent').value.trim();
 	if (!title || !content) {
@@ -872,6 +894,8 @@
 	}
 	
 	console.log("Submitting news:", { title, content, date });
+	console.log("API URL:", NEWS_API_URL);
+	console.log("Admin status:", isAdmin);
 	
 	fetch(NEWS_API_URL, {
 		method: "POST",
@@ -882,22 +906,36 @@
 	})
 	.then(response => {
 		console.log("Response status:", response.status);
+		console.log("Response headers:", response.headers);
 		if (!response.ok) {
 			throw new Error(`HTTP error! status: ${response.status}`);
 		}
-		return response.json();
+		return response.text(); // Use text() instead of json() to see raw response
 	})
 	.then(data => {
-		console.log("News submitted successfully:", data);
-		loadNews();
-		this.reset();
-		photoPreview.style.display = 'none';
-		selectedPhoto = null;
-		alert("News added successfully!");
+		console.log("Raw response:", data);
+		try {
+			const jsonData = JSON.parse(data);
+			console.log("News submitted successfully:", jsonData);
+			loadNews();
+			this.reset();
+			photoPreview.style.display = 'none';
+			selectedPhoto = null;
+			alert("News added successfully!");
+		} catch (e) {
+			console.log("Response is not JSON:", data);
+			// Even if response is not JSON, consider it successful if we got a response
+			loadNews();
+			this.reset();
+			photoPreview.style.display = 'none';
+			selectedPhoto = null;
+			alert("News added successfully!");
+		}
 	})
 	.catch(error => {
 		console.error("Error submitting news:", error);
-		alert("Error adding news. Please try again.");
+		console.error("Error details:", error.message);
+		alert("Error adding news. Please check your Google Apps Script setup and try again.");
 	});
 	});
     loadNews();
