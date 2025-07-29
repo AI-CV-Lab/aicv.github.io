@@ -426,9 +426,10 @@
 
     /* Members */
     .professor, .current-members { display: flex; flex-wrap: wrap; gap: 28px; margin-bottom: 2.2em; }
-    .member-card {
-      min-width: 200px; max-width: 230px; background: #fafbfc; border-radius: 18px; padding: 1.2em 1em 1.1em 1em; box-shadow: 0 1px 10px rgba(0,0,0,0.05);
-      display: flex; flex-direction: column; align-items: center; transition: box-shadow 0.13s;
+    .member-card { min-width: 200px; max-width: 230px; background: #fafbfc; border-radius: 18px; padding: 1.2em 1em 1.1em 1em; box-shadow: 0 1px 10px rgba(0,0,0,0.05); display: flex; flex-direction: column; align-items: center; transition: box-shadow 0.13s; }
+    .member-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
     }
     .member-card img {
       width: 78px; height: 78px; border-radius: 50%; object-fit: cover; margin-bottom: 0.7em; border: 2px solid #eee;
@@ -529,6 +530,53 @@
       .professor, .current-members { flex-direction: column; gap: 16px; }
       .nav { gap: 17px; font-size: 1rem; }
     }
+
+    /* Member Modal Content Styling */
+    .member-modal-content .member-section {
+      margin-bottom: 1.5em;
+    }
+    .member-modal-content .member-section-title {
+      font-size: 1.08em;
+      font-weight: 600;
+      margin-bottom: 0.3em;
+      color: #222;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 0.2em;
+    }
+    .member-modal-content .member-section-content {
+      font-size: 1em;
+      color: #444;
+      margin-left: 0.2em;
+      margin-top: 0.2em;
+    }
+
+    /* Add to CSS */
+    .lab-description-en, .lab-description-kr {
+      background: #f7fafd;
+      border-left: 5px solid #1976d2;
+      border-radius: 12px;
+      padding: 1.3em 1.5em 1.3em 2.2em;
+      margin-bottom: 1.5em;
+      font-size: 1.13em;
+      line-height: 1.85;
+      color: #223;
+      box-shadow: 0 2px 8px rgba(25, 118, 210, 0.04);
+      position: relative;
+    }
+    .lab-description-en::before {
+      content: '🧑‍🔬';
+      position: absolute;
+      left: 0.7em;
+      top: 1.1em;
+      font-size: 1.3em;
+    }
+    .lab-description-kr::before {
+      content: '🤖';
+      position: absolute;
+      left: 0.7em;
+      top: 1.1em;
+      font-size: 1.3em;
+    }
   </style>
 </head>
 <body>
@@ -553,6 +601,7 @@
       From recognizing emotions in spontaneous speech, to understanding human behavior through videos and brain signals, our work pushes the boundaries of how machines can sense, learn, and respond with empathy and precision.<br>
       <br>
     </div>
+    <div style="height: 0.5em;"></div>
     <div class="lab-description-kr">
       건국대학교 AI & Computer Vision Lab (AI&CV Lab)은 음성, 영상, 생체신호(EEG, ECG 등)와 같은 다양한 모달리티를 이해하고 통합하는 인공지능 기술을 통해 현실의 복잡한 문제를 해결하는 것을 목표로 합니다.<br>
       <br>
@@ -1449,57 +1498,42 @@
     window.showMemberDetail = function(memberId) {
       const member = membersData.find(m => m.id === memberId);
       if (member) {
-        // Check if this is the professor (different format)
+        // Helper for comma-separated list
+        const commaList = arr => arr && arr.length ? arr.join(', ') : 'None';
+        // Helper for section
+        const section = (title, content) => `
+          <div class="member-section">
+            <div class="member-section-title">${title}</div>
+            <div class="member-section-content">${content}</div>
+          </div>
+        `;
+        let html = `
+          <h2>${member.name}</h2>
+          <div class="member-role">${member.role}</div>
+          <div class="member-email">${member.email}</div>
+          <img src="${member.image}" alt="${member.name}" class="member-image">
+        `;
         if (member.role === "Professor") {
-          const researchAreasHtml = member.researchAreas.map(area => `<li>${area}</li>`).join('');
-          
-          memberModalContent.innerHTML = `
-            <h2>${member.name}</h2>
-            <div class="member-role">${member.role}</div>
-            <div class="member-email">${member.email}</div>
-            <img src="${member.image}" alt="${member.name}" class="member-image">
-            
-            <div class="member-details">
-              <h3>Education</h3>
-              <ul><li>${member.education}</li></ul>
-              
-              <h3>Research Areas</h3>
-              <ul>${researchAreasHtml}</ul>
-            
-              
-            </div>
-          `;
+          // Projects first
+          html += section('Projects', commaList(member.labLeadership || member.projects || []));
+          html += section('Research Areas', commaList(member.researchAreas));
+          // Education as bullet points if array, else as text
+          if (Array.isArray(member.education)) {
+            html += section('Education', `<ul style='margin:0 0 0 1.2em;padding:0;'>${member.education.map(e => `<li>${e}</li>`).join('')}</ul>`);
+          } else {
+            html += section('Education', member.education);
+          }
+          html += section('Achievements', member.achievements && member.achievements.length ? member.achievements.map(a => `<div>${a}</div>`).join('') : 'None');
+          html += section('Selected Publications', member.selectedPublications && member.selectedPublications.length ? member.selectedPublications.map(p => `<div>${p}</div>`).join('') : 'None');
         } else {
-          // Regular student format
-          const researchInterestsHtml = member.researchInterests.map(interest => `<li>${interest}</li>`).join('');
-          const awardsHtml = member.awards.length > 0 ? member.awards.map(award => `<li class="awards">${award}</li>`).join('') : '<li>No awards yet</li>';
-          const publicationsHtml = member.publications.length > 0 ? member.publications.map(pub => `<li>${pub}</li>`).join('') : '<li>No publications yet</li>';
-          const projectsHtml = member.projects.length > 0 ? member.projects.map(project => `<li>${project}</li>`).join('') : '<li>No projects yet</li>';
-          
-          memberModalContent.innerHTML = `
-            <h2>${member.name}</h2>
-            <div class="member-role">${member.role}</div>
-            <div class="member-email">${member.email}</div>
-            <img src="${member.image}" alt="${member.name}" class="member-image">
-            
-            <div class="member-details">
-              <h3>Research Interests</h3>
-              <ul>${researchInterestsHtml}</ul>
-              
-              <h3>Admission Date</h3>
-              <ul><li class="admission-date">${member.admissionDate}</li></ul>
-              
-              <h3>Awards</h3>
-              <ul>${awardsHtml}</ul>
-              
-              <h3>Publications</h3>
-              <ul>${publicationsHtml}</ul>
-              
-              <h3>Projects</h3>
-              <ul>${projectsHtml}</ul>
-            </div>
-          `;
+          // Projects first
+          html += section('Projects', member.projects && member.projects.length ? member.projects.map(p => `<div>${p}</div>`).join('') : 'None');
+          html += section('Research Interests', commaList(member.researchInterests));
+          html += section('Admission Date', member.admissionDate || '');
+          html += section('Awards', member.awards && member.awards.length ? member.awards.map(a => `<div>${a}</div>`).join('') : 'None');
+          html += section('Publications', member.publications && member.publications.length ? member.publications.map(p => `<div>${p}</div>`).join('') : 'None');
         }
+        memberModalContent.innerHTML = html;
         memberModal.style.display = "block";
       }
     }
