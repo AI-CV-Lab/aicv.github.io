@@ -337,9 +337,65 @@
       margin-bottom: 1.5em;
     }
     .project-modal-content .project-image {
+      width: 100%;
       max-width: 100%;
       border-radius: 8px;
       margin: 1em 0;
+      object-fit: cover;
+    }
+    .project-modal-content .project-objectives {
+      margin: 1.5em 0;
+    }
+    .project-modal-content .project-objectives h3 {
+      color: #333;
+      font-size: 1.2em;
+      margin-bottom: 0.8em;
+      font-weight: 600;
+    }
+    .project-modal-content .project-objectives ul {
+      margin: 0;
+      padding-left: 1.5em;
+    }
+    .project-modal-content .project-objectives li {
+      margin-bottom: 0.8em;
+      color: #555;
+      line-height: 1.5;
+    }
+    .project-modal-content .project-technologies {
+      margin: 1.5em 0;
+    }
+    .project-modal-content .project-technologies h3 {
+      color: #333;
+      font-size: 1.2em;
+      margin-bottom: 0.8em;
+      font-weight: 600;
+    }
+    .project-modal-content .project-technologies ul {
+      margin: 0;
+      padding-left: 1.5em;
+    }
+    .project-modal-content .project-technologies li {
+      margin-bottom: 0.8em;
+      color: #555;
+      line-height: 1.5;
+    }
+    .project-modal-content .project-team {
+      margin: 1.5em 0;
+    }
+    .project-modal-content .project-team h3 {
+      color: #333;
+      font-size: 1.2em;
+      margin-bottom: 0.8em;
+      font-weight: 600;
+    }
+    .project-modal-content .project-team ul {
+      margin: 0;
+      padding-left: 1.5em;
+    }
+    .project-modal-content .project-team li {
+      margin-bottom: 0.8em;
+      color: #555;
+      line-height: 1.5;
     }
     .project-modal-content .project-status {
       display: inline-block;
@@ -947,6 +1003,9 @@
       const project = projectsData[index];
       if (project) {
         const imageHtml = project.image ? `<img src="${project.image}" alt="${project.title}" class="project-image">` : '';
+        const objectivesHtml = project.details.objectives.map(obj => `<li>${obj}</li>`).join('');
+        const technologiesHtml = project.details.technologies.map(tech => `<li>${tech}</li>`).join('');
+        const teamHtml = project.details.team.map(member => `<li>${member}</li>`).join('');
         
         projectModalContent.innerHTML = `
           <h2>${project.title}</h2>
@@ -954,6 +1013,22 @@
           <div class="project-duration">Duration: ${project.duration}</div>
           ${imageHtml}
           <div class="project-description">${project.description}</div>
+          
+          <div class="project-objectives">
+            <h3>Objectives</h3>
+            <ul>${objectivesHtml}</ul>
+          </div>
+          
+          <div class="project-technologies">
+            <h3>Technologies</h3>
+            <ul>${technologiesHtml}</ul>
+          </div>
+          
+          <div class="project-team">
+            <h3>Team Members</h3>
+            <ul>${teamHtml}</ul>
+          </div>
+          
           <div class="project-status status-${project.status}">${project.status}</div>
         `;
         projectModal.style.display = "block";
