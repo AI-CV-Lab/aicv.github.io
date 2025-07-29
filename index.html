@@ -51,6 +51,150 @@
     .news-item-date { font-size: 0.95em; color: #888; margin-bottom: 0.5em; }
     .news-item-content { color: #444; margin-top: 0.2em; }
     .news-item-remove { border: none; background: none; color: #b90000; font-size: 0.97em; cursor: pointer; margin-left: 10px; }
+    
+    /* Enhanced News Styles */
+    .photo-upload-section {
+      margin-bottom: 1em;
+    }
+    .photo-upload-label {
+      display: inline-block;
+      padding: 0.5em 1em;
+      background: #f0f0f0;
+      border: 2px dashed #ccc;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.9em;
+      color: #666;
+    }
+    .photo-upload-label:hover {
+      background: #e8e8e8;
+      border-color: #999;
+    }
+    .photo-preview {
+      position: relative;
+      display: inline-block;
+      margin-top: 0.5em;
+    }
+    .photo-preview img {
+      max-width: 200px;
+      max-height: 150px;
+      border-radius: 8px;
+      border: 2px solid #ddd;
+    }
+    .remove-photo-btn {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: #ff4444;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      font-size: 12px;
+      line-height: 1;
+    }
+    
+    /* News Modal Styles */
+    .news-modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+    }
+    .news-modal-content {
+      background-color: #fff;
+      margin: 5% auto;
+      padding: 30px;
+      border-radius: 12px;
+      width: 80%;
+      max-width: 700px;
+      max-height: 80vh;
+      overflow-y: auto;
+      position: relative;
+    }
+    .news-modal-close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #aaa;
+    }
+    .news-modal-close:hover {
+      color: #000;
+    }
+    .news-modal-content h2 {
+      margin-top: 0;
+      color: #222;
+      font-size: 1.8em;
+    }
+    .news-modal-content .news-date {
+      color: #888;
+      font-size: 0.9em;
+      margin-bottom: 1em;
+    }
+    .news-modal-content .news-content {
+      line-height: 1.6;
+      color: #444;
+      margin-bottom: 1.5em;
+    }
+    .news-modal-content .news-image {
+      max-width: 100%;
+      border-radius: 8px;
+      margin: 1em 0;
+    }
+    
+    /* Enhanced News Item Styles */
+    .news-item {
+      border-bottom: 1px solid #eee;
+      padding: 1.5em 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    .news-item:hover {
+      background-color: #fafafa;
+    }
+    .news-item-thumbnail {
+      width: 80px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+    .news-item-content-preview {
+      color: #666;
+      margin-top: 0.5em;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .read-more-btn {
+      background: #333;
+      color: white;
+      border: none;
+      padding: 0.4em 1em;
+      border-radius: 6px;
+      font-size: 0.85em;
+      cursor: pointer;
+      margin-top: 0.5em;
+      transition: background 0.2s;
+    }
+    .read-more-btn:hover {
+      background: #555;
+    }
 
     /* Publications */
     .pub-list { list-style: none; padding: 0; margin: 0; }
@@ -115,10 +259,30 @@
     </div>
     <form class="news-form" id="newsForm" style="display:none;">
       <input type="text" id="newsTitle" placeholder="News title" required>
-      <textarea id="newsContent" placeholder="News content..." rows="2" required></textarea>
+      <textarea id="newsContent" placeholder="News content..." rows="4" required></textarea>
+      <div class="photo-upload-section">
+        <label for="newsPhoto" class="photo-upload-label">
+          <span>📷 Add Photo (Optional)</span>
+          <input type="file" id="newsPhoto" accept="image/*" style="display:none;">
+        </label>
+        <div id="photoPreview" class="photo-preview" style="display:none;">
+          <img id="previewImage" alt="Preview">
+          <button type="button" id="removePhoto" class="remove-photo-btn">✕</button>
+        </div>
+      </div>
       <button type="submit">Add News</button>
     </form>
     <ul class="news-list" id="newsList"></ul>
+    
+    <!-- News Detail Modal -->
+    <div id="newsModal" class="news-modal">
+      <div class="news-modal-content">
+        <span class="news-modal-close">&times;</span>
+        <div id="newsModalContent">
+          <!-- Modal content will be populated dynamically -->
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="container hidden" id="publications-tab">
@@ -332,17 +496,91 @@
 		news.forEach((item, idx) => {
 			const li = document.createElement('li');
 			li.className = 'news-item';
+			
+			// Create thumbnail if image exists
+			const thumbnail = item.image ? `<img src="${item.image}" alt="News thumbnail" class="news-item-thumbnail">` : '';
+			
+			// Create content preview (first 100 characters)
+			const contentPreview = item.content.length > 100 ? 
+				item.content.substring(0, 100) + '...' : item.content;
+			
 			li.innerHTML = `
 			<div style="flex:1;">
 				<div class="news-item-title">${item.title}</div>
 				<div class="news-item-date">${item.date}</div>
-				<div class="news-item-content">${item.content}</div>
+				<div class="news-item-content-preview">${contentPreview}</div>
+				<button class="read-more-btn" onclick="showNewsDetail(${idx})">Read More</button>
 			</div>
+			${thumbnail}
 			`;
+			
+			// Store full news data for modal
+			li.dataset.newsIndex = idx;
 			newsList.appendChild(li);
 		});
 		updateAdminUI();
 		});
+	}
+
+	// Photo upload functionality
+	const newsPhotoInput = document.getElementById('newsPhoto');
+	const photoPreview = document.getElementById('photoPreview');
+	const previewImage = document.getElementById('previewImage');
+	const removePhotoBtn = document.getElementById('removePhoto');
+	let selectedPhoto = null;
+
+	newsPhotoInput.addEventListener('change', function(e) {
+		const file = e.target.files[0];
+		if (file) {
+			const reader = new FileReader();
+			reader.onload = function(e) {
+				previewImage.src = e.target.result;
+				photoPreview.style.display = 'block';
+				selectedPhoto = file;
+			};
+			reader.readAsDataURL(file);
+		}
+	});
+
+	removePhotoBtn.addEventListener('click', function() {
+		newsPhotoInput.value = '';
+		photoPreview.style.display = 'none';
+		selectedPhoto = null;
+	});
+
+	// Modal functionality
+	const newsModal = document.getElementById('newsModal');
+	const newsModalContent = document.getElementById('newsModalContent');
+	const newsModalClose = document.querySelector('.news-modal-close');
+
+	// Close modal when clicking X or outside
+	newsModalClose.onclick = function() {
+		newsModal.style.display = "none";
+	}
+
+	window.onclick = function(event) {
+		if (event.target == newsModal) {
+			newsModal.style.display = "none";
+		}
+	}
+
+	// Show news detail in modal
+	window.showNewsDetail = function(index) {
+		fetch(NEWS_API_URL)
+			.then(res => res.json())
+			.then(news => {
+				const item = news[index];
+				if (item) {
+					const imageHtml = item.image ? `<img src="${item.image}" alt="News image" class="news-image">` : '';
+					newsModalContent.innerHTML = `
+						<h2>${item.title}</h2>
+						<div class="news-date">${item.date}</div>
+						${imageHtml}
+						<div class="news-content">${item.content}</div>
+					`;
+					newsModal.style.display = "block";
+				}
+			});
 	}
 
 	// 뉴스 등록(추가)
@@ -351,14 +589,26 @@
 	const title = document.getElementById('newsTitle').value.trim();
 	const content = document.getElementById('newsContent').value.trim();
 	if (!title || !content) return;
+	
 	const date = new Date().toLocaleDateString('en-CA', {year:'numeric',month:'2-digit',day:'2-digit'});
+	
+	// Create FormData for file upload
+	const formData = new FormData();
+	formData.append('title', title);
+	formData.append('content', content);
+	formData.append('date', date);
+	if (selectedPhoto) {
+		formData.append('image', selectedPhoto);
+	}
+	
 	fetch(NEWS_API_URL, {
 		method: "POST",
-		body: JSON.stringify({title, content, date}),
-		headers: {"Content-Type":"application/json"}
+		body: formData
 	}).then(() => {
 		loadNews();
 		this.reset();
+		photoPreview.style.display = 'none';
+		selectedPhoto = null;
 	});
 	});
     loadNews();
