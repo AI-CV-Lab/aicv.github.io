@@ -1501,14 +1501,17 @@
       const member = membersData.find(m => m.id === memberId);
       if (member) {
         // Helper for comma-separated list
-        const commaList = arr => arr && arr.length ? arr.join(', ') : 'None';
-        // Helper for section
-        const section = (title, content) => `
-          <div class="member-section">
-            <div class="member-section-title">${title}</div>
-            <div class="member-section-content">${content}</div>
-          </div>
-        `;
+        const commaList = arr => arr && arr.length ? arr.join(', ') : '';
+        // Helper for section (only if content is not empty)
+        const section = (title, content) => {
+          if (!content || (typeof content === 'string' && content.trim() === '')) return '';
+          return `
+            <div class="member-section">
+              <div class="member-section-title">${title}</div>
+              <div class="member-section-content">${content}</div>
+            </div>
+          `;
+        };
         let html = `
           <h2>${member.name}</h2>
           <div class="member-role">${member.role}</div>
@@ -1517,7 +1520,6 @@
         `;
         if (member.role === "Professor") {
           // Projects first
-          html += section('Projects', commaList(member.labLeadership || member.projects || []));
           html += section('Research Areas', commaList(member.researchAreas));
           // Education as bullet points if array, else as text
           if (Array.isArray(member.education)) {
@@ -1526,13 +1528,22 @@
             html += section('Education', member.education);
           }
         } else {
-          // Projects first
-          html += section('Projects', member.projects && member.projects.length ? member.projects.map(p => `<div>${p}</div>`).join('') : 'None');
-          html += section('Research Interests', commaList(member.researchInterests));
-          html += section('Admission Date', member.admissionDate || '');
-          html += section('Awards', member.awards && member.awards.length ? member.awards.map(a => `<div>${a}</div>`).join('') : 'None');
-          // Publications as bullet points
-          html += section('Publications', member.publications && member.publications.length ? `<ul style='margin:0 0 0 1.2em;padding:0;'>${member.publications.map(p => `<li>${p}</li>`).join('')}</ul>` : 'None');
+          // For students, only render non-empty sections
+          if (member.projects && member.projects.length) {
+            html += section('Projects', member.projects.map(p => `<div>${p}</div>`).join(''));
+          }
+          if (member.researchInterests && member.researchInterests.length) {
+            html += section('Research Interests', commaList(member.researchInterests));
+          }
+          if (member.admissionDate && member.admissionDate.trim() !== '') {
+            html += section('Admission Date', member.admissionDate);
+          }
+          if (member.awards && member.awards.length) {
+            html += section('Awards', member.awards.map(a => `<div>${a}</div>`).join(''));
+          }
+          if (member.publications && member.publications.length) {
+            html += section('Publications', `<ul style='margin:0 0 0 1.2em;padding:0;'>${member.publications.map(p => `<li>${p}</li>`).join('')}</ul>`);
+          }
         }
         memberModalContent.innerHTML = html;
         memberModal.style.display = "block";
