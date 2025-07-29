@@ -746,6 +746,16 @@
 		})
 		.then(news => {
 			console.log("Loaded news:", news);
+			// Debug: Check each news item for image data
+			news.forEach((item, index) => {
+				console.log(`News ${index}:`, {
+					title: item.title,
+					content: item.content,
+					date: item.date,
+					image: item.image,
+					hasImage: item.image && item.image.trim() !== ''
+				});
+			});
 			cachedNews = news; // cache the news
 		newsList.innerHTML = '';
 		news.forEach((item, idx) => {
@@ -850,7 +860,14 @@
 				return `${year}-${month}-${day} ${hours}:${minutes}`;
 			};
 			
-			const imageHtml = item.image ? `<img src="${item.image}" alt="News image" class="news-image">` : '';
+			// Debug: Log the item to see what data we have
+			console.log("News item for modal:", item);
+			console.log("Image URL:", item.image);
+			
+			// Check if image exists and is not empty
+			const hasImage = item.image && item.image.trim() !== '';
+			const imageHtml = hasImage ? `<img src="${item.image}" alt="News image" class="news-image" onerror="this.style.display='none'">` : '';
+			
 			newsModalContent.innerHTML = `
 				<h2>${item.title}</h2>
 				<div class="news-date">${formatDate(item.date)}</div>
