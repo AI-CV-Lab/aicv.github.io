@@ -132,7 +132,7 @@
     <div class="section-title">Professor</div>
     <div class="professor">
       <div class="member-card">
-        <img src="images/empty.png" alt="Prof. Hyun Park">
+        <img src="images/empty.png" alt="eunyikim">
         <div class="member-name">Eun Yi Kim</div>
         <div class="member-role">Professor</div>
         <div class="member-email">eykim@konkuk.ac.kr</div>
@@ -179,8 +179,14 @@
 	  <div class="member-card">
         <img src="images/empty.png" alt="juniljeon">
         <div class="member-name">Junil Jeon</div>
-        <div class="member-role">Undergraduate Student</div>
+        <div class="member-role">Master Student</div>
         <div class="member-email">jeonjunil@konkuk.ac.kr</div>
+      </div>
+      <div class="member-card">
+        <img src="images/empty.png" alt="myeonghunjung">
+        <div class="member-name">Myeonghun Jung</div>
+        <div class="member-role">Undergraduate Student</div>
+        <div class="member-email">jmfc02@naver.com</div>
       </div>
     </div>
     <div class="section-title">Alumni</div>
@@ -228,7 +234,8 @@
 
     // ----- News: 관리자 기능 -----
 	const NEWS_API_URL = "https://script.google.com/macros/s/AKfycbxdfLycEaXnm91mGMyWQ6-F2iwXO4l-WqPwTNGTFLAyppgnrPxfDc4oBD3w1yUIMuvbBA/exec";
-    const ADMIN_PASS = "viplab4135"; // 원하는 비밀번호로 수정 가능
+    // Password hash
+    const ADMIN_PASS_HASH = "a1b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef123456";
     let isAdmin = false;
     const adminLoginBtn = document.getElementById('adminLoginBtn');
     const adminLogoutBtn = document.getElementById('adminLogoutBtn');
@@ -249,13 +256,25 @@
 		}
 	}
 
-    adminLoginBtn.onclick = function() {
+    // Simple hash function for password verification
+    async function hashPassword(password) {
+      const encoder = new TextEncoder();
+      const data = encoder.encode(password);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    adminLoginBtn.onclick = async function() {
       const pass = prompt("관리자 비밀번호를 입력하세요:");
-      if (pass === ADMIN_PASS) {
-        isAdmin = true;
-        updateAdminUI();
-      } else if (pass !== null) {
-        alert("비밀번호가 틀렸습니다.");
+      if (pass !== null) {
+        const hashedPass = await hashPassword(pass);
+        if (hashedPass === ADMIN_PASS_HASH) {
+          isAdmin = true;
+          updateAdminUI();
+        } else {
+          alert("비밀번호가 틀렸습니다.");
+        }
       }
     };
     adminLogoutBtn.onclick = function() {
