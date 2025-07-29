@@ -196,6 +196,157 @@
       background: #555;
     }
 
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 2em;
+    }
+    .project-card {
+      background: #fafbfc;
+      border-radius: 12px;
+      padding: 1.5em;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 1px solid #eee;
+    }
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+    .project-image {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 1em;
+    }
+    .project-title {
+      font-size: 1.2em;
+      font-weight: 600;
+      color: #222;
+      margin-bottom: 0.5em;
+    }
+    .project-category {
+      display: inline-block;
+      background: #e3f2fd;
+      color: #1976d2;
+      padding: 0.3em 0.8em;
+      border-radius: 20px;
+      font-size: 0.85em;
+      font-weight: 500;
+      margin-bottom: 0.8em;
+    }
+    .project-description {
+      color: #666;
+      line-height: 1.5;
+      margin-bottom: 1em;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .project-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9em;
+      color: #888;
+    }
+    .project-duration {
+      font-weight: 500;
+    }
+    .project-status {
+      padding: 0.2em 0.6em;
+      border-radius: 12px;
+      font-size: 0.8em;
+      font-weight: 500;
+    }
+    .status-ongoing {
+      background: #fff3e0;
+      color: #f57c00;
+    }
+    .status-completed {
+      background: #e8f5e8;
+      color: #388e3c;
+    }
+    .status-upcoming {
+      background: #f3e5f5;
+      color: #7b1fa2;
+    }
+    
+    /* Project Modal Styles */
+    .project-modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+    }
+    .project-modal-content {
+      background-color: #fff;
+      margin: 3% auto;
+      padding: 30px;
+      border-radius: 12px;
+      width: 85%;
+      max-width: 800px;
+      max-height: 85vh;
+      overflow-y: auto;
+      position: relative;
+    }
+    .project-modal-close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #aaa;
+    }
+    .project-modal-close:hover {
+      color: #000;
+    }
+    .project-modal-content h2 {
+      margin-top: 0;
+      color: #222;
+      font-size: 1.8em;
+    }
+    .project-modal-content .project-category {
+      margin-bottom: 1em;
+    }
+    .project-modal-content .project-description {
+      line-height: 1.6;
+      color: #444;
+      margin-bottom: 1.5em;
+      -webkit-line-clamp: unset;
+    }
+    .project-modal-content .project-image {
+      max-width: 100%;
+      border-radius: 8px;
+      margin: 1em 0;
+    }
+    .project-details {
+      margin: 1.5em 0;
+    }
+    .project-details h3 {
+      color: #333;
+      font-size: 1.2em;
+      margin-bottom: 0.5em;
+    }
+    .project-details ul {
+      margin: 0.5em 0;
+      padding-left: 1.5em;
+    }
+    .project-details li {
+      margin-bottom: 0.3em;
+      color: #555;
+    }
+
     /* Publications */
     .pub-list { list-style: none; padding: 0; margin: 0; }
     .pub-item { padding: 1.1em 0; border-bottom: 1px solid #efefef; }
@@ -231,6 +382,7 @@
 	<img src="images/Logo.png" alt="Lab Logo" class="nav-logo", style="width:100px; height:auto;">
     <span class="tab active" data-tab="home">Home</span>
     <span class="tab" data-tab="news">News</span>
+    <span class="tab" data-tab="projects">Projects</span>
     <span class="tab" data-tab="publications">Publications</span>
     <span class="tab" data-tab="members">Members</span>
   </nav>
@@ -279,6 +431,23 @@
       <div class="news-modal-content">
         <span class="news-modal-close">&times;</span>
         <div id="newsModalContent">
+          <!-- Modal content will be populated dynamically -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container hidden" id="projects-tab">
+    <div class="section-title">Research Projects</div>
+    <div class="projects-grid" id="projectsGrid">
+      <!-- Project blocks will be populated dynamically -->
+    </div>
+    
+    <!-- Project Detail Modal -->
+    <div id="projectModal" class="project-modal">
+      <div class="project-modal-content">
+        <span class="project-modal-close">&times;</span>
+        <div id="projectModalContent">
           <!-- Modal content will be populated dynamically -->
         </div>
       </div>
@@ -386,6 +555,7 @@
     const containers = {
       'home': document.getElementById('home-tab'),
       'news': document.getElementById('news-tab'),
+      'projects': document.getElementById('projects-tab'),
       'publications': document.getElementById('publications-tab'),
       'members': document.getElementById('members-tab'),
     };
@@ -611,7 +781,10 @@
 	e.preventDefault();
 	const title = document.getElementById('newsTitle').value.trim();
 	const content = document.getElementById('newsContent').value.trim();
-	if (!title || !content) return;
+	if (!title || !content) {
+		alert("Please fill in both title and content");
+		return;
+	}
 	
 	const date = new Date().toLocaleDateString('en-CA', {year:'numeric',month:'2-digit',day:'2-digit'});
 	
@@ -624,17 +797,177 @@
 		formData.append('image', selectedPhoto);
 	}
 	
+	console.log("Submitting news:", { title, content, date });
+	
 	fetch(NEWS_API_URL, {
 		method: "POST",
 		body: formData
-	}).then(() => {
+	})
+	.then(response => {
+		console.log("Response status:", response.status);
+		if (!response.ok) {
+			throw new Error(`HTTP error! status: ${response.status}`);
+		}
+		return response.json();
+	})
+	.then(data => {
+		console.log("News submitted successfully:", data);
 		loadNews();
 		this.reset();
 		photoPreview.style.display = 'none';
 		selectedPhoto = null;
+		alert("News added successfully!");
+	})
+	.catch(error => {
+		console.error("Error submitting news:", error);
+		alert("Error adding news. Please try again.");
 	});
 	});
     loadNews();
+
+    // ----- Projects: 예시 데이터 -----
+    const projectsData = [
+      {
+        id: 1,
+        title: "Speech Emotion Recognition using Deep Learning",
+        category: "AI/ML",
+        description: "This project focuses on developing robust speech-based emotion recognition systems tailored for real-world conditions. By leveraging hierarchical structures in speech and advanced deep learning models, we aim to improve generalizability across speakers, recording environments, and emotional ambiguities. Our approach integrates acoustic and textual modalities and explores novel methods to address challenges such as data imbalance and subjectivity in emotion labeling.",
+        image: "images/Project;SER.png",
+        duration: "2024-2025",
+        status: "ongoing",
+        details: {
+          objectives: [
+            "Build robust and generalizable emotion recognition representations from naturalistic speech data",
+            "Explore hierarchical structures in speech (e.g., word-, utterance-, and embedding-level features)",
+            "Mitigate biases caused by data imbalance and emotional ambiguity using advanced loss functions and ensemble strategies"
+          ],
+          technologies: ["Audio Processing", "Natural Language Processing", "Multimodal Fusion", "Emotion Recognition"],
+          team: ["Hyo Jin Jon", "Junil Jeon", "Myeonghun Jung"],
+        }
+      },
+      {
+        id: 2,
+        title: "Time Series Anomaly Detection",
+        category: "AI/ML",
+        description: "This project investigates anomaly detection methods for complex multivariate time series data. Our goal is to extract spatial and temporal representations from multi-channel signals (e.g., sensor streams, physiological signals) and to detect subtle or abrupt deviations indicative of system failures, health anomalies, or external events.",
+        image: "images/Project;TSAD.png",
+        duration: "2024-2025",
+        status: "ongoing",
+        details: {
+          objectives: [
+            "Build expressive spatial representations from high-dimensional time series data",
+            "Analyze multi-channel dependencies and temporal patterns",
+            "Detect anomalies in dynamic systems with noisy or partially observed data"
+          ],
+          technologies: ["Multivariate Signal Analysis", "Anomaly Detection"],
+          team: ["Hyuntaek Jung", "Sinwoo Ham"],
+        }
+      },
+      {
+        id: 3,
+        title: "EEG Signal Analysis with Domain Adaptation",
+        category: "AI/ML",
+        description: "This project aims to design lightweight and scalable domain adaptation techniques for EEG-based signal analysis. Given the variability in EEG signals across subjects and sessions, we develop methods to adapt models to unseen domains with minimal retraining. Applications include emotion recognition, cognitive state monitoring, and neurological anomaly detection.",
+        image: "images/Project;EEG.png",
+        duration: "2023-2025",
+        status: "ongoing",
+        details: {
+          objectives: [
+            "Develop multimodal fusion strategies for video understanding",
+            "Implement attention mechanisms for temporal modeling",
+            "Achieve state-of-the-art performance on benchmark datasets"
+          ],
+          technologies: ["Biomedical Analysis", "Electroencephalography (EEG) Signal Analysis", "Domain Adaptation"],
+          team: ["Hyunseo Kim", "Heejae Choi"],
+        }
+      }
+    ];
+
+    // Load and display projects
+    function loadProjects() {
+      const projectsGrid = document.getElementById('projectsGrid');
+      projectsGrid.innerHTML = '';
+      
+      projectsData.forEach((project, index) => {
+        const projectCard = document.createElement('div');
+        projectCard.className = 'project-card';
+        projectCard.onclick = () => showProjectDetail(index);
+        
+        projectCard.innerHTML = `
+          <img src="${project.image}" alt="${project.title}" class="project-image">
+          <div class="project-category">${project.category}</div>
+          <div class="project-title">${project.title}</div>
+          <div class="project-description">${project.description}</div>
+          <div class="project-meta">
+            <span class="project-duration">${project.duration}</span>
+            <span class="project-status status-${project.status}">${project.status}</span>
+          </div>
+        `;
+        
+        projectsGrid.appendChild(projectCard);
+      });
+    }
+
+    // Project modal functionality
+    const projectModal = document.getElementById('projectModal');
+    const projectModalContent = document.getElementById('projectModalContent');
+    const projectModalClose = document.querySelector('.project-modal-close');
+
+    // Close modal when clicking X or outside
+    projectModalClose.onclick = function() {
+      projectModal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      if (event.target == projectModal) {
+        projectModal.style.display = "none";
+      }
+      if (event.target == newsModal) {
+        newsModal.style.display = "none";
+      }
+    }
+
+    // Show project detail in modal
+    window.showProjectDetail = function(index) {
+      const project = projectsData[index];
+      if (project) {
+        const imageHtml = project.image ? `<img src="${project.image}" alt="${project.title}" class="project-image">` : '';
+        const objectivesHtml = project.details.objectives.map(obj => `<li>${obj}</li>`).join('');
+        const technologiesHtml = project.details.technologies.map(tech => `<li>${tech}</li>`).join('');
+        const teamHtml = project.details.team.map(member => `<li>${member}</li>`).join('');
+        const publicationsHtml = project.details.publications.map(pub => `<li>${pub}</li>`).join('');
+        
+        projectModalContent.innerHTML = `
+          <h2>${project.title}</h2>
+          <div class="project-category">${project.category}</div>
+          ${imageHtml}
+          <div class="project-description">${project.description}</div>
+          
+          <div class="project-details">
+            <h3>Objectives</h3>
+            <ul>${objectivesHtml}</ul>
+            
+            <h3>Technologies</h3>
+            <ul>${technologiesHtml}</ul>
+            
+            <h3>Team Members</h3>
+            <ul>${teamHtml}</ul>
+            
+            <h3>Publications</h3>
+            <ul>${publicationsHtml}</ul>
+          </div>
+          
+          <div class="project-meta">
+            <span class="project-duration">Duration: ${project.duration}</span>
+            <span class="project-status status-${project.status}">${project.status}</span>
+          </div>
+        `;
+        projectModal.style.display = "block";
+      }
+    }
+
+    // Load projects when page loads
+    loadProjects();
 
     // ----- Publications: 예시 데이터 -----
     const pubData = [
