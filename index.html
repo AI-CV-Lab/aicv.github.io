@@ -564,14 +564,14 @@
       position: relative;
     }
     .lab-description-en::before {
-      content: '🧑‍🔬';
+      content: '';
       position: absolute;
       left: 0.7em;
       top: 1.1em;
       font-size: 1.3em;
     }
     .lab-description-kr::before {
-      content: '🤖';
+      content: '';
       position: absolute;
       left: 0.7em;
       top: 1.1em;
@@ -1523,15 +1523,14 @@
           } else {
             html += section('Education', member.education);
           }
-          html += section('Achievements', member.achievements && member.achievements.length ? member.achievements.map(a => `<div>${a}</div>`).join('') : 'None');
-          html += section('Selected Publications', member.selectedPublications && member.selectedPublications.length ? member.selectedPublications.map(p => `<div>${p}</div>`).join('') : 'None');
         } else {
           // Projects first
           html += section('Projects', member.projects && member.projects.length ? member.projects.map(p => `<div>${p}</div>`).join('') : 'None');
           html += section('Research Interests', commaList(member.researchInterests));
           html += section('Admission Date', member.admissionDate || '');
           html += section('Awards', member.awards && member.awards.length ? member.awards.map(a => `<div>${a}</div>`).join('') : 'None');
-          html += section('Publications', member.publications && member.publications.length ? member.publications.map(p => `<div>${p}</div>`).join('') : 'None');
+          // Publications as bullet points
+          html += section('Publications', member.publications && member.publications.length ? `<ul style='margin:0 0 0 1.2em;padding:0;'>${member.publications.map(p => `<li>${p}</li>`).join('')}</ul>` : 'None');
         }
         memberModalContent.innerHTML = html;
         memberModal.style.display = "block";
