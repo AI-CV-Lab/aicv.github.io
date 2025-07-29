@@ -399,12 +399,13 @@
     // ----- News: 관리자 기능 -----
 	const NEWS_API_URL = "https://script.google.com/macros/s/AKfycbxdfLycEaXnm91mGMyWQ6-F2iwXO4l-WqPwTNGTFLAyppgnrPxfDc4oBD3w1yUIMuvbBA/exec";
     // Password hash 
-    const ADMIN_PASS_HASH = "8f7d3b2a1e9c4f6d8a2b5c7e9f1d3a5b7c9e2f4d6a8b1c3e5f7d9a2b4c6e8f0";
+    const ADMIN_PASS_HASH = "DC90C09E98F7B5C3D97F52FE1379689A978FE0EB71CF2E34E91F01B6688D208E";
     let isAdmin = false;
     const adminLoginBtn = document.getElementById('adminLoginBtn');
     const adminLogoutBtn = document.getElementById('adminLogoutBtn');
     const newsForm = document.getElementById('newsForm');
     const newsList = document.getElementById('newsList');
+    let cachedNews = [];
 
     function updateAdminUI() {
 		if (isAdmin) {
@@ -492,6 +493,7 @@
 	fetch(NEWS_API_URL)
 		.then(res => res.json())
 		.then(news => {
+		cachedNews = news; // cache the news
 		newsList.innerHTML = '';
 		news.forEach((item, idx) => {
 			const li = document.createElement('li');
@@ -577,32 +579,28 @@
 
 	// Show news detail in modal
 	window.showNewsDetail = function(index) {
-		fetch(NEWS_API_URL)
-			.then(res => res.json())
-			.then(news => {
-				const item = news[index];
-				if (item) {
-					// Format date for modal
-					const formatDate = (dateString) => {
-						const date = new Date(dateString);
-						const year = date.getFullYear();
-						const month = String(date.getMonth() + 1).padStart(2, '0');
-						const day = String(date.getDate()).padStart(2, '0');
-						const hours = String(date.getHours()).padStart(2, '0');
-						const minutes = String(date.getMinutes()).padStart(2, '0');
-						return `${year}-${month}-${day} ${hours}:${minutes}`;
-					};
-					
-					const imageHtml = item.image ? `<img src="${item.image}" alt="News image" class="news-image">` : '';
-					newsModalContent.innerHTML = `
-						<h2>${item.title}</h2>
-						<div class="news-date">${formatDate(item.date)}</div>
-						${imageHtml}
-						<div class="news-content">${item.content}</div>
-					`;
-					newsModal.style.display = "block";
-				}
-			});
+		const item = cachedNews[index];
+		if (item) {
+			// Format date for modal
+			const formatDate = (dateString) => {
+				const date = new Date(dateString);
+				const year = date.getFullYear();
+				const month = String(date.getMonth() + 1).padStart(2, '0');
+				const day = String(date.getDate()).padStart(2, '0');
+				const hours = String(date.getHours()).padStart(2, '0');
+				const minutes = String(date.getMinutes()).padStart(2, '0');
+				return `${year}-${month}-${day} ${hours}:${minutes}`;
+			};
+			
+			const imageHtml = item.image ? `<img src="${item.image}" alt="News image" class="news-image">` : '';
+			newsModalContent.innerHTML = `
+				<h2>${item.title}</h2>
+				<div class="news-date">${formatDate(item.date)}</div>
+				${imageHtml}
+				<div class="news-content">${item.content}</div>
+			`;
+			newsModal.style.display = "block";
+		}
 	}
 
 	// 뉴스 등록(추가)
