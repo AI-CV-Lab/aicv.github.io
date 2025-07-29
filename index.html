@@ -437,6 +437,91 @@
     .member-role { font-size: 0.97em; color: #888; margin-bottom: 0.2em; }
     .member-email { font-size: 0.95em; color: #555; margin-bottom: 0.1em; }
     .alumni-list { list-style: none; padding: 0 0 0 8px; color: #555; font-size: 1em; }
+    
+    /* Member Modal Styles */
+    .member-modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+    }
+    .member-modal-content {
+      background-color: #fff;
+      margin: 3% auto;
+      padding: 30px;
+      border-radius: 12px;
+      width: 85%;
+      max-width: 800px;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+    }
+    .member-modal-close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #aaa;
+    }
+    .member-modal-close:hover {
+      color: #000;
+    }
+    .member-modal-content h2 {
+      margin-top: 0;
+      color: #222;
+      font-size: 1.8em;
+    }
+    .member-modal-content .member-role {
+      color: #1976d2;
+      font-size: 1.1em;
+      font-weight: 500;
+      margin-bottom: 1em;
+    }
+    .member-modal-content .member-email {
+      color: #666;
+      font-size: 0.95em;
+      margin-bottom: 1.5em;
+    }
+    .member-modal-content .member-image {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 1em 0;
+      border: 3px solid #eee;
+    }
+    .member-modal-content .member-details {
+      margin: 1.5em 0;
+    }
+    .member-modal-content .member-details h3 {
+      color: #333;
+      font-size: 1.2em;
+      margin-bottom: 0.8em;
+      font-weight: 600;
+    }
+    .member-modal-content .member-details ul {
+      margin: 0;
+      padding-left: 1.5em;
+    }
+    .member-modal-content .member-details li {
+      margin-bottom: 0.8em;
+      color: #555;
+      line-height: 1.5;
+    }
+    .member-modal-content .member-details .admission-date {
+      font-weight: 500;
+      color: #1976d2;
+    }
+    .member-modal-content .member-details .awards {
+      color: #d32f2f;
+      font-weight: 500;
+    }
 
     /* Responsive */
     @media (max-width: 700px) {
@@ -457,18 +542,22 @@
   </nav>
 
   <div class="container" id="home-tab">
-	<img src="images/signal.jpg" alt="Lab Main Visual" class="home-main-image", style="width:100%; height:440px; object-fit:cover; border-radius:18px;">
+	<img src="images/단체사진.jpg" alt="Lab Main Visual" class="home-main-image", style="width:100%; height:440px; object-fit:cover; border-radius:18px;">
     <div class="lab-title">Artificial Intelligence & Computer Vision Lab.</div>
     <div class="lab-slogan">Konkuk University, Korea</div>
     <div class="lab-description-en">
-      At the AI & Computer Vision Lab (AI&CV Lab) at Konkuk University, we explore how artificial intelligence can understand and interact with the world across multiple modalities—speech, vision, and biosignals—to solve real-world problems.<br>
+      At the AI & Computer Vision Lab (AI&CV Lab) at Konkuk University, we explore how artificial intelligence can understand and interact with the world across multiple modalities (speech, vision, and biosignals) to solve real-world problems.<br>
+      <br>
       Led by Professor Eun Yi Kim, our lab brings together passionate researchers working at the intersection of deep learning, multimodal fusion, and human-centered AI. We focus on creating robust, interpretable, and scalable AI systems that thrive in challenging environments—where data may be noisy, missing, or ambiguous.<br>
+      <br>
       From recognizing emotions in spontaneous speech, to understanding human behavior through videos and brain signals, our work pushes the boundaries of how machines can sense, learn, and respond with empathy and precision.<br>
       <br>
     </div>
     <div class="lab-description-kr">
-      건국대학교 AI & Computer Vision Lab (AI&CV Lab)은*음성, 영상, 생체신호(EEG, ECG 등)와 같은 다양한 모달리티를 이해하고 통합하는 인공지능 기술을 통해 현실의 복잡한 문제를 해결하는 것을 목표로 합니다.<br>
+      건국대학교 AI & Computer Vision Lab (AI&CV Lab)은 음성, 영상, 생체신호(EEG, ECG 등)와 같은 다양한 모달리티를 이해하고 통합하는 인공지능 기술을 통해 현실의 복잡한 문제를 해결하는 것을 목표로 합니다.<br>
+      <br>
       김은이 교수님의 지도로 운영되는 본 연구실은 딥러닝, 멀티모달 융합, 사람 중심 AI의 교차점에서 혁신적인 연구를 수행하고 있으며, 불완전하고 노이즈가 많은 환경에서도 견고하고 해석 가능한 AI 시스템을 만드는 데 집중하고 있습니다.<br>
+      <br>
       자연스러운 대화 속에서 감정을 인식하고, 일상 영상과 뇌파 신호를 통해 인간의 행동을 이해하는 연구를 통해, 인간을 더 잘 이해하는 AI를 만들어가고 있습니다.<br>
         <br>
       </div>
@@ -592,7 +681,7 @@
 	  <div class="member-card">
         <img src="images/empty.png" alt="juniljeon">
         <div class="member-name">Junil Jeon</div>
-        <div class="member-role">Master Student</div>
+        <div class="member-role">Undergraduate Student</div>
         <div class="member-email">jeonjunil@konkuk.ac.kr</div>
       </div>
       <div class="member-card">
@@ -627,6 +716,16 @@
       <li>Ki-young Jeong</li>
       <li>Kyung-tae Kim</li>
     </ul>
+    
+    <!-- Member Detail Modal -->
+    <div id="memberModal" class="member-modal">
+      <div class="member-modal-content">
+        <span class="member-modal-close">&times;</span>
+        <div id="memberModalContent">
+          <!-- Modal content will be populated dynamically -->
+        </div>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -1106,6 +1205,320 @@
 
     // Load projects when page loads
     loadProjects();
+
+    // ----- Members: 데이터 -----
+    const membersData = [
+      {
+        id: 1,
+        name: "Eun Yi Kim",
+        role: "Professor",
+        email: "eykim@konkuk.ac.kr",
+        image: "images/empty.png",
+        researchAreas: [
+          "Computer Vision",
+          "Signal Processing",
+          "Deep Learning",
+          "Human-Computer Interaction",
+          "Biomedical Signal Processing"
+        ],
+        education: [
+          "MS in Computer Engineering from the Kyungpook National University, Korea (1999)",
+          "Ph.D. in Computer Engineering from the Kyungpook National University, Korea (2001)"
+        ],
+      },
+      {
+        id: 2,
+        name: "Yealim Oh",
+        role: "Master Student",
+        email: "dodoh0125@konkuk.ac.kr",
+        image: "images/empty.png",
+        researchInterests: [
+          "Computer Vision",
+          "Signal Processing",
+          "Biomedical Signal Processing",
+          "Deep Learning",
+          "Anomaly Detection"
+        ],
+        admissionDate: "2023-03",
+        awards: [],
+        publications: [
+          "딥러닝을 이용한 음성기반의 난청 인식 연구 (대한전자공학회 하계학술대회 2023)",
+          "Consen: Complementary and simultaneous ensemble for alzheimer’s disease detection and mmse score prediction (ICASSP 2023)",
+        ],
+        projects: []
+      },
+      {
+        id: 3,
+        name: "Hyo Jin Jon",
+        role: "Master Student",
+        email: "hyojin2011@konkuk.ac.kr",
+        image: "images/전효진.jpg",
+        researchInterests: [
+          "Emotion Recognition",
+          "Speech Analysis",
+          "Computer Vision",
+          "Multimodal Fusion",
+        ],
+        admissionDate: "2024-03",
+        awards: [
+          "KSC 2023 학부생부문 우수상",
+          "2023 KU SW경진대회 심사위원특별상",
+          "2023 대한전자공학회 하계학술대회 우수학생논문상"
+        ],
+        publications: [
+          "EV-CLIP: Efficient Visual Prompt Adaptation for CLIP in Few-Shot Action Recognition under Visual Challenges (Pattern Recognition; Submitted)",
+          "MATER: Multi-level Acoustic and Textual Emotion Representation for Interpretable Speech Emotion Recognition (INTERSPEECH 2025)",
+          "Watermark and Trademark Prompts Boost Video Action Recognition in Visual-Language Models (Mathematics)",
+          "음악 소리에 대한 반응으로부터 감정을 인식하기 위한 뇌파 기반 감정인식 프레임워크 (HCI Korea 2025)",
+          "Identifying Alzheimer’s Disease Across Cognitive Impairment Spectrum Using Acoustic Features Only (ICPR 2024)",
+          "EEG-RegNet: Regressive Emotion Recognition in Continuous VAD Space Using EEG Signals (Mathematics)",
+          "EEG-based Emotion Estimation with Bernoulli Penalty and Weighted MSE-CE (KSC 2023)",
+          "알츠하이머 진단 및 중증도 예측을 위한 단일화된 딥러닝 아키텍처 연구 (대한전자공학회 하계학술대회 2023)",
+          "Consen: Complementary and simultaneous ensemble for alzheimer’s disease detection and mmse score prediction (ICASSP 2023)",
+        ],
+        projects: [
+          "Speech Emotion Recognition using Deep Learning"
+        ]
+      },
+      {
+        id: 4,
+        name: "Hyuntaek Jung",
+        role: "Master Student",
+        email: "busan199@konkuk.ac.kr",
+        image: "images/empty.png",
+        researchInterests: [
+          "Time Series Analysis",
+          "Anomaly Detection",
+          "Signal Processing"
+        ],
+        admissionDate: "2024-03",
+        awards: [
+          "HCI Korea 2025 Best Paper Award", 
+          "KSC 2023 학부생부문 우수상",
+          "2023 KU SW경진대회 심사위원특별상",
+          "2023 대한전자공학회 하계학술대회 우수학생논문상"
+        ],
+        publications: [
+          "Seeing Anomalies: A Vision-Inspired Approach to Multivariate Time Series Anomaly Detection (IEEE Signal Processing Letters; Under Review)", 
+          "MATER: Multi-level Acoustic and Textual Emotion Representation for Interpretable Speech Emotion Recognition (INTERSPEECH 2025)",
+          "GazeMap: Dual-Pathway CNN Approach for Diagnosing Alzheimer’s Disease from Gaze and Head Movements (Mathematics)",
+          "Watermark and Trademark Prompts Boost Video Action Recognition in Visual-Language Models (Mathematics)",
+          "Two-stream에서의 사용자의 얼굴 특징 추적 기반의 치매 조기 진단 시스템 개발 (HCI Korea 2025)",
+          "Identifying Alzheimer’s Disease Across Cognitive Impairment Spectrum Using Acoustic Features Only (ICPR 2024)",
+          "EEG-RegNet: Regressive Emotion Recognition in Continuous VAD Space Using EEG Signals (Mathematics)",
+          "EEG-based Emotion Estimation with Bernoulli Penalty and Weighted MSE-CE (KSC 2023)",
+          "알츠하이머 진단 및 중증도 예측을 위한 단일화된 딥러닝 아키텍처 연구 (대한전자공학회 하계학술대회 2023)",
+          "Consen: Complementary and simultaneous ensemble for alzheimer’s disease detection and mmse score prediction (ICASSP 2023)",
+        ],
+        projects: [
+          "Time Series Anomaly Detection"
+        ]
+      },
+      {
+        id: 5,
+        name: "Hyunseo Kim",
+        role: "Master Student",
+        email: "hs11015@konkuk.ac.kr",
+        image: "images/empty.png",
+        researchInterests: [
+          "EEG Signal Analysis",
+          "Machine Learning",
+          "Domain Adaptation",
+          "Biomedical Engineering"
+        ],
+        admissionDate: "2024-09",
+        awards: [],
+        publications: [
+          "KSC 2023 학부생부문 우수상",
+          "2023 KU SW경진대회 심사위원특별상",
+        ],
+        projects: [
+          "Audio Prompt Driven Reprogramming for Diagnosing Major Depressive Disorder (Pattern Recognition Letters; Under Review)",
+          "음악 소리에 대한 반응으로부터 감정을 인식하기 위한 뇌파 기반 감정인식 프레임워크 (HCI Korea 2025)",
+          "EEG-RegNet: Regressive Emotion Recognition in Continuous VAD Space Using EEG Signals (Mathematics)",
+          "EEG-based Emotion Estimation with Bernoulli Penalty and Weighted MSE-CE (KSC 2023)",
+          "딥러닝을 이용한 음성기반의 난청 인식 연구 (대한전자공학회 하계학술대회 2023)",
+          "Consen: Complementary and simultaneous ensemble for alzheimer’s disease detection and mmse score prediction (ICASSP 2023)",
+        ]
+      },
+      {
+        id: 6,
+        name: "Heejae Choi",
+        role: "Master Student",
+        email: "qkw1205@konkuk.ac.kr",
+        image: "images/empty.png",
+        researchInterests: [
+          "EEG Signal Analysis",
+          "Machine Learning",
+          "Domain Adaptation",
+          "Biomedical Engineering"
+        ],
+        admissionDate: "2024-03",
+        awards: [],
+        publications: [],
+        projects: [
+          "음악 소리에 대한 반응으로부터 감정을 인식하기 위한 뇌파 기반 감정인식 프레임워크 (HCI Korea 2025)",
+        ]
+      },
+      {
+        id: 7,
+        name: "Sinwoo Ham",
+        role: "Master Student",
+        email: "gka0656@konkuk.ac.kr",
+        image: "images/empty.png",
+        researchInterests: [
+          "Time Series Analysis",
+          "Anomaly Detection",
+          "Signal Processing"
+        ],
+        admissionDate: "2024-03",
+        awards: [
+          "HCI Korea 2025 Best Paper Award", 
+        ],
+        publications: [
+          "Seeing Anomalies: A Vision-Inspired Approach to Multivariate Time Series Anomaly Detection (IEEE Signal Processing Letters; Under Review)", 
+          "GazeMap: Dual-Pathway CNN Approach for Diagnosing Alzheimer’s Disease from Gaze and Head Movements (Mathematics)",
+          "Two-stream에서의 사용자의 얼굴 특징 추적 기반의 치매 조기 진단 시스템 개발 (HCI Korea 2025)",
+        ],
+        projects: [
+          "Time Series Anomaly Detection"
+        ]
+      },
+      {
+        id: 8,
+        name: "Junil Jeon",
+        role: "Undergraduate Student",
+        email: "jeonjunil@konkuk.ac.kr",
+        image: "images/empty.png",
+        researchInterests: [
+          "Speech Processing",
+          "Audio Analysis",
+          "Deep Learning"
+        ],
+        admissionDate: "2025-01",
+        awards: [],
+        publications: [],
+        projects: [
+          "Speech Emotion Recognition using Deep Learning"
+        ]
+      },
+      {
+        id: 9,
+        name: "Myeonghun Jung",
+        role: "Undergraduate Student",
+        email: "jmfc02@naver.com",
+        image: "images/empty.png",
+        researchInterests: [
+          "Speech Analysis",
+          "Computer Vision",
+          "Machine Learning",
+          "Deep Learning"
+        ],
+        admissionDate: "2025-07",
+        awards: [],
+        publications: [],
+        projects: [
+          "Speech Emotion Recognition using Deep Learning"
+        ]
+      }
+    ];
+
+    // Member modal functionality
+    const memberModal = document.getElementById('memberModal');
+    const memberModalContent = document.getElementById('memberModalContent');
+    const memberModalClose = document.querySelector('.member-modal-close');
+
+    // Close modal when clicking X or outside
+    memberModalClose.onclick = function() {
+      memberModal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      if (event.target == memberModal) {
+        memberModal.style.display = "none";
+      }
+      if (event.target == newsModal) {
+        newsModal.style.display = "none";
+      }
+      if (event.target == projectModal) {
+        projectModal.style.display = "none";
+      }
+    }
+
+    // Show member detail in modal
+    window.showMemberDetail = function(memberId) {
+      const member = membersData.find(m => m.id === memberId);
+      if (member) {
+        // Check if this is the professor (different format)
+        if (member.role === "Professor") {
+          const researchAreasHtml = member.researchAreas.map(area => `<li>${area}</li>`).join('');
+          
+          memberModalContent.innerHTML = `
+            <h2>${member.name}</h2>
+            <div class="member-role">${member.role}</div>
+            <div class="member-email">${member.email}</div>
+            <img src="${member.image}" alt="${member.name}" class="member-image">
+            
+            <div class="member-details">
+              <h3>Education</h3>
+              <ul><li>${member.education}</li></ul>
+              
+              <h3>Research Areas</h3>
+              <ul>${researchAreasHtml}</ul>
+            
+              
+            </div>
+          `;
+        } else {
+          // Regular student format
+          const researchInterestsHtml = member.researchInterests.map(interest => `<li>${interest}</li>`).join('');
+          const awardsHtml = member.awards.length > 0 ? member.awards.map(award => `<li class="awards">${award}</li>`).join('') : '<li>No awards yet</li>';
+          const publicationsHtml = member.publications.length > 0 ? member.publications.map(pub => `<li>${pub}</li>`).join('') : '<li>No publications yet</li>';
+          const projectsHtml = member.projects.length > 0 ? member.projects.map(project => `<li>${project}</li>`).join('') : '<li>No projects yet</li>';
+          
+          memberModalContent.innerHTML = `
+            <h2>${member.name}</h2>
+            <div class="member-role">${member.role}</div>
+            <div class="member-email">${member.email}</div>
+            <img src="${member.image}" alt="${member.name}" class="member-image">
+            
+            <div class="member-details">
+              <h3>Research Interests</h3>
+              <ul>${researchInterestsHtml}</ul>
+              
+              <h3>Admission Date</h3>
+              <ul><li class="admission-date">${member.admissionDate}</li></ul>
+              
+              <h3>Awards</h3>
+              <ul>${awardsHtml}</ul>
+              
+              <h3>Publications</h3>
+              <ul>${publicationsHtml}</ul>
+              
+              <h3>Projects</h3>
+              <ul>${projectsHtml}</ul>
+            </div>
+          `;
+        }
+        memberModal.style.display = "block";
+      }
+    }
+
+    // Add click handlers to member cards
+    document.addEventListener('DOMContentLoaded', function() {
+      const memberCards = document.querySelectorAll('.member-card');
+      memberCards.forEach((card, index) => {
+        card.style.cursor = 'pointer';
+        card.onclick = () => {
+          // Find member by name (since we don't have IDs in HTML)
+          const memberName = card.querySelector('.member-name').textContent;
+          const member = membersData.find(m => m.name === memberName);
+          if (member) {
+            showMemberDetail(member.id);
+          }
+        };
+      });
+    });
 
     // ----- Publications: 예시 데이터 -----
     const pubData = [
