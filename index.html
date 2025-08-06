@@ -429,7 +429,7 @@
     .member-card { min-width: 200px; max-width: 230px; background: #fafbfc; border-radius: 18px; padding: 1.2em 1em 1.1em 1em; box-shadow: 0 1px 10px rgba(0,0,0,0.05); display: flex; flex-direction: column; align-items: center; transition: box-shadow 0.13s; }
     .member-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
     }
     .member-card img {
       width: 78px; height: 78px; border-radius: 50%; object-fit: cover; margin-bottom: 0.7em; border: 2px solid #eee;
@@ -577,6 +577,25 @@
       top: 1.1em;
       font-size: 1.3em;
     }
+
+    .members-section {
+      margin-bottom: 3rem;
+    }
+
+    .members-section h2 {
+      color: #333;
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+      border-bottom: 2px solid #007bff;
+      padding-bottom: 0.5rem;
+    }
+
+    .members-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
   </style>
 </head>
 <body>
@@ -687,61 +706,84 @@
         <div class="member-email">eykim@konkuk.ac.kr</div>
       </div>
     </div>
-    <div class="section-title">Current Members</div>
-    <div class="current-members">
-      <div class="member-card">
-        <img src="images/empty.png" alt="yealimoh">
-        <div class="member-name">Yealim Oh</div>
-        <div class="member-role">Master Student</div>
-        <div class="member-email">dodoh0125@konkuk.ac.kr</div>
-      </div>
-      <div class="member-card">
-        <img src="images/전효진.jpg" alt="hyojinjon">
-        <div class="member-name">Hyo Jin Jon</div>
-        <div class="member-role">Master Student</div>
-        <div class="member-email">hyojin2011@konkuk.ac.kr</div>
-      </div>
-      <div class="member-card">
-        <img src="images/정현택.jpg" alt="hyuntaekjung">
-        <div class="member-name">Hyuntaek Jung</div>
-        <div class="member-role">Master Student</div>
-        <div class="member-email">busan199@konkuk.ac.kr</div>
-      </div>
-      <div class="member-card">
-        <img src="images/김현서.jpg" alt="hyunseokim">
-        <div class="member-name">Hyunseo Kim</div>
-        <div class="member-role">Master Student</div>
-        <div class="member-email">hs11015@konkuk.ac.kr</div>
-      </div>
-      <div class="member-card">
-        <img src="images/최희재.jpg" alt="heejaechoi">
-        <div class="member-name">Heejae Choi</div>
-        <div class="member-role">Master Student</div>
-        <div class="member-email">qkw1205@konkuk.ac.kr</div>
-      </div>
-      <div class="member-card">
-        <img src="images/함신우.jpg" alt="shinwooham">
-        <div class="member-name">Shinwoo Ham</div>
-        <div class="member-role">Master Student</div>
-        <div class="member-email">gka0656@konkuk.ac.kr</div>
-      </div>
-      <div class="member-card">
-        <img src="images/민동훈.jpg" alt="donghunmin">
-        <div class="member-name">Donghun Min</div>
-        <div class="member-role">Master Student</div>
-        <div class="member-email">mindonghun@konkuk.ac.kr</div>
-      </div>
-	  <div class="member-card">
-        <img src="images/전준일.jpg" alt="juniljeon">
-        <div class="member-name">Junil Jeon</div>
-        <div class="member-role">Master Student</div>
-        <div class="member-email">jeonjunil@konkuk.ac.kr</div>
-      </div>
-      <div class="member-card">
-        <img src="images/empty.png" alt="myeonghunjung">
-        <div class="member-name">Myeonghun Jung</div>
-        <div class="member-role">Undergraduate Student</div>
-        <div class="member-email">jmfc02@naver.com</div>
+
+    <!-- Senior Members Section -->
+    <div class="members-section">
+      <h2>Senior Members</h2>
+              <div class="members-grid">
+          <div class="member-card">
+            <img src="images/empty.png" alt="longbinjin">
+            <div class="member-name">Longbin Jin</div>
+            <div class="member-role">Ph.D. Graduate</div>
+            <div class="member-email">jinlongbin@konkuk.ac.kr, lbjin@voinosis.com</div>
+          </div>
+        </div>
+    </div>
+
+    <!-- Current Members Section -->
+    <div class="members-section">
+      <h2>Current Members</h2>
+      <div class="members-grid">
+        <div class="member-card">
+          <img src="images/empty.png" alt="longbinjin">
+          <div class="member-name">Longbin Jin</div>
+          <div class="member-role">Ph.D. Graduate</div>
+          <div class="member-email">jinlongbin@konkuk.ac.kr, lbjin@voinosis.com</div>
+        </div>
+        <div class="member-card">
+          <img src="images/empty.png" alt="yealimoh">
+          <div class="member-name">Yealim Oh</div>
+          <div class="member-role">Master Student</div>
+          <div class="member-email">dodoh0125@konkuk.ac.kr</div>
+        </div>
+        <div class="member-card">
+          <img src="images/전효진.jpg" alt="hyojinjon">
+          <div class="member-name">Hyo Jin Jon</div>
+          <div class="member-role">Master Student</div>
+          <div class="member-email">hyojin2011@konkuk.ac.kr</div>
+        </div>
+        <div class="member-card">
+          <img src="images/정현택.jpg" alt="hyuntaekjung">
+          <div class="member-name">Hyuntaek Jung</div>
+          <div class="member-role">Master Student</div>
+          <div class="member-email">busan199@konkuk.ac.kr</div>
+        </div>
+        <div class="member-card">
+          <img src="images/김현서.jpg" alt="hyunseokim">
+          <div class="member-name">Hyunseo Kim</div>
+          <div class="member-role">Master Student</div>
+          <div class="member-email">hs11015@konkuk.ac.kr</div>
+        </div>
+        <div class="member-card">
+          <img src="images/최희재.jpg" alt="heejaechoi">
+          <div class="member-name">Heejae Choi</div>
+          <div class="member-role">Master Student</div>
+          <div class="member-email">qkw1205@konkuk.ac.kr</div>
+        </div>
+        <div class="member-card">
+          <img src="images/함신우.jpg" alt="shinwooham">
+          <div class="member-name">Shinwoo Ham</div>
+          <div class="member-role">Master Student</div>
+          <div class="member-email">gka0656@konkuk.ac.kr</div>
+        </div>
+        <div class="member-card">
+          <img src="images/민동훈.jpg" alt="donghunmin">
+          <div class="member-name">Donghun Min</div>
+          <div class="member-role">Master Student</div>
+          <div class="member-email">mindonghun@konkuk.ac.kr</div>
+        </div>
+        <div class="member-card">
+          <img src="images/전준일.jpg" alt="juniljeon">
+          <div class="member-name">Junil Jeon</div>
+          <div class="member-role">Master Student</div>
+          <div class="member-email">jeonjunil@konkuk.ac.kr</div>
+        </div>
+        <div class="member-card">
+          <img src="images/empty.png" alt="myeonghunjung">
+          <div class="member-name">Myeonghun Jung</div>
+          <div class="member-role">Undergraduate Student</div>
+          <div class="member-email">jmfc02@naver.com</div>
+        </div>
       </div>
     </div>
     <div class="section-title">Alumni</div>
@@ -1281,6 +1323,58 @@
       },
       {
         id: 2,
+        name: "Longbin Jin",
+        role: "Ph.D. Graduate",
+        email: "jinlongbin@konkuk.ac.kr, lbjin@voinosis.com",
+        image: "images/empty.png",
+        researchInterests: [
+          "Computer Vision",
+          "Signal Processing",
+          "Biomedical Signal Processing",
+          "Deep Learning",
+          "Anomaly Detection"
+        ],
+        admissionDate: "2018-09",
+        awards: [
+          "HCI Korea 2025 Best Paper Award", 
+          "KSC 2023 학부생부문 우수상",
+          "2023 대한전자공학회 하계학술대회 우수학생논문상",
+          "KSC 2020 학부생부문 장려상 "
+        ],
+        publications: [
+          "EV-CLIP: Efficient Visual Prompt Adaptation for CLIP in Few-Shot Action Recognition under Visual Challenges (Pattern Recognition; Submitted)",
+          "Contrastive Learning-based Syllable-Level Mispronunciation Detection and Diagnosis for Speech Audiometry (INTERSPEECH 2025)",
+          "MATER: Multi-level Acoustic and Textual Emotion Representation for Interpretable Speech Emotion Recognition (INTERSPEECH 2025)",
+          "Audio Prompt Driven Reprogramming for Diagnosing Major Depressive Disorder (Pattern Recognition Letters; Under Review)",
+          "Watermark and Trademark Prompts Boost Video Action Recognition in Visual-Language Models (Mathematics)",
+          "Detecting Hearing Impairment through Localizing Abnormal Speech Patterns (IEEE Signal Processing Letters)",
+          "Identifying Alzheimer’s Disease Across Cognitive Impairment Spectrum Using Acoustic Features Only (ICPR 2024)",
+          "EEG-RegNet: Regressive Emotion Recognition in Continuous VAD Space Using EEG Signals (Mathematics)",
+          "이상 발화 패턴 탐지를 통한 난청 분류 (대한전자공학회 하계학술대회 2024)",
+          "EEG-based Emotion Estimation with Bernoulli Penalty and Weighted MSE-CE (KSC 2023)",
+          "Consen: Complementary and simultaneous ensemble for alzheimer’s disease detection and mmse score prediction (ICASSP 2023)",
+          "알츠하이머 진단 및 중증도 예측을 위한 단일화된 딥러닝 아키텍처 연구 (대한전자공학회 하계학술대회 2023)",
+          "딥러닝을 이용한 음성기반의 난청 인식 연구 (대한전자공학회 하계학술대회 2023)",
+          "E-EmotiConNet: EEG-based emotion recognition with context information (IJCNN 2022)",
+          "GViT: Locality enhanced vision transformer using spectral graph convolutional network (IJCNN 2022)",
+          "세그멘테이션을 기반한 이미지 복원 모델 (HCI Korea 2022)",
+          "Interpretable Cross-Subject EEG-Based Emotion Recognition Using Channel-Wise Features (Sensors)",
+          "Emotion Recognition based BCI using Channel-wise Features (CHI 2020)",
+          "Channel-wise Features 를 이용한 뇌파 기반 개인 인식 (KSC 2019)",
+          "뇌파를 이용한 감정 인식에서의 공간적 및 시간적 특징 추출 방법 제시 (KSC 2019)",
+          "LSTM 구조를 이용한 뇌파 기반 위험 상황 인식 (KSC 2019)",
+          "Eeg-based user identification using channel-wise features (ACPR 2019)",
+          "BalanceNet 을 이용한 트윗에서의 감성 인식 (KCC 2019)",
+          "Understanding Individuals' Psychological Behavior from Social Media Data (ICIGP 2019)",
+          "Pedestrian Detection using Spatial Haar-like Features (ICCT 2018)",
+        ],
+        projects: [
+          "Healthcare AI System Development",
+          "Medical Image Processing Pipeline"
+        ]
+      },
+      {
+        id: 3,
         name: "Yealim Oh",
         role: "Master Student",
         email: "dodoh0125@konkuk.ac.kr",
@@ -1298,10 +1392,14 @@
           "딥러닝을 이용한 음성기반의 난청 인식 연구 (대한전자공학회 하계학술대회 2023)",
           "Consen: Complementary and simultaneous ensemble for alzheimer’s disease detection and mmse score prediction (ICASSP 2023)",
         ],
-        projects: []
+        projects: [
+          "Speech Emotion Recognition using Deep Learning",
+          "Time Series Anomaly Detection",
+          "EEG Signal Analysis with Domain Adaptation"
+        ]
       },
       {
-        id: 3,
+        id: 4,
         name: "Hyo Jin Jon",
         role: "Master Student",
         email: "hyojin2011@konkuk.ac.kr",
@@ -1334,7 +1432,7 @@
         ]
       },
       {
-        id: 4,
+        id: 5,
         name: "Hyuntaek Jung",
         role: "Master Student",
         email: "busan199@konkuk.ac.kr",
@@ -1368,7 +1466,7 @@
         ]
       },
       {
-        id: 5,
+        id: 6,
         name: "Hyunseo Kim",
         role: "Master Student",
         email: "hs11015@konkuk.ac.kr",
@@ -1399,7 +1497,7 @@
         ]
       },
       {
-        id: 6,
+        id: 7,
         name: "Heejae Choi",
         role: "Master Student",
         email: "qkw1205@konkuk.ac.kr",
@@ -1421,7 +1519,7 @@
         ]
       },
       {
-        id: 7,
+        id: 8,
         name: "Shinwoo Ham",
         role: "Master Student",
         email: "gka0656@konkuk.ac.kr",
@@ -1445,7 +1543,7 @@
         ]
       },
       {
-        id: 8,
+        id: 9,
         name: "Donghun Min",
         role: "Master Student",
         email: "mindonghun@konkuk.ac.kr",
@@ -1468,7 +1566,7 @@
         ]
       },
       {
-        id: 9,
+        id: 10,
         name: "Junil Jeon",
         role: "Master Student",
         email: "jeonjunil@konkuk.ac.kr",
@@ -1486,7 +1584,7 @@
         ]
       },
       {
-        id: 10,
+        id: 11,
         name: "Myeonghun Jung",
         role: "Undergraduate Student",
         email: "jmfc02@naver.com",
