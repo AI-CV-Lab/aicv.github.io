@@ -946,7 +946,7 @@
     ];
 
     // Sort newsData by date descending before rendering
-    // const sortedNewsData = newsData.slice().sort((a, b) => new Date(b.date) - new Date(a.date));
+    const sortedNewsData = newsData.slice().sort((a, b) => new Date(b.date) - new Date(a.date));
 
     // function loadNews() {
     //   const news = JSON.parse(localStorage.getItem('milab_news') || '[]');
@@ -970,7 +970,7 @@
 
     function loadNews() {
       newsList.innerHTML = '';
-      NewsData.forEach((item, idx) => {
+      sortedNewsData.forEach((item, idx) => {
         const newsCard = document.createElement('div');
         newsCard.className = 'news-card';
         let thumbHtml = '';
@@ -1118,6 +1118,8 @@
 			newsModal.style.display = "none";
 		}
 	}
+
+  loadNews();
 
 	// Show news detail in modal
 	// window.showNewsDetail = function(index) {
