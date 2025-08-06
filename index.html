@@ -119,6 +119,16 @@
       overflow-y: auto;
       position: relative;
     }
+    .news-modal-image {
+      width: 100%;
+      max-width: 320px;
+      max-height: 220px;
+      display: block;
+      margin: 1.2em auto 1.2em auto;
+      border-radius: 8px;
+      object-fit: contain;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+    }
     .news-modal-close {
       position: absolute;
       top: 15px;
@@ -975,7 +985,7 @@
         newsCard.className = 'news-card';
         let thumbHtml = '';
         if (item.image && item.image.trim() !== '') {
-          thumbHtml = `<img src="${item.image}" alt="${item.title}" class="news-thumb">`;
+          thumbHtml = `<img src="${item.image}" alt="${item.title}" class="news-item-thumbnail">`;
         }
         newsCard.innerHTML = `
           ${thumbHtml}
