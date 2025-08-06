@@ -948,26 +948,26 @@
     // Sort newsData by date descending before rendering
     const sortedNewsData = newsData.slice().sort((a, b) => new Date(b.date) - new Date(a.date));
 
-    function loadNews() {
-      const newsGrid = document.getElementById('newsGrid');
-      newsGrid.innerHTML = '';
-      sortedNewsData.forEach((item, idx) => {
-        const newsCard = document.createElement('div');
-        newsCard.className = 'news-card';
-        let thumbHtml = '';
-        if (item.image && item.image.trim() !== '') {
-          thumbHtml = `<img src="${item.image}" alt="${item.title}" class="news-thumb">`;
-        }
-        newsCard.innerHTML = `
-          ${thumbHtml}
-          <div class="news-title">${item.title}</div>
-          <div class="news-date">${item.date}</div>
-          <div class="news-content-preview">${item.content.length > 100 ? item.content.slice(0, 100) + '...' : item.content}</div>
-          <button class="news-readmore-btn" onclick="showNewsDetail(${idx})">Read More</button>
-        `;
-        newsGrid.appendChild(newsCard);
-      });
-    }
+    // function loadNews() {
+    //   const newsList = document.getElementById('newsList');
+    //   newsList.innerHTML = '';
+    //   sortedNewsData.forEach((item, idx) => {
+    //     const newsCard = document.createElement('div');
+    //     newsCard.className = 'news-card';
+    //     let thumbHtml = '';
+    //     if (item.image && item.image.trim() !== '') {
+    //       thumbHtml = `<img src="${item.image}" alt="${item.title}" class="news-thumb">`;
+    //     }
+    //     newsCard.innerHTML = `
+    //       ${thumbHtml}
+    //       <div class="news-title">${item.title}</div>
+    //       <div class="news-date">${item.date}</div>
+    //       <div class="news-content-preview">${item.content.length > 100 ? item.content.slice(0, 100) + '...' : item.content}</div>
+    //       <button class="news-readmore-btn" onclick="showNewsDetail(${idx})">Read More</button>
+    //     `;
+    //     newsList.appendChild(newsCard);
+    //   });
+    // }
 
     // News modal logic
     window.showNewsDetail = function(index) {
