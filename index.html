@@ -984,9 +984,9 @@
         const newsCard = document.createElement('div');
         newsCard.className = 'news-card';
         let thumbHtml = '';
-        if (item.image && item.image.trim() !== '') {
-          thumbHtml = `<img src="${item.image}" alt="${item.title}" class="news-item-thumbnail">`;
-        }
+        // if (item.image && item.image.trim() !== '') {
+        //   thumbHtml = `<img src="${item.image}" alt="${item.title}" class="news-item-thumbnail">`;
+        // }
         newsCard.innerHTML = `
           ${thumbHtml}
           <div class="news-item-title">${item.title}</div>
