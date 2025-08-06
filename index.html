@@ -1059,30 +1059,30 @@
 	// }
 
 	// Photo upload functionality
-	const newsPhotoInput = document.getElementById('newsPhoto');
-	const photoPreview = document.getElementById('photoPreview');
-	const previewImage = document.getElementById('previewImage');
-	const removePhotoBtn = document.getElementById('removePhoto');
-	let selectedPhoto = null;
+	// const newsPhotoInput = document.getElementById('newsPhoto');
+	// const photoPreview = document.getElementById('photoPreview');
+	// const previewImage = document.getElementById('previewImage');
+	// const removePhotoBtn = document.getElementById('removePhoto');
+	// let selectedPhoto = null;
 
-	newsPhotoInput.addEventListener('change', function(e) {
-		const file = e.target.files[0];
-		if (file) {
-			const reader = new FileReader();
-			reader.onload = function(e) {
-				previewImage.src = e.target.result;
-				photoPreview.style.display = 'block';
-				selectedPhoto = file;
-			};
-			reader.readAsDataURL(file);
-		}
-	});
+	// newsPhotoInput.addEventListener('change', function(e) {
+	// 	const file = e.target.files[0];
+	// 	if (file) {
+	// 		const reader = new FileReader();
+	// 		reader.onload = function(e) {
+	// 			previewImage.src = e.target.result;
+	// 			photoPreview.style.display = 'block';
+	// 			selectedPhoto = file;
+	// 		};
+	// 		reader.readAsDataURL(file);
+	// 	}
+	// });
 
-	removePhotoBtn.addEventListener('click', function() {
-		newsPhotoInput.value = '';
-		photoPreview.style.display = 'none';
-		selectedPhoto = null;
-	});
+	// removePhotoBtn.addEventListener('click', function() {
+	// 	newsPhotoInput.value = '';
+	// 	photoPreview.style.display = 'none';
+	// 	selectedPhoto = null;
+	// });
 
 	// Modal functionality
 	const newsModal = document.getElementById('newsModal');
