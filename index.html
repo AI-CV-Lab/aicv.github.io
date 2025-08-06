@@ -989,10 +989,10 @@
         }
         newsCard.innerHTML = `
           ${thumbHtml}
-          <div class="news-title">${item.title}</div>
-          <div class="news-date">${item.date}</div>
-          <div class="news-content-preview">${item.content.length > 100 ? item.content.slice(0, 100) + '...' : item.content}</div>
-          <button class="news-readmore-btn" onclick="showNewsDetail(${idx})">Read More</button>
+          <div class="news-item-title">${item.title}</div>
+          <div class="news-item-date">${item.date}</div>
+          <div class="news-item-content-preview">${item.content.length > 100 ? item.content.slice(0, 100) + '...' : item.content}</div>
+          <button class="read-more-btn" onclick="showNewsDetail(${idx})">Read More</button>
         `;
         newsList.appendChild(newsCard);
       });
@@ -1006,7 +1006,7 @@
       const modalContent = document.getElementById('newsModalContent');
       let imgHtml = '';
       if (item.image && item.image.trim() !== '') {
-        imgHtml = `<img src="${item.image}" alt="${item.title}" class="news-modal-image">`;
+        imgHtml = `<img src="${item.image}" alt="${item.title}" class="news-image">`;
       }
       modalContent.innerHTML = `
         <h2>${item.title}</h2>
