@@ -1101,37 +1101,37 @@
 	}
 
 	// Show news detail in modal
-	window.showNewsDetail = function(index) {
-		const item = cachedNews[index];
-		if (item) {
-			// Format date for modal
-			const formatDate = (dateString) => {
-				const date = new Date(dateString);
-				const year = date.getFullYear();
-				const month = String(date.getMonth() + 1).padStart(2, '0');
-				const day = String(date.getDate()).padStart(2, '0');
-				const hours = String(date.getHours()).padStart(2, '0');
-				const minutes = String(date.getMinutes()).padStart(2, '0');
-				return `${year}-${month}-${day} ${hours}:${minutes}`;
-			};
+	// window.showNewsDetail = function(index) {
+	// 	const item = cachedNews[index];
+	// 	if (item) {
+	// 		// Format date for modal
+	// 		const formatDate = (dateString) => {
+	// 			const date = new Date(dateString);
+	// 			const year = date.getFullYear();
+	// 			const month = String(date.getMonth() + 1).padStart(2, '0');
+	// 			const day = String(date.getDate()).padStart(2, '0');
+	// 			const hours = String(date.getHours()).padStart(2, '0');
+	// 			const minutes = String(date.getMinutes()).padStart(2, '0');
+	// 			return `${year}-${month}-${day} ${hours}:${minutes}`;
+	// 		};
 			
-			// Debug: Log the item to see what data we have
-			console.log("News item for modal:", item);
-			console.log("Image URL:", item.image);
+	// 		// Debug: Log the item to see what data we have
+	// 		console.log("News item for modal:", item);
+	// 		console.log("Image URL:", item.image);
 			
-			// Check if image exists and is not empty
-			const hasImage = item.image && item.image.trim() !== '';
-			const imageHtml = hasImage ? `<img src="${item.image}" alt="News image" class="news-image" onerror="this.style.display='none'">` : '';
+	// 		// Check if image exists and is not empty
+	// 		const hasImage = item.image && item.image.trim() !== '';
+	// 		const imageHtml = hasImage ? `<img src="${item.image}" alt="News image" class="news-image" onerror="this.style.display='none'">` : '';
 			
-			newsModalContent.innerHTML = `
-				<h2>${item.title}</h2>
-				<div class="news-date">${formatDate(item.date)}</div>
-				${imageHtml}
-				<div class="news-content">${item.content}</div>
-			`;
-			newsModal.style.display = "block";
-		}
-	}
+	// 		newsModalContent.innerHTML = `
+	// 			<h2>${item.title}</h2>
+	// 			<div class="news-date">${formatDate(item.date)}</div>
+	// 			${imageHtml}
+	// 			<div class="news-content">${item.content}</div>
+	// 		`;
+	// 		newsModal.style.display = "block";
+	// 	}
+	// }
 
 	// 뉴스 등록(추가)
 	newsForm.addEventListener('submit', function(e){
