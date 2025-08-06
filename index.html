@@ -946,12 +946,31 @@
     ];
 
     // Sort newsData by date descending before rendering
-    const sortedNewsData = newsData.slice().sort((a, b) => new Date(b.date) - new Date(a.date));
+    // const sortedNewsData = newsData.slice().sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    // function loadNews() {
+    //   const news = JSON.parse(localStorage.getItem('milab_news') || '[]');
+    //   newsList.innerHTML = '';
+    //   news.forEach((item, idx) => {
+    //     const li = document.createElement('li');
+    //     li.className = 'news-item';
+    //     li.innerHTML = `
+    //       <div style="flex:1;">
+    //         <div class="news-item-title">${item.title}</div>
+    //         <div class="news-item-date">${item.date}</div>
+    //         <div class="news-item-content">${item.content}</div>
+    //       </div>
+    //       <button class="news-item-remove" title="Delete" onclick="removeNews(${idx})" style="display:none;">✕</button>
+    //     `;
+    //     newsList.appendChild(li);
+    //   });
+    //   updateAdminUI();
+    // }
+    const newsList = document.getElementById('newsList');
 
     function loadNews() {
-      const newsList = document.getElementById('newsList');
       newsList.innerHTML = '';
-      sortedNewsData.forEach((item, idx) => {
+      NewsData.forEach((item, idx) => {
         const newsCard = document.createElement('div');
         newsCard.className = 'news-card';
         let thumbHtml = '';
