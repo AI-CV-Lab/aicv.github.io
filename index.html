@@ -586,7 +586,7 @@
       color: #333;
       margin-bottom: 1.5rem;
       font-size: 1.8rem;
-      border-bottom: 2px solid #007bff;
+      /* border-bottom: 2px solid #007bff; */
       padding-bottom: 0.5rem;
     }
 
@@ -724,12 +724,6 @@
     <div class="members-section">
       <h2>Current Members</h2>
       <div class="members-grid">
-        <div class="member-card">
-          <img src="images/empty.png" alt="longbinjin">
-          <div class="member-name">Longbin Jin</div>
-          <div class="member-role">Ph.D. Graduate</div>
-          <div class="member-email">jinlongbin@konkuk.ac.kr, lbjin@voinosis.com</div>
-        </div>
         <div class="member-card">
           <img src="images/empty.png" alt="yealimoh">
           <div class="member-name">Yealim Oh</div>
@@ -1162,9 +1156,9 @@
     // ----- Projects: 예시 데이터 -----
     const projectsData = [
       {
-        id: 1,
+        id: 7,
         title: "Speech Emotion Recognition using Deep Learning",
-        category: "AI/ML",
+        category: "Signal Processing & NLP",
         description: "This project focuses on developing robust speech-based emotion recognition systems tailored for real-world conditions. By leveraging hierarchical structures in speech and advanced deep learning models, we aim to improve generalizability across speakers, recording environments, and emotional ambiguities. Our approach integrates acoustic and textual modalities and explores novel methods to address challenges such as data imbalance and subjectivity in emotion labeling.",
         image: "images/Project;SER.png",
         duration: "2024-2025",
@@ -1176,13 +1170,13 @@
             "Mitigate biases caused by data imbalance and emotional ambiguity using advanced loss functions and ensemble strategies"
           ],
           technologies: ["Audio Processing", "Natural Language Processing", "Multimodal Fusion", "Emotion Recognition"],
-          team: ["Hyo Jin Jon", "Donghun Min", "Junil Jeon", "Myeonghun Jung"],
+          team: ["Hyo Jin Jon", "Longbin Jin", "Hyuntaek Jung", "Hyunseo Kim", "Donghun Min", "Heejae Choi", "Shinwoo Ham", "Junil Jeon", "Myeonghun Jung"],
         }
       },
       {
-        id: 2,
+        id: 6,
         title: "Time Series Anomaly Detection",
-        category: "AI/ML",
+        category: "Signal Processing & Industry",
         description: "This project investigates anomaly detection methods for complex multivariate time series data. Our goal is to extract spatial and temporal representations from multi-channel signals (e.g., sensor streams, physiological signals) and to detect subtle or abrupt deviations indicative of system failures, health anomalies, or external events.",
         image: "images/Project;TSAD.png",
         duration: "2024-2025",
@@ -1198,9 +1192,9 @@
         }
       },
       {
-        id: 3,
+        id: 5,
         title: "EEG Signal Analysis with Domain Adaptation",
-        category: "AI/ML",
+        category: "Signal Processing & Biomedical",
         description: "This project aims to design lightweight and scalable domain adaptation techniques for EEG-based signal analysis. Given the variability in EEG signals across subjects and sessions, we develop methods to adapt models to unseen domains with minimal retraining. Applications include emotion recognition, cognitive state monitoring, and neurological anomaly detection.",
         image: "images/Project;EEG.png",
         duration: "2023-2025",
@@ -1214,18 +1208,98 @@
           technologies: ["Biomedical Analysis", "Electroencephalography (EEG) Signal Analysis", "Domain Adaptation"],
           team: ["Hyunseo Kim", "Heejae Choi"],
         }
+      },
+      {
+        id: 4,
+        title: "Speech Anomaly Detection in Syllable-level",
+        category: "Signal Processing & Biomedical",
+        description: "This project explores a subject-agnostic approach to early detection of hearing impairment by analyzing fine-grained anomalies in speech. Unlike conventional pure tone tests, we focus on real-world word recognition tasks and segment the data into phoneme-level audio units. By learning the distribution of normal speech patterns in a semi-supervised manner, the system can localize abnormal acoustic patterns and estimate the severity of hearing impairment.",
+        image: "images/Project;Syllable.png",
+        duration: "2024-2025",
+        status: "ongoing",
+        details: {
+          objectives: [
+            "Detect early signs of hearing loss by analyzing speech at the phoneme level",
+            "Model normal acoustic patterns using semi-supervised learning",
+            "Compute phoneme-level anomaly scores to localize abnormalities",
+            "Enable objective, non-invasive, and scalable screening for hearing impairment"
+          ],
+          technologies: ["Speech Analysis", "Task Design", "Multimodality"],
+          team: ["Longbin Jin", "Donghun Min"],
+        }
+      },
+      {
+        id: 3,
+        title: "Gaze Analysis for Alzheimer's Disease Detection",
+        category: "Signal Processing & Biomedical",
+        description: "This project introduces a non-invasive, video-based framework for detecting Alzheimer's Disease (AD) by analyzing gaze patterns and head movements. We propose GazeMap, a novel method to transform time-series gaze data into spatial representations. A dual-pathway CNN then processes gaze and head pose separately before fusion, capturing both short- and long-term behavioral cues. Our model achieves high accuracy even in real-world out-of-distribution settings and provides interpretable visualizations of AD-related gaze behavior.",
+        image: "images/Project;Gaze.png",
+        duration: "2024-2025",
+        status: "ended",
+        details: {
+          objectives: [
+            "Detect Alzheimer's Disease using gaze and head movement patterns",
+            "Design GazeMap: 1D-to-2D transformation of gaze/head pose for enhanced learning",
+            "Train a dual-pathway CNN for multimodal behavioral analysis",
+            "Ensure generalization to both clinical and real-world environments",
+            "Provide interpretable saliency maps for understanding gaze abnormalities in AD"
+          ],
+          technologies: ["Gaze Analysis", "Representation Learning"],
+          team: ["Hyuntaek Jung", "Shinwoo Ham"],
+        }
+      },
+      {
+        id: 2,
+        title: "Domain Adaptation for Video Action Recognition",
+        category: "Computer Vision",
+        description: "This project focuses on enhancing video action recognition in out-of-domain environments by leveraging CLIP-based visual representations. We explore visual prompt tuning as a parameter-efficient alternative to traditional fine-tuning and develop input-customized prompts that dynamically adapt to target domains. The goal is to maintain recognition accuracy while minimizing computational costs and annotation efforts.",
+        image: "images/Project;VideoActionRecognition.png",
+        duration: "2023-2025",
+        status: "ended",
+        details: {
+          objectives: [
+            "Perform efficient domain adaptation for video action recognition using CLIP",
+            "Implement visual prompt tuning for lightweight adaptation",
+            "Design input-dependent prompt learning to tailor prompts to specific domains",
+            "Improve performance in low-light, egocentric, and cross-dataset settings",
+          ],
+          technologies: ["Multimodality", "Domain Adaptation", "Few-shot Learning", "Prompt Learning"],
+          team: ["Longbin Jin", "Hyuntaek Jung", "Hyojin Jon"],
+        }
+      },
+      {
+        id: 1,
+        title: "Alzheimer's Disease Detection from Spontaneous Speech",
+        category: "Signal Processing & Biomedical",
+        description: "This project aims to detect Alzheimer’s Disease through acoustic cues in natural, spontaneous speech, without relying on language transcripts or structured prompts. The system is trained to recognize cognitive decline markers from speech prosody, rhythm, and voice quality. Additionally, we expand this framework to support multilingual detection, making it more inclusive and applicable across different populations.",
+        image: "images/Project;EEG.png",
+        duration: "2023-2025",
+        status: "ongoing",
+        details: {
+          objectives: [
+            "Detect Alzheimer's Disease using only acoustic features from spontaneous speech",
+            "Eliminate reliance on transcripts or language-specific models",
+            "Develop robust models for multilingual AD detection",
+            "Enable early, scalable, and language-agnostic diagnosis using speech data"
+          ],
+          technologies: ["Speech Analysis", "Task Design"],
+          team: ["Longbin Jin", "Yealim Oh", "Hyunseo Kim", "Hyuntaek Jung", "Hyojin Jon", "Donghun Min"],
+        }
       }
+      
     ];
 
-    // Load and display projects
+    // Before rendering project blocks, sort projectsData by id descending
+    const sortedProjectsData = projectsData.slice().sort((a, b) => b.id - a.id);
+
+    // Use sortedProjectsData instead of projectsData in loadProjects()
     function loadProjects() {
-      const projectsGrid = document.getElementById('projectsGrid');
+      const projectsGrid = document.querySelector('.projects-grid');
       projectsGrid.innerHTML = '';
-      
-      projectsData.forEach((project, index) => {
+      sortedProjectsData.forEach((project, idx) => {
         const projectCard = document.createElement('div');
         projectCard.className = 'project-card';
-        projectCard.onclick = () => showProjectDetail(index);
+        projectCard.onclick = () => showProjectDetail(idx);
         
         projectCard.innerHTML = `
           <img src="${project.image}" alt="${project.title}" class="project-image">
@@ -1263,7 +1337,7 @@
 
     // Show project detail in modal
     window.showProjectDetail = function(index) {
-      const project = projectsData[index];
+      const project = sortedProjectsData[index];
       if (project) {
         const imageHtml = project.image ? `<img src="${project.image}" alt="${project.title}" class="project-image">` : '';
         const objectivesHtml = project.details.objectives.map(obj => `<li>${obj}</li>`).join('');
@@ -1369,8 +1443,11 @@
           "Pedestrian Detection using Spatial Haar-like Features (ICCT 2018)",
         ],
         projects: [
-          "Healthcare AI System Development",
-          "Medical Image Processing Pipeline"
+          "Speech Anomaly Detection in Syllable-level",
+          "Speech Emotion Recognition using Deep Learning",
+          "EEG Signal Analysis with Domain Adaptation",
+          "Domain Adaptation for Video Action Recognition",
+          "Alzheimer's Disease Detection from Spontaneous Speech"
         ]
       },
       {
@@ -1393,9 +1470,8 @@
           "Consen: Complementary and simultaneous ensemble for alzheimer’s disease detection and mmse score prediction (ICASSP 2023)",
         ],
         projects: [
-          "Speech Emotion Recognition using Deep Learning",
-          "Time Series Anomaly Detection",
-          "EEG Signal Analysis with Domain Adaptation"
+          "Anomaly Detection for Parkinson's Disease",
+          "Alzheimer's Disease Detection from Spontaneous Speech"
         ]
       },
       {
@@ -1428,7 +1504,10 @@
           "Consen: Complementary and simultaneous ensemble for alzheimer’s disease detection and mmse score prediction (ICASSP 2023)",
         ],
         projects: [
-          "Speech Emotion Recognition using Deep Learning"
+          "Speech Emotion Recognition using Deep Learning",
+          "Domain Adaptation for Video Action Recognition",
+          "Emotion Recognition using EEG Signals",
+          "Alzheimer's Disease Detection from Spontaneous Speech"
         ]
       },
       {
@@ -1462,7 +1541,11 @@
           "Consen: Complementary and simultaneous ensemble for alzheimer’s disease detection and mmse score prediction (ICASSP 2023)",
         ],
         projects: [
-          "Time Series Anomaly Detection"
+          "Time Series Anomaly Detection",
+          "Gaze Analysis for Alzheimer's Disease Detection",
+          "Domain Adaptation for Video Action Recognition",
+          "Emotion Recognition using EEG Signals",
+          "Alzheimer's Disease Detection from Spontaneous Speech"
         ]
       },
       {
@@ -1493,7 +1576,10 @@
           "Consen: Complementary and simultaneous ensemble for alzheimer’s disease detection and mmse score prediction (ICASSP 2023)",
         ],
         projects: [
-          "EEG Signal Analysis with Domain Adaptation"
+          "EEG Signal Analysis with Domain Adaptation",
+          "Speech Emotion Recognition using Deep Learning",
+          "Emotion Recognition using EEG Signals",
+          "Alzheimer's Disease Detection from Spontaneous Speech"
         ]
       },
       {
@@ -1515,7 +1601,9 @@
           "음악 소리에 대한 반응으로부터 감정을 인식하기 위한 뇌파 기반 감정인식 프레임워크 (HCI Korea 2025)",
         ],
         projects: [
-          "EEG Signal Analysis with Domain Adaptation"
+          "EEG Signal Analysis with Domain Adaptation",
+          "Speech Emotion Recognition using Deep Learning",
+          "Emotion Recognition using EEG Signals"
         ]
       },
       {
@@ -1539,7 +1627,8 @@
           "Two-stream에서의 사용자의 얼굴 특징 추적 기반의 치매 조기 진단 시스템 개발 (HCI Korea 2025)",
         ],
         projects: [
-          "Time Series Anomaly Detection"
+          "Time Series Anomaly Detection",
+          "Speech Emotion Recognition using Deep Learning",
         ]
       },
       {
@@ -1562,7 +1651,9 @@
           "이상 발화 패턴 탐지를 통한 난청 분류 (대한전자공학회 하계학술대회 2024)",
         ],
         projects: [
-          "Speech Emotion Recognition using Deep Learning"
+          "Speech Anomaly Detection in Syllable-level",
+          "Speech Emotion Recognition using Deep Learning",
+          "Alzheimer's Disease Detection from Spontaneous Speech"
         ]
       },
       {
