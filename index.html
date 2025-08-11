@@ -113,9 +113,9 @@
       margin: 5% auto;
       padding: 30px;
       border-radius: 12px;
-      width: 80%;
-      max-width: 700px;
-      max-height: 80vh;
+      width: 85%;
+      max-width: 800px;
+      max-height: 90vh;
       overflow-y: auto;
       position: relative;
     }
@@ -940,17 +940,45 @@
   
     const newsData = [
       {
-        id: 2,
+        id: 6,
         title: "Two Papers Accepted at INTERSPEECH 2025",
         content: "We are thrilled to announce that two papers from our lab have been accepted for presentation at INTERSPEECH 2025, one of the world’s premier conferences in speech and language processing.<br>These works reflect our lab’s continued efforts to advance emotion recognition and clinical speech analysis through cutting-edge AI methodologies.<br><br>📌 1. Contrastive Learning-based Syllable-Level Mispronunciation Detection and Diagnosis for Speech Audiometry (L Jin, D Min, JE Shin, EY Kim)<br><br>📌 2. MATER: Multi-level Acoustic and Textual Emotion Representation for Interpretable Speech Emotion Recognition (HJ Jon, L Jin, H Jung, H Kim, D Min, EY Kim)",
         date: "2025-05-21",
         image: ""
       },
       {
+        id: 5,
+        title: "HCI-Korea 2025 학술대회 우수논문상 수상",
+        content: '국내 HCI 분야 최우수 학술대회인 HCI-Korea 2025 학술대회에서, "Two-stream에서의 사용자의 얼굴 특징 추적 기반의 치매 조기 진단 시스템 개발 (S Ham, H Jung, L Jin, JE Shin, EY Kim)" 연구로 우수논문상을 수상하였습니다. 이번 수상은 약 200편의 논문 중 7편만이 선정된 영예로, 본 연구실의 연구가 인간 중심 AI 및 인터랙션 기술 발전에 기여한 학문적 가치와 혁신성을 인정받은 결과입니다. 축하합니다 🎉<br><br>Our Congratulation!🎉 Our lab’s work was selected as an Excellent Paper at HCI-Korea 2025, the premier conference in the field of Human–Computer Interaction in Korea. Out of approximately 200 submissions, only 7 papers received this distinction.',
+        date: "2025-02-12",
+        image: ""
+      },
+      {
+        id: 4,
+        title: "3rd Place in the 1st Mice Autism Detection via Ultrasound Vocalisation (MADUV) Challenge at INTERSPEECH",
+        content: 'Our lab secured 3rd place in the 1st Mice Autism Detection via Ultrasound Vocalisation (MADUV) Challenge, held at INTERSPEECH, the world’s leading conference in the field of speech and language processing.',
+        date: "2023-02-06",
+        image: ""
+      },
+      {
+        id: 3,
+        title: "High Rank in Speech Emotion Recognition in Naturalistic Conditions Challenge at INTERSPEECH",
+        content: 'Our lab achieved outstanding results in the Speech Emotion Recognition in Naturalistic Conditions Challenge, held at INTERSPEECH, the world’s leading conference in the field of speech processing.<br><br>Out of 98 participating teams, we ranked 4th place in both competition tasks:<br> - Categorical Emotion Recognition<br> - Emotion Attribute Prediction<br><br>Additionally, in the Valence Prediction subtask of Emotion Attribute Prediction, our submission achieved 2nd place overall, demonstrating the robustness and effectiveness of our approach for real-world speech emotion recognition.',
+        date: "2025-02-01",
+        image: ""
+      },
+      {
+        id: 2,
+        title: "2023년 대한전자공학회 하계학술대회 우수 학생 논문상 수상",
+        content: '2023년 대한전자공학회 하계학술대회에서, "알츠하이머 진단 및 중증도 예측을 위한 새로운 딥러닝 아키텍처 (HJ Jin, H Jung, L Jin, EY Kim)" 연구로 우수 학생 논문상을 수상하였습니다. 축하합니다 🎉<br><br>Our Congratulation!🎉 lab received the Best Student Paper Award at the 2023 Summer Conference of the Institute of Electronics and Information Engineers (IEIE) for our research on a novel deep learning architecture for Alzheimer’s disease detection and severity prediction.',
+        date: "2023-06-30",
+        image: ""
+      },
+      {
         id: 1,
         title: "🏆 1st Place at ICASSP 2023 ADReSS-M Challenge",
-        content: 'We are proud to share that our team won 1st place in both tasks at the prestigious ADReSS-M Grand Challenge, held at ICASSP 2023 — the flagship conference for signal processing research.<br>The ADReSS-M (Alzheimer’s Dementia Recognition through Spontaneous Speech – Multilingual) Challenge focuses on an urgent and impactful goal: automatic detection of Alzheimer’s Dementia (AD) using only speech signals, with an emphasis on cross-lingual generalization. Participants were required to train models on English speech data and evaluate them on unseen Greek speech, pushing the boundary of robust multilingual dementia screening.<br><br>Our winning solution, titled:<br>🎓 "Consen: Complementary and Simultaneous Ensemble for Alzheimer’s Disease Detection and MMSE Score Prediction (L Jin, Y Oh, H Kim, H Jung, HJ Jon, JE Shin, EY Kim)"<br>demonstrated the highest performance in:<br>- Task 1: Binary classification of Alzheimer’s vs. control subjects<br>- Task 2: Regression of MMSE (Mini-Mental State Examination) cognitive scores<br><br>Our method leveraged a novel ensemble learning strategy that combines multiple acoustic perspectives while remaining robust to cross-language variability. The results validate the potential of acoustic-only, multilingual AD detection and highlight our commitment to AI for healthcare.',
-        date: "2025-05-21",
+        content: 'We are proud to share that our team won 1st place in both tasks at the prestigious ADReSS-M Grand Challenge, held at ICASSP 2023 — the flagship conference for signal processing research.<br>The ADReSS-M (Alzheimer’s Dementia Recognition through Spontaneous Speech – Multilingual) Challenge focuses on an urgent and impactful goal: automatic detection of Alzheimer’s Dementia (AD) using only speech signals, with an emphasis on cross-lingual generalization. Participants were required to train models on English speech data and evaluate them on unseen Greek speech, pushing the boundary of robust multilingual dementia screening.<br><br>Our winning solution, titled:<br>🎓 "Consen: Complementary and Simultaneous Ensemble for Alzheimer’s Disease Detection and MMSE Score Prediction (L Jin, Y Oh, H Kim, H Jung, HJ Jon, JE Shin, EY Kim)"<br>demonstrated the highest performance in:<br>- Task 1: Binary classification of Alzheimer’s vs. control subjects<br>- Task 2: Regression of MMSE (Mini-Mental State Examination) cognitive scores<br><br>Our method leveraged a novel ensemble learning strategy that combines multiple acoustic perspectives while remaining robust to cross-language variability. The results validate the potential of acoustic-only, multilingual AD detection and highlight our commitment to AI for healthcare.<br><br>https://luzs.gitlab.io/madress-2023/ranking.html',
+        date: "2023-02-16",
         image: "news-images/icassp2023.png"
       }
     ];
@@ -1013,10 +1041,10 @@
         <div class="news-modal-date">${item.date}</div>
         ${imgHtml}
         <div class="news-modal-content">${item.content}</div>
-        <button onclick="document.getElementById('newsModal').style.display='none'">Close</button>
-      `;
+        `;
       modal.style.display = 'block';
     }
+        // <button onclick="document.getElementById('newsModal').style.display='none'">Close</button>
 	// 뉴스 불러오기(조회)
 	// function loadNews() {
 	// console.log("Loading news from:", NEWS_API_URL);
