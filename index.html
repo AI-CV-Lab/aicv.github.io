@@ -473,6 +473,23 @@
       font-size: 1.01em;
       color: #234;
     }
+    .interest-modal-title {
+      font-size: 1.28em;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 0.45em;
+    }
+    .interest-modal-subtitle {
+      font-size: 1.12em;
+      color: #333;
+      font-weight: 600;
+      margin-bottom: 0.88em;
+    }
+    .interest-modal-detail {
+      font-size: 1.07em;
+      color: #444;
+      line-height: 1.75;
+    }
 
     /* Publications */
     .pub-list { list-style: none; padding: 0; margin: 0; }
@@ -706,15 +723,15 @@
         <div class="interest-title">Affective Computing</div>
         <div class="interest-subtitle">Diagnosis and Monitoring of Emotional and Cognitive Impairment</div>
       </div>
-      <div class="interest-card" data-interest="affective">
+      <div class="interest-card" data-interest="multimodal">
         <div class="interest-title">Multimodal Fusion</div>
         <div class="interest-subtitle">Unified Framework for Fusing Multiple Modalities, including Speech, EEG, Visual, and Textual Data</div>
       </div>
-      <div class="interest-card" data-interest="affective">
+      <div class="interest-card" data-interest="deeplearning">
         <div class="interest-title">Advanced Deep Learning</div>
         <div class="interest-subtitle">Transformers, Prompt Distillation, Abnormality Detection & Diagnosis</div>
       </div>
-      <div class="interest-card" data-interest="affective">
+      <div class="interest-card" data-interest="hci">
         <div class="interest-title">HCI & UX Applications</div>
         <div class="interest-subtitle">Smart Cars, AIoT, and Robotics</div>
       </div>
@@ -722,7 +739,7 @@
     </div>
     
     <!-- Modal -->
-    <div id="interestModal" class="project-modal" style="display:none;">
+    <div id="interestModal" class="interest-modal" style="display:none;">
       <div class="interest-card">
         <span class="interest-card-close">&times;</span>
         <div id="interestModalContent">
@@ -3099,7 +3116,7 @@
   //     }
   //   });
   // });
-  // Research Block Details
+  // Research Block Details 
 const researchDetails = {
   affective: {
     title: "Affective Computing",
