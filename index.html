@@ -723,8 +723,8 @@
     
     <!-- Modal -->
     <div id="interestModal" class="project-modal" style="display:none;">
-      <div class="project-modal-content">
-        <span class="project-modal-close">&times;</span>
+      <div class="interest-card">
+        <span class="interest-card-close">&times;</span>
         <div id="interestModalContent">
           <!-- Details are injected here by JS -->
         </div>
@@ -3122,6 +3122,30 @@ const researchDetails = {
     detail: "We apply our multimodal AI research to smart vehicles, AIoT systems, and robotics, focusing on improved user experience, safety, and intelligent assistance."
   }
 };
+
+const interestModal = document.getElementById('interestModal');
+const interestModalContent = document.getElementById('interestModalContent');
+const interestModalClose = document.querySelector('.interest-card-close');
+
+// Close modal when clicking X or outside
+interestModalClose.onclick = function() {
+  interestModal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == interestModal) {
+    interestModal.style.display = "none";
+  }
+  if (event.target == memberModal) {
+    memberModal.style.display = "none";
+  }
+  if (event.target == newsModal) {
+    newsModal.style.display = "none";
+  }
+  if (event.target == projectModal) {
+    projectModal.style.display = "none";
+  }
+}
 
 document.querySelectorAll('.interest-card').forEach(card => {
   card.addEventListener('click', function() {
