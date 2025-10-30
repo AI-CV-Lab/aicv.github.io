@@ -427,53 +427,39 @@
       color: #7b1fa2;
     }
     .research-interests {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 28px;
-      margin-bottom: 2em;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-bottom: 2em;
     }
-    @media (max-width: 600px) {
-      .research-interests {
-        grid-template-columns: 1fr;
-      }
-    }
-    .interest-block {
-      flex: 1 1 42%;
-      min-width: 240px;
-      background: #f8fcfb;
-      border-left: 5px solid #17847b;
-      border-radius: 14px;
-      padding: 1.25em 1.3em;
+
+    .interest-card {
+      background: #fafbfc;
+      border-radius: 13px;
+      padding: 1.5em 1.2em 1.2em 1.2em;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.09), 0 1.5px 5px rgba(23,132,123,0.026);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
       cursor: pointer;
-      box-shadow: 0 1px 8px rgba(23,132,123,0.07);
-      transition: box-shadow 0.14s, transform 0.13s, border 0.16s;
-      margin-bottom: 0;
+      transition: box-shadow .14s, transform .13s, border .16s;
+      border: 1.5px solid #f1fcf8;
+      position: relative;
     }
-    .interest-block:hover, .interest-block:focus {
-      box-shadow: 0 4px 16px rgba(23,132,123,0.16);
-      transform: translateY(-2px) scale(1.025);
-      border-left: 7px solid #0e5f56;
-      outline: none;
+    .interest-card:hover, .interest-card:focus {
+      box-shadow: 0 4px 20px rgba(23,132,123,0.14);
+      transform: translateY(-2px) scale(1.017);
+      border: 1.5px solid #17847b;
     }
-    .interest-block > div:first-child {
-      font-weight: 670;
-      font-size: 1.16em;
+    .interest-card .interest-title {
+      font-size: 1.13em;
+      font-weight: 620;
       color: #17847b;
       margin-bottom: 2px;
     }
-    .interest-block > div:last-child {
-      font-size: 1em;
-      color: #375;
-    }
-    .interest-details {
-      margin-top: 0.95em;
-      font-size: 0.99em;
+    .interest-card .interest-subtitle {
+      font-size: 1.01em;
       color: #234;
-      background: #ecf8f5;
-      border-radius: 7px;
-      padding: 0.8em 1em;
-      border-left: 3px solid #17847b;
-      box-shadow: 0 1px 3px rgba(23,132,123,0.04);
     }
 
     /* Publications */
@@ -699,7 +685,24 @@
     <div style="font-size:1.12em; margin-top: 1em;">
       We develop human-centered, multimodal intelligence to interpret and diagnose complex behaviors and cognitive states by analyzing visual, auditory, and physiological signals.
     </div>
-    <div id="research-interests" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; margin-bottom:2em;">
+    <div class="research-interests">
+      <div class="interest-card" data-interest="affective">
+        <div class="interest-title">Affective Computing</div>
+        <div class="interest-subtitle">Diagnosis and Monitoring of Emotional and Cognitive Impairment</div>
+      </div>
+      <!-- Repeat for other blocks -->
+    </div>
+    
+    <!-- Modal -->
+    <div id="interestModal" class="project-modal" style="display:none;">
+      <div class="project-modal-content">
+        <span class="project-modal-close">&times;</span>
+        <div id="interestModalContent">
+          <!-- Details are injected here by JS -->
+        </div>
+      </div>
+    </div>
+    <!-- <div id="research-interests" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; margin-bottom:2em;">
       <div class="interest-block" data-interest="affective" style="flex: 1 1 42%; min-width: 240px; background: #f7fafd; border-left: 5px solid #1976d2; border-radius: 12px; padding: 1.2em 1.3em; cursor:pointer; box-shadow:0 1px 8px rgba(25,118,210,0.05); transition: box-shadow 0.13s;">
         <div style="font-weight: 670; font-size:1.18em; color:#154b8a">Affective Computing</div>
         <div style="font-size:1em; color:#375">Diagnosis and Monitoring of Emotional and Cognitive Impairment</div>
@@ -731,7 +734,7 @@
           <strong>Details:</strong> <br/>
           Detailed Explanation of HCI & UX Applications...
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 
@@ -1031,10 +1034,17 @@
     const newsData = [
       {
         id: 6,
+        title: "1st Rank on the Open Benchmark for Speech Emotion Recognition in Naturalistic Conditions",
+        content: "*Team 'Konkuk_AICV' <br><br> We are delighted to announce that our speech processing team has achieved first place on the open benchmark for speech emotion recognition in naturalistic conditions. Our method outperforms previous state-of-the-art approaches by a large margin, reflecting our lab’s continued commitment to advancing emotion recognition in real-world settings and bridging the gap between controlled laboratory conditions and authentic human experiences. This work will soon be submitted for publication.",
+        date: "2025-10-20",
+        image: ""
+      },
+      {
+        id: 6,
         title: "Two Papers Accepted at INTERSPEECH 2025",
         content: "We are thrilled to announce that two papers from our lab have been accepted for presentation at INTERSPEECH 2025, one of the world’s premier conferences in speech and language processing.<br>These works reflect our lab’s continued efforts to advance emotion recognition and clinical speech analysis through cutting-edge AI methodologies.<br><br>📌 1. Contrastive Learning-based Syllable-Level Mispronunciation Detection and Diagnosis for Speech Audiometry (L Jin, D Min, JE Shin, EY Kim)<br><br>📌 2. MATER: Multi-level Acoustic and Textual Emotion Representation for Interpretable Speech Emotion Recognition (HJ Jon, L Jin, H Jung, H Kim, D Min, EY Kim)",
         date: "2025-05-21",
-        image: ""
+        image: "news-images/msp-podcast_benchmark2025.png"
       },
       {
         id: 5,
@@ -1052,10 +1062,10 @@
       },
       {
         id: 3,
-        title: "High Rank in Speech Emotion Recognition in Naturalistic Conditions Challenge at INTERSPEECH",
+        title: "High Rank on Speech Emotion Recognition in Naturalistic Conditions Challenge at INTERSPEECH",
         content: 'Our lab achieved outstanding results in the Speech Emotion Recognition in Naturalistic Conditions Challenge, held at INTERSPEECH, the world’s leading conference in the field of speech processing.<br><br>Out of 98 participating teams, we ranked 4th place in both competition tasks:<br> - Categorical Emotion Recognition<br> - Emotion Attribute Prediction<br><br>Additionally, in the Valence Prediction subtask of Emotion Attribute Prediction, our submission achieved 2nd place overall, demonstrating the robustness and effectiveness of our approach for real-world speech emotion recognition.',
         date: "2025-02-01",
-        image: ""
+        image: "news-images/interspeech2025.png"
       },
       {
         id: 2,
@@ -3039,22 +3049,67 @@
     
 
     // Add CSS for .news-thumb, .news-card, .news-modal-image, etc. if not present
-    document.querySelectorAll('.interest-block').forEach(block => {
-    block.addEventListener('click', function() {
-      const details = this.querySelector('.interest-details');
-      if (details) {
-        details.style.display = details.style.display === 'block' ? 'none' : 'block';
-      }
-    });
-    block.addEventListener('keypress', function(e) {
-      if (e.key === 'Enter' || e.key === ' ') {
-        const details = this.querySelector('.interest-details');
-        if (details) {
-          details.style.display = details.style.display === 'block' ? 'none' : 'block';
-        }
-      }
-    });
+  //   document.querySelectorAll('.interest-block').forEach(block => {
+  //   block.addEventListener('click', function() {
+  //     const details = this.querySelector('.interest-details');
+  //     if (details) {
+  //       details.style.display = details.style.display === 'block' ? 'none' : 'block';
+  //     }
+  //   });
+  //   block.addEventListener('keypress', function(e) {
+  //     if (e.key === 'Enter' || e.key === ' ') {
+  //       const details = this.querySelector('.interest-details');
+  //       if (details) {
+  //         details.style.display = details.style.display === 'block' ? 'none' : 'block';
+  //       }
+  //     }
+  //   });
+  // });
+  // Research Block Details
+const researchDetails = {
+  affective: {
+    title: "Affective Computing",
+    subtitle: "Diagnosis and Monitoring of Emotional and Cognitive Impairment",
+    detail: "We research advanced methods for recognizing and monitoring emotional and cognitive states based on multimodal data for applications in healthcare, mental wellness, and support for cognitive disorders."
+  },
+  multimodal: {
+    title: "Multimodal Fusion",
+    subtitle: "Unified Framework for Fusing Multiple Modalities, including Speech, EEG, Visual, and Textual Data",
+    detail: "We develop unified AI models that integrate information from speech, EEG, visual, and text data, enabling robust interpretation of human behavior and mental states in diverse real-world environments."
+  },
+  deeplearning: {
+    title: "Advanced Deep Learning",
+    subtitle: "Transformers, Prompt Distillation, Abnormality Detection & Diagnosis",
+    detail: "We explore state-of-the-art deep learning techniques like transformers, prompt learning, and anomaly detection for reliable and scalable behavior and health analytics."
+  },
+  hci: {
+    title: "HCI & UX Applications",
+    subtitle: "Smart Cars, AIoT, and Robotics",
+    detail: "We apply our multimodal AI research to smart vehicles, AIoT systems, and robotics, focusing on improved user experience, safety, and intelligent assistance."
+  }
+};
+
+document.querySelectorAll('.interest-card').forEach(card => {
+  card.addEventListener('click', function() {
+    const key = card.getAttribute('data-interest');
+    const info = researchDetails[key];
+    if (info) {
+      document.getElementById('interestModalContent').innerHTML = `
+        <h2>${info.title}</h2>
+        <div style="color:#17847b; font-weight:500; margin-bottom:0.5em;">${info.subtitle}</div>
+        <div>${info.detail}</div>
+      `;
+      document.getElementById('interestModal').style.display = 'block';
+    }
   });
+});
+document.querySelector('.project-modal-close').onclick = function() {
+  document.getElementById('interestModal').style.display = 'none';
+};
+window.onclick = function(event) {
+  const modal = document.getElementById('interestModal');
+  if (event.target == modal) modal.style.display = "none";
+};
   </script>
 </body>
 </html>
