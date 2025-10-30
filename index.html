@@ -113,7 +113,7 @@
       margin: 3% auto;
       padding: 30px;
       border-radius: 12px;
-      width: 85%;
+      width: 96%;
       max-width: 800px;
       max-height: 90vh;
       overflow-y: auto;
@@ -426,6 +426,55 @@
       background: #f3e5f5;
       color: #7b1fa2;
     }
+    .research-interests {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      margin-bottom: 2em;
+    }
+    @media (max-width: 600px) {
+      .research-interests {
+        grid-template-columns: 1fr;
+      }
+    }
+    .interest-block {
+      flex: 1 1 42%;
+      min-width: 240px;
+      background: #f8fcfb;
+      border-left: 5px solid #17847b;
+      border-radius: 14px;
+      padding: 1.25em 1.3em;
+      cursor: pointer;
+      box-shadow: 0 1px 8px rgba(23,132,123,0.07);
+      transition: box-shadow 0.14s, transform 0.13s, border 0.16s;
+      margin-bottom: 0;
+    }
+    .interest-block:hover, .interest-block:focus {
+      box-shadow: 0 4px 16px rgba(23,132,123,0.16);
+      transform: translateY(-2px) scale(1.025);
+      border-left: 7px solid #0e5f56;
+      outline: none;
+    }
+    .interest-block > div:first-child {
+      font-weight: 670;
+      font-size: 1.16em;
+      color: #17847b;
+      margin-bottom: 2px;
+    }
+    .interest-block > div:last-child {
+      font-size: 1em;
+      color: #375;
+    }
+    .interest-details {
+      margin-top: 0.95em;
+      font-size: 0.99em;
+      color: #234;
+      background: #ecf8f5;
+      border-radius: 7px;
+      padding: 0.8em 1em;
+      border-left: 3px solid #17847b;
+      box-shadow: 0 1px 3px rgba(23,132,123,0.04);
+    }
 
     /* Publications */
     .pub-list { list-style: none; padding: 0; margin: 0; }
@@ -623,7 +672,7 @@
 	<img src="images/단체사진.jpg" alt="Lab Main Visual" class="home-main-image", style="width:100%; height:440px; object-fit:cover; border-radius:18px;">
     <div class="lab-title">Artificial Intelligence & Computer Vision Lab.</div>
     <div class="lab-slogan">Konkuk University, Korea</div>
-    <div class="lab-description-en">
+    <!-- <div class="lab-description-en">
       At the AI & Computer Vision Lab (AI&CV Lab) at Konkuk University, we explore how artificial intelligence can understand and interact with the world across multiple modalities (speech, vision, and biosignals) to solve real-world problems.<br>
       <br>
       Led by Professor Eun Yi Kim, our lab brings together passionate researchers working at the intersection of deep learning, multimodal fusion, and human-centered AI. We focus on creating robust, interpretable, and scalable AI systems that thrive in challenging environments—where data may be noisy, missing, or ambiguous.<br>
@@ -643,6 +692,46 @@
       <b>Location:</b> Room 1005, New Engineering Bldg, 120 Neungdong-ro, Gwangjin-gu, Seoul 05029, Korea<br>
       <b>Email:</b> eykim@konkuk.ac.kr<br>
       <b>Contact:</b> +82-2-450-4135
+    </div> -->
+    <div style="font-size:1.42em; font-weight:600; color:#17847b; margin-bottom: 0.5em; border-left: 5px solid #17847b; padding-left:1em; background:#f8fcfb; border-radius:10px 0 0 10px; letter-spacing:-0.5px;">
+      “AI that sees, listens, and understands the world for human well-being.”
+    </div>
+    <div style="font-size:1.12em; margin-top: 1em;">
+      We develop human-centered, multimodal intelligence to interpret and diagnose complex behaviors and cognitive states by analyzing visual, auditory, and physiological signals.
+    </div>
+    <div id="research-interests" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; margin-bottom:2em;">
+      <div class="interest-block" data-interest="affective" style="flex: 1 1 42%; min-width: 240px; background: #f7fafd; border-left: 5px solid #1976d2; border-radius: 12px; padding: 1.2em 1.3em; cursor:pointer; box-shadow:0 1px 8px rgba(25,118,210,0.05); transition: box-shadow 0.13s;">
+        <div style="font-weight: 670; font-size:1.18em; color:#154b8a">Affective Computing</div>
+        <div style="font-size:1em; color:#375">Diagnosis and Monitoring of Emotional and Cognitive Impairment</div>
+        <div class="interest-details" style="display:none;">
+          <strong>Details:</strong> <br/>
+          Detailed Explanation of Affective Computing...
+        </div>
+      </div>
+      <div class="interest-block" data-interest="multimodal" style="flex: 1 1 42%; min-width: 240px; background: #f7fafd; border-left: 5px solid #388e3c; border-radius: 12px; padding: 1.2em 1.3em; cursor:pointer; box-shadow:0 1px 8px rgba(56,142,60,0.08); transition: box-shadow 0.13s;">
+        <div style="font-weight: 670; font-size:1.18em; color:#216d3b">Multimodal Fusion</div>
+        <div style="font-size:1em; color:#264">Unified Analysis of Speech, EEG, Visual, and Textual Data</div>
+        <div class="interest-details" style="display:none;">
+          <strong>Details:</strong> <br/>
+          Detailed Explanation of Multimodal Fusion...
+        </div>
+      </div>
+      <div class="interest-block" data-interest="deeplearning" style="flex: 1 1 42%; min-width: 240px; background: #f7fafd; border-left: 5px solid #f57c00; border-radius: 12px; padding: 1.2em 1.3em; cursor:pointer; box-shadow:0 1px 8px rgba(245,124,0,0.08); transition: box-shadow 0.13s;">
+        <div style="font-weight: 670; font-size:1.18em; color:#a35807">Advanced Deep Learning</div>
+        <div style="font-size:1em; color:#864a1a">Transformers, Prompt Distillation, Abnormality Detection & Diagnosis</div>
+        <div class="interest-details" style="display:none;">
+          <strong>Details:</strong> <br/>
+          Detailed Explanation of Advanced Deep Learning...
+        </div>
+      </div>
+      <div class="interest-block" data-interest="hci" style="flex: 1 1 42%; min-width: 240px; background: #f7fafd; border-left: 5px solid #0097a7; border-radius: 12px; padding: 1.2em 1.3em; cursor:pointer; box-shadow:0 1px 8px rgba(0,151,167,0.08); transition: box-shadow 0.13s;">
+        <div style="font-weight: 670; font-size:1.18em; color:#007d80">HCI & UX Applications</div>
+        <div style="font-size:1em; color:#075559">Smart Cars, AIoT, and Robotics</div>
+        <div class="interest-details" style="display:none;">
+          <strong>Details:</strong> <br/>
+          Detailed Explanation of HCI & UX Applications...
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1535,7 +1624,10 @@
           "KSC 2020 학부생부문 장려상 "
         ],
         publications: [
-          "EV-CLIP: Efficient Visual Prompt Adaptation for CLIP in Few-Shot Action Recognition under Visual Challenges (Pattern Recognition; Submitted)",
+          "MATER+: Hierchical Multi-modal Representation for Speech Emotion Recognition under Naturalistic Conditions (In Progress)",
+          "Efficient Depression Detection from Speech via Language-Independent Prompt-Driven Reprogramming (ICASSP 2026; Under Review)",
+          "EV-CLIP: Efficient Visual Prompt Adaptation for CLIP in Few-Shot Action Recognition under Visual Challenges (PeerJ Computer Science; Under Review)",
+          "A Chorus of Whispers: Modeling Speech Intelligibility via Heterogeneous Whisper Decomposition (INTERSPEECH 2025 Workshop)",
           "Contrastive Learning-based Syllable-Level Mispronunciation Detection and Diagnosis for Speech Audiometry (INTERSPEECH 2025)",
           "MATER: Multi-level Acoustic and Textual Emotion Representation for Interpretable Speech Emotion Recognition (INTERSPEECH 2025)",
           "Audio Prompt Driven Reprogramming for Diagnosing Major Depressive Disorder (Pattern Recognition Letters; Under Review)",
@@ -1612,7 +1704,10 @@
           "2023 대한전자공학회 하계학술대회 우수학생논문상"
         ],
         publications: [
-          "EV-CLIP: Efficient Visual Prompt Adaptation for CLIP in Few-Shot Action Recognition under Visual Challenges (Pattern Recognition; Submitted)",
+          "MATER+: Hierchical Multi-modal Representation for Speech Emotion Recognition under Naturalistic Conditions (In Progress)",
+          "Discovering Prosodic and Spectral Patterns in Spontaneous Speech for Alcohol Intoxication Detection (ICASSP 2026; Under Review)",
+          "EV-CLIP: Efficient Visual Prompt Adaptation for CLIP in Few-Shot Action Recognition under Visual Challenges (PeerJ Computer Science; Under Review)",
+          "자연 발화 환경에서의 통합 표현 융합 기반 음성 감정 인식 프레임워크 (한국통신학회 2025 한국 인공지능 학술대회)",
           "MATER: Multi-level Acoustic and Textual Emotion Representation for Interpretable Speech Emotion Recognition (INTERSPEECH 2025)",
           "Watermark and Trademark Prompts Boost Video Action Recognition in Visual-Language Models (Mathematics)",
           "음악 소리에 대한 반응으로부터 감정을 인식하기 위한 뇌파 기반 감정인식 프레임워크 (HCI Korea 2025)",
@@ -1648,7 +1743,8 @@
           "2023 대한전자공학회 하계학술대회 우수학생논문상"
         ],
         publications: [
-          "Enhancing Multivariate Time Series Anomaly Detection with 2D Spatial Representations and Channel Attention (IEEE Signal Processing Letters; Under Review)", 
+          "Beyond the Window: Region-Based Anomaly Localization Network for Time Series Anomaly Detection (ICASSP 2026; Under Review)",
+          "Enhancing Multivariate Time Series Anomaly Detection with 2D Spatial Representations and Channel Attention (IEEE Signal Processing Letters)", 
           "MATER: Multi-level Acoustic and Textual Emotion Representation for Interpretable Speech Emotion Recognition (INTERSPEECH 2025)",
           "GazeMap: Dual-Pathway CNN Approach for Diagnosing Alzheimer’s Disease from Gaze and Head Movements (Mathematics)",
           "Watermark and Trademark Prompts Boost Video Action Recognition in Visual-Language Models (Mathematics)",
@@ -1685,7 +1781,10 @@
           "2023 KU SW경진대회 심사위원특별상",
         ],
         publications: [
-          "PEARL: Prompt-based EEG Adaptation via Resource-efficient Learning (IEEE Transactions on Biomedical Engineering; Submitted)",
+          "Prompt-Based EEG Adaptation: Scalable and Resource-Efficient Transfer Learning (Neuroscience; In Progress)",
+          "Efficient Depression Detection from Speech via Language-Independent Prompt-Driven Reprogramming (ICASSP 2026; Under Review)",
+          "PEARL: Prompt-Based EEG Adaptation via Resource-Efficient Learning for Generalizable Brain-Computer Interface (ICASSP 2026; Under Review)",
+          // "PEARL: Prompt-based EEG Adaptation via Resource-efficient Learning (IEEE Transactions on Biomedical Engineering; Submitted)",
           "MATER: Multi-level Acoustic and Textual Emotion Representation for Interpretable Speech Emotion Recognition (INTERSPEECH 2025)",
           "Audio Prompt Driven Reprogramming for Diagnosing Major Depressive Disorder (Pattern Recognition Letters; Under Review)",
           "음악 소리에 대한 반응으로부터 감정을 인식하기 위한 뇌파 기반 감정인식 프레임워크 (HCI Korea 2025)",
@@ -1716,7 +1815,9 @@
         admissionDate: "2024-03",
         awards: [],
         publications: [
-          "PEARL: Prompt-based EEG Adaptation via Resource-efficient Learning (IEEE Transactions on Biomedical Engineering; Submitted)",
+          "Prompt-Based EEG Adaptation: Scalable and Resource-Efficient Transfer Learning (Neuroscience; In Progress)",
+          "PEARL: Prompt-Based EEG Adaptation via Resource-Efficient Learning for Generalizable Brain-Computer Interface (ICASSP 2026; Under Review)",
+          // "PEARL: Prompt-based EEG Adaptation via Resource-efficient Learning (IEEE Transactions on Biomedical Engineering; Submitted)",
           "음악 소리에 대한 반응으로부터 감정을 인식하기 위한 뇌파 기반 감정인식 프레임워크 (HCI Korea 2025)",
         ],
         projects: [
@@ -1741,7 +1842,8 @@
           "HCI Korea 2025 Best Paper Award", 
         ],
         publications: [
-          "Enhancing Multivariate Time Series Anomaly Detection with 2D Spatial Representations and Channel Attention (IEEE Signal Processing Letters; Under Review)", 
+          "Beyond the Window: Region-Based Anomaly Localization Network for Time Series Anomaly Detection (ICASSP 2026; Under Review)",
+          "Enhancing Multivariate Time Series Anomaly Detection with 2D Spatial Representations and Channel Attention (IEEE Signal Processing Letters)", 
           "GazeMap: Dual-Pathway CNN Approach for Diagnosing Alzheimer’s Disease from Gaze and Head Movements (Mathematics)",
           "Two-stream에서의 사용자의 얼굴 특징 추적 기반의 치매 조기 진단 시스템 개발 (HCI Korea 2025)",
         ],
@@ -1764,6 +1866,7 @@
         admissionDate: "2025-09",
         awards: [],
         publications: [
+          "A Chorus of Whispers: Modeling Speech Intelligibility via Heterogeneous Whisper Decomposition (INTERSPEECH 2025 Workshop)",
           "Contrastive Learning-based Syllable-Level Mispronunciation Detection and Diagnosis for Speech Audiometry (INTERSPEECH 2025)",
           "MATER: Multi-level Acoustic and Textual Emotion Representation for Interpretable Speech Emotion Recognition (INTERSPEECH 2025)",
           "Detecting Hearing Impairment through Localizing Abnormal Speech Patterns (IEEE Signal Processing Letters)",
@@ -1788,7 +1891,11 @@
         ],
         admissionDate: "2025-09",
         awards: [],
-        publications: [],
+        publications: [
+          "MATER+: Hierchical Multi-modal Representation for Speech Emotion Recognition under Naturalistic Conditions (In Progress)",
+          "Discovering Prosodic and Spectral Patterns in Spontaneous Speech for Alcohol Intoxication Detection (ICASSP 2026; Under Review)",
+          "자연 발화 환경에서의 통합 표현 융합 기반 음성 감정 인식 프레임워크 (한국통신학회 2025 한국 인공지능 학술대회)"
+        ],
         projects: [
           "Speech Emotion Recognition using Deep Learning"
         ]
@@ -1909,9 +2016,49 @@
     // ----- Publications: 예시 데이터 -----
     const pubData = [
     {
-        title: "PEARL: Prompt-based EEG Adaptation via Resource-efficient Learning",
+        title: "Prompt-Based EEG Adaptation: Scalable and Resource-Efficient Transfer Learning",
         authors: "H Kim, H Choi, EY Kim",
-        venue: "IEEE Transactions on Biomedical Engineering; Submitted",
+        venue: "Neuroscience; In Progress",
+        type:"Journal",
+        date: 2025,
+        link: ""
+      },
+    {
+        title: "PEARL: Prompt-Based EEG Adaptation via Resource-Efficient Learning for Generalizable Brain-Computer Interface",
+        authors: "H Kim, H Choi, EY Kim",
+        venue: "ICASSP 2026; Under Review",
+        type:"Conference",
+        date: 2025,
+        link: ""
+      },
+    {
+        title: "Efficient Depression Detection from Speech via Language-Independent Prompt-Driven Reprogramming",
+        authors: "H Kim, L Jin, EY Kim",
+        venue: "ICASSP 2026; Under Review",
+        type:"Conference",
+        date: 2025,
+        link: ""
+      },
+    {
+        title: "Beyond the Window: Region-Based Anomaly Localization Network for Time Series Anomaly Detection",
+        authors: "S Ham, H Jung, EY Kim",
+        venue: "ICASSP 2026; Under Review",
+        type:"Conference",
+        date: 2025,
+        link: ""
+      },
+    {
+        title: "Discovering Prosodic and Spectral Patterns in Spontaneous Speech for Alcohol Intoxication Detection",
+        authors: "HJ Jon, J Jeon, EY Kim",
+        venue: "ICASSP 2026; Under Review",
+        type:"Conference",
+        date: 2025,
+        link: ""
+      },
+      {
+        title: "EV-CLIP: Efficient Visual Prompt Adaptation for CLIP in Few-Shot Action Recognition under Visual Challenges",
+        authors: "HJ Jon, L Jin, EY Kim",
+        venue: "PeerJ Computer Science; Submitted",
 		type:"Journal",
 		date: 2025,
         link: ""
@@ -1919,23 +2066,23 @@
     {
         title: "Enhancing Multivariate Time Series Anomaly Detection with 2D Spatial Representations and Channel Attention",
         authors: "S Ham, H Jung, EY Kim",
-        venue: "IEEE Signal Processing Letters; Under Review",
+        venue: "IEEE Signal Processing Letters",
 		type:"Journal",
 		date: 2025,
         link: ""
       },
     {
-        title: "EV-CLIP: Efficient Visual Prompt Adaptation for CLIP in Few-Shot Action Recognition under Visual Challenges",
-        authors: "HJ Jon, L Jin, EY Kim",
-        venue: "Pattern Recognition; Submitted",
-		type:"Journal",
+        title: "A Chorus of Whispers: Modeling Speech Intelligibility via Heterogeneous Whisper Decomposition",
+        authors: "L Jin, D Min, EY Kim",
+        venue: "INTERSPEECH 2025 - The 6th Clarity Workshop on Improving Speech-in-Noise for Hearing Devices",
+		type:"Conference",
 		date: 2025,
         link: ""
       },
 	  {
         title: "Contrastive Learning-based Syllable-Level Mispronunciation Detection and Diagnosis for Speech Audiometry",
         authors: "L Jin, D Min, JE Shin, EY Kim",
-        venue: "INTERSPEECH 2025; Accepted",
+        venue: "INTERSPEECH 2025",
 		type:"Conference",
 		date: 2025,
         link: ""
@@ -1943,7 +2090,7 @@
 	  {
         title: "MATER: Multi-level Acoustic and Textual Emotion Representation for Interpretable Speech Emotion Recognition",
         authors: "HJ Jon, L Jin, H Jung, H Kim, D Min, EY Kim",
-        venue: "INTERSPEECH 2025; Accepted",
+        venue: "INTERSPEECH 2025",
 		type:"Conference",
 		date: 2025,
         link: ""
@@ -2892,6 +3039,22 @@
     
 
     // Add CSS for .news-thumb, .news-card, .news-modal-image, etc. if not present
+    document.querySelectorAll('.interest-block').forEach(block => {
+    block.addEventListener('click', function() {
+      const details = this.querySelector('.interest-details');
+      if (details) {
+        details.style.display = details.style.display === 'block' ? 'none' : 'block';
+      }
+    });
+    block.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        const details = this.querySelector('.interest-details');
+        if (details) {
+          details.style.display = details.style.display === 'block' ? 'none' : 'block';
+        }
+      }
+    });
+  });
   </script>
 </body>
 </html>
