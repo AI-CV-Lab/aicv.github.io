@@ -934,9 +934,9 @@
     </div>
     <div class="section-title">Alumni</div>
     <ul class="alumni-list">
-	  <li>Longbin Jin</li>
-	  <li>Oug Hyen Cheong</li>
-      <li>Jaeyoung Chang</li>
+	  <li>Longbin Jin (2025) - AI Project Manager at CITECH</li>
+	  <li>Oug Hyen Cheong (2024)</li>
+      <li>Jaeyoung Chang (2023)</li>
       <li>Chenghuan Zheng</li>
       <li>Jinxi Li</li>
       <li>Yaohui Yu</li>
@@ -986,101 +986,7 @@
       containers[tab.dataset.tab].classList.remove('hidden');
     }));
 
-    // ----- News: 관리자 기능 -----
-	// const NEWS_API_URL = "https://script.google.com/macros/s/AKfycbxdfLycEaXnm91mGMyWQ6-F2iwXO4l-WqPwTNGTFLAyppgnrPxfDc4oBD3w1yUIMuvbBA/exec";
-    // Admin authentication (password is hashed for security)
-    // const ADMIN_PASS_HASH = "DC90C09E98F7B5C3D97F52FE1379689A978FE0EB71CF2E34E91F01B6688D208E";
-    // let isAdmin = false;
-    // const adminLoginBtn = document.getElementById('adminLoginBtn');
-    // const adminLogoutBtn = document.getElementById('adminLogoutBtn');
-    // const newsForm = document.getElementById('newsForm');
-    // const newsList = document.getElementById('newsList');
-    // let cachedNews = [];
 
-  //   function updateAdminUI() {
-	// 	if (isAdmin) {
-	// 		newsForm.style.display = "";
-	// 		Array.from(document.getElementsByClassName('news-item-remove')).forEach(btn => btn.style.display = '');
-	// 		adminLoginBtn.style.display = "none";
-	// 		adminLogoutBtn.style.display = "";
-	// 	} else {
-	// 		newsForm.style.display = "none";
-	// 		Array.from(document.getElementsByClassName('news-item-remove')).forEach(btn => btn.style.display = 'none');
-	// 		adminLoginBtn.style.display = "";
-	// 		adminLogoutBtn.style.display = "none";
-	// 	}
-	// }
-
-  //   // Secure password verification function
-  //   async function verifyPassword(inputPassword) {
-  //     const encoder = new TextEncoder();
-  //     const data = encoder.encode(inputPassword);
-  //     const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-  //     const hashArray = Array.from(new Uint8Array(hashBuffer));
-  //     const hashedInput = hashArray.map(b => b.toString(16).padStart(2, '0')).join('').toUpperCase();
-  //     return hashedInput === ADMIN_PASS_HASH;
-  //   }
-
-  //   adminLoginBtn.onclick = async function() {
-  //     const pass = prompt("관리자 비밀번호를 입력하세요:");
-  //     if (pass !== null) {
-  //       const isValid = await verifyPassword(pass);
-  //       if (isValid) {
-  //         isAdmin = true;
-  //         updateAdminUI();
-  //         console.log("Admin login successful");
-  //       } else {
-  //         alert("비밀번호가 틀렸습니다.");
-  //         console.log("Admin login failed");
-  //       }
-  //     }
-  //   };
-  //   adminLogoutBtn.onclick = function() {
-  //     isAdmin = false;
-  //     updateAdminUI();
-  //   };
-
-    // News (편집 권한 연동)
-    // function loadNews() {
-    //   const news = JSON.parse(localStorage.getItem('milab_news') || '[]');
-    //   newsList.innerHTML = '';
-    //   news.forEach((item, idx) => {
-    //     const li = document.createElement('li');
-    //     li.className = 'news-item';
-    //     li.innerHTML = `
-    //       <div style="flex:1;">
-    //         <div class="news-item-title">${item.title}</div>
-    //         <div class="news-item-date">${item.date}</div>
-    //         <div class="news-item-content">${item.content}</div>
-    //       </div>
-    //       <button class="news-item-remove" title="Delete" onclick="removeNews(${idx})" style="display:none;">✕</button>
-    //     `;
-    //     newsList.appendChild(li);
-    //   });
-    //   updateAdminUI();
-    // }
-    // function saveNews(news) {
-    //   localStorage.setItem('milab_news', JSON.stringify(news));
-    //   loadNews();
-    // }
-    // newsForm.addEventListener('submit', function(e){
-    //   e.preventDefault();
-    //   const title = document.getElementById('newsTitle').value.trim();
-    //   const content = document.getElementById('newsContent').value.trim();
-    //   if (!title || !content) return;
-    //   const news = JSON.parse(localStorage.getItem('milab_news') || '[]');
-    //   const date = new Date().toLocaleDateString('en-CA', {year:'numeric',month:'2-digit',day:'2-digit'});
-    //   news.unshift({title, content, date});
-    //   saveNews(news);
-    //   this.reset();
-    // });
-    // window.removeNews = function(idx) {
-    //   if (!isAdmin) return;
-    //   const news = JSON.parse(localStorage.getItem('milab_news') || '[]');
-    //   news.splice(idx, 1);
-    //   saveNews(news);
-    // }
-    // 최초 로드
   
     const newsData = [
       {
@@ -1136,25 +1042,6 @@
 
     // Sort newsData by date descending before rendering
     const sortedNewsData = newsData.slice().sort((a, b) => new Date(b.date) - new Date(a.date));
-
-    // function loadNews() {
-    //   const news = JSON.parse(localStorage.getItem('milab_news') || '[]');
-    //   newsList.innerHTML = '';
-    //   news.forEach((item, idx) => {
-    //     const li = document.createElement('li');
-    //     li.className = 'news-item';
-    //     li.innerHTML = `
-    //       <div style="flex:1;">
-    //         <div class="news-item-title">${item.title}</div>
-    //         <div class="news-item-date">${item.date}</div>
-    //         <div class="news-item-content">${item.content}</div>
-    //       </div>
-    //       <button class="news-item-remove" title="Delete" onclick="removeNews(${idx})" style="display:none;">✕</button>
-    //     `;
-    //     newsList.appendChild(li);
-    //   });
-    //   updateAdminUI();
-    // }
     const newsList = document.getElementById('newsList');
 
     function loadNews() {
@@ -1195,102 +1082,7 @@
         `;
       modal.style.display = 'block';
     }
-        // <button onclick="document.getElementById('newsModal').style.display='none'">Close</button>
-	// 뉴스 불러오기(조회)
-	// function loadNews() {
-	// console.log("Loading news from:", NEWS_API_URL);
-	// fetch(NEWS_API_URL)
-	// 	.then(res => {
-	// 		console.log("Load news response status:", res.status);
-	// 		if (!res.ok) {
-	// 			throw new Error(`HTTP error! status: ${res.status}`);
-	// 		}
-	// 		return res.json();
-	// 	})
-	// 	.then(news => {
-	// 		console.log("Loaded news:", news);
-	// 		// Debug: Check each news item for image data
-	// 		news.forEach((item, index) => {
-	// 			console.log(`News ${index}:`, {
-	// 				title: item.title,
-	// 				content: item.content,
-	// 				date: item.date,
-	// 				image: item.image,
-	// 				hasImage: item.image && item.image.trim() !== ''
-	// 			});
-	// 		});
-	// 		cachedNews = news; // cache the news
-	// 	newsList.innerHTML = '';
-	// 	news.forEach((item, idx) => {
-	// 		const li = document.createElement('li');
-	// 		li.className = 'news-item';
-			
-	// 		// Create thumbnail if image exists
-	// 		const thumbnail = item.image ? `<img src="${item.image}" alt="News thumbnail" class="news-item-thumbnail">` : '';
-			
-	// 		// Format date from ISO string to "YYYY-MM-DD HH:mm" format
-	// 		const formatDate = (dateString) => {
-	// 			const date = new Date(dateString);
-	// 			const year = date.getFullYear();
-	// 			const month = String(date.getMonth() + 1).padStart(2, '0');
-	// 			const day = String(date.getDate()).padStart(2, '0');
-	// 			const hours = String(date.getHours()).padStart(2, '0');
-	// 			const minutes = String(date.getMinutes()).padStart(2, '0');
-	// 			return `${year}-${month}-${day} ${hours}:${minutes}`;
-	// 		};
-			
-	// 		// Create content preview (first 100 characters)
-	// 		const contentPreview = item.content.length > 100 ? 
-	// 			item.content.substring(0, 100) + '...' : item.content;
-			
-	// 		li.innerHTML = `
-	// 		<div style="flex:1;">
-	// 			<div class="news-item-title">${item.title}</div>
-	// 			<div class="news-item-date">${formatDate(item.date)}</div>
-	// 			<div class="news-item-content-preview">${contentPreview}</div>
-	// 			<button class="read-more-btn" onclick="showNewsDetail(${idx})">Read More</button>
-	// 		</div>
-	// 		${thumbnail}
-	// 		`;
-			
-	// 		// Store full news data for modal
-	// 		li.dataset.newsIndex = idx;
-	// 		newsList.appendChild(li);
-	// 	});
-	// 	updateAdminUI();
-	// 	})
-	// 	.catch(error => {
-	// 		console.error("Error loading news:", error);
-	// 		console.error("Error details:", error.message);
-	// 		alert("Error loading news. Please check your Google Apps Script setup.");
-	// 	});
-	// }
-
-	// Photo upload functionality
-	// const newsPhotoInput = document.getElementById('newsPhoto');
-	// const photoPreview = document.getElementById('photoPreview');
-	// const previewImage = document.getElementById('previewImage');
-	// const removePhotoBtn = document.getElementById('removePhoto');
-	// let selectedPhoto = null;
-
-	// newsPhotoInput.addEventListener('change', function(e) {
-	// 	const file = e.target.files[0];
-	// 	if (file) {
-	// 		const reader = new FileReader();
-	// 		reader.onload = function(e) {
-	// 			previewImage.src = e.target.result;
-	// 			photoPreview.style.display = 'block';
-	// 			selectedPhoto = file;
-	// 		};
-	// 		reader.readAsDataURL(file);
-	// 	}
-	// });
-
-	// removePhotoBtn.addEventListener('click', function() {
-	// 	newsPhotoInput.value = '';
-	// 	photoPreview.style.display = 'none';
-	// 	selectedPhoto = null;
-	// });
+        
 
 	// Modal functionality
 	const newsModal = document.getElementById('newsModal');
@@ -1309,118 +1101,6 @@
 	}
 
   loadNews();
-
-	// Show news detail in modal
-	// window.showNewsDetail = function(index) {
-	// 	const item = cachedNews[index];
-	// 	if (item) {
-	// 		// Format date for modal
-	// 		const formatDate = (dateString) => {
-	// 			const date = new Date(dateString);
-	// 			const year = date.getFullYear();
-	// 			const month = String(date.getMonth() + 1).padStart(2, '0');
-	// 			const day = String(date.getDate()).padStart(2, '0');
-	// 			const hours = String(date.getHours()).padStart(2, '0');
-	// 			const minutes = String(date.getMinutes()).padStart(2, '0');
-	// 			return `${year}-${month}-${day} ${hours}:${minutes}`;
-	// 		};
-			
-	// 		// Debug: Log the item to see what data we have
-	// 		console.log("News item for modal:", item);
-	// 		console.log("Image URL:", item.image);
-			
-	// 		// Check if image exists and is not empty
-	// 		const hasImage = item.image && item.image.trim() !== '';
-	// 		const imageHtml = hasImage ? `<img src="${item.image}" alt="News image" class="news-image" onerror="this.style.display='none'">` : '';
-			
-	// 		newsModalContent.innerHTML = `
-	// 			<h2>${item.title}</h2>
-	// 			<div class="news-date">${formatDate(item.date)}</div>
-	// 			${imageHtml}
-	// 			<div class="news-content">${item.content}</div>
-	// 		`;
-	// 		newsModal.style.display = "block";
-	// 	}
-	// }
-
-	// 뉴스 등록(추가)
-	// newsForm.addEventListener('submit', function(e){
-	// e.preventDefault();
-	
-	// // Check if admin is logged in
-	// if (!isAdmin) {
-	// 	alert("Please log in as admin first.");
-	// 	return;
-	// }
-	
-	// const title = document.getElementById('newsTitle').value.trim();
-	// const content = document.getElementById('newsContent').value.trim();
-	// if (!title || !content) {
-	// 	alert("Please fill in both title and content");
-	// 	return;
-	// }
-	
-	// const date = new Date().toLocaleDateString('en-CA', {year:'numeric',month:'2-digit',day:'2-digit'});
-	
-	// // Create URL-encoded data for Google Apps Script
-	// const data = new URLSearchParams();
-	// data.append('title', title);
-	// data.append('content', content);
-	// data.append('date', date);
-	
-	// // For now, we'll skip image upload to Google Sheets
-	// // as it requires more complex handling
-	// if (selectedPhoto) {
-	// 	console.log("Image upload not supported for Google Sheets yet");
-	// 	alert("Image upload is not supported with Google Sheets. Please add images manually by uploading to a cloud service and adding the URL to the spreadsheet.");
-	// }
-	
-	// console.log("Submitting news:", { title, content, date });
-	// console.log("API URL:", NEWS_API_URL);
-	// console.log("Admin status:", isAdmin);
-	
-	// fetch(NEWS_API_URL, {
-	// 	method: "POST",
-	// 	body: data,
-	// 	headers: {
-	// 		'Content-Type': 'application/x-www-form-urlencoded',
-	// 	}
-	// })
-	// .then(response => {
-	// 	console.log("Response status:", response.status);
-	// 	console.log("Response headers:", response.headers);
-	// 	if (!response.ok) {
-	// 		throw new Error(`HTTP error! status: ${response.status}`);
-	// 	}
-	// 	return response.text(); // Use text() instead of json() to see raw response
-	// })
-	// .then(data => {
-	// 	console.log("Raw response:", data);
-	// 	try {
-	// 		const jsonData = JSON.parse(data);
-	// 		console.log("News submitted successfully:", jsonData);
-	// 		loadNews();
-	// 		this.reset();
-	// 		photoPreview.style.display = 'none';
-	// 		selectedPhoto = null;
-	// 		alert("News added successfully!");
-	// 	} catch (e) {
-	// 		console.log("Response is not JSON:", data);
-	// 		// Even if response is not JSON, consider it successful if we got a response
-	// 		loadNews();
-	// 		this.reset();
-	// 		photoPreview.style.display = 'none';
-	// 		selectedPhoto = null;
-	// 		alert("News added successfully!");
-	// 	}
-	// })
-	// .catch(error => {
-	// 	console.error("Error submitting news:", error);
-	// 	console.error("Error details:", error.message);
-	// 	alert("Error adding news. Please check your Google Apps Script setup and try again.");
-	// });
-	// });
-  //   loadNews();
 
     // ----- Projects: 예시 데이터 -----
     const projectsData = [
@@ -1543,7 +1223,7 @@
         description: "This project aims to detect Alzheimer’s Disease through acoustic cues in natural, spontaneous speech, without relying on language transcripts or structured prompts. The system is trained to recognize cognitive decline markers from speech prosody, rhythm, and voice quality. Additionally, we expand this framework to support multilingual detection, making it more inclusive and applicable across different populations.",
         image: "images/Project;AD.png",
         duration: "2023-2025",
-        status: "ongoing",
+        status: "ended",
         details: {
           objectives: [
             "Detect Alzheimer's Disease using only acoustic features from spontaneous speech",
@@ -1668,7 +1348,7 @@
         id: 2,
         name: "Longbin Jin",
         role: "Ph.D. Graduate",
-        email: "jinlongbin@konkuk.ac.kr, lbjin@voinosis.com",
+        email: "jinlongbin@konkuk.ac.kr, jinlongbin@citeck.kr",
         image: "images/김룡빈.jpg",
         researchInterests: [
           "Computer Vision",
@@ -2119,7 +1799,7 @@
       {
         title: "EV-CLIP: Efficient Visual Prompt Adaptation for CLIP in Few-Shot Action Recognition under Visual Challenges",
         authors: "HJ Jon, L Jin, EY Kim",
-        venue: "PeerJ Computer Science; Submitted",
+        venue: "PeerJ Computer Science; Under Review",
 		type:"Journal",
 		date: 2025,
         link: ""
@@ -3083,60 +2763,28 @@
 			`).join('')}
 		</ul>
 		`;
-    // pubList.innerHTML = '';
-    // pubData.forEach(pub => {
-    //   const li = document.createElement('li');
-    //   li.className = 'pub-item';
-    //   li.innerHTML = `
-    //     <div class="pub-title">${pub.title}${pub.link ? `<a href="${pub.link}" target="_blank" class="pub-link">[link]</a>` : ''}</div>
-    //     <div class="pub-authors">${pub.authors}</div>
-    //     <div class="pub-venue">${pub.venue}</div>
-    //   `;
-    //   pubList.appendChild(li);
-    // });
-	// loadNews();
 
-    // ----- News Data -----
-    
-
-    // Add CSS for .news-thumb, .news-card, .news-modal-image, etc. if not present
-  //   document.querySelectorAll('.interest-block').forEach(block => {
-  //   block.addEventListener('click', function() {
-  //     const details = this.querySelector('.interest-details');
-  //     if (details) {
-  //       details.style.display = details.style.display === 'block' ? 'none' : 'block';
-  //     }
-  //   });
-  //   block.addEventListener('keypress', function(e) {
-  //     if (e.key === 'Enter' || e.key === ' ') {
-  //       const details = this.querySelector('.interest-details');
-  //       if (details) {
-  //         details.style.display = details.style.display === 'block' ? 'none' : 'block';
-  //       }
-  //     }
-  //   });
-  // });
   // Research Block Details 
 const researchDetails = {
   affective: {
     title: "Affective Computing",
     subtitle: "Diagnosis and Monitoring of Emotional and Cognitive Impairment",
-    detail: "We research advanced methods for recognizing and monitoring emotional and cognitive states based on multimodal data for applications in healthcare, mental wellness, and support for cognitive disorders."
+    detail: "We aim to bridge the gap between human emotions and artificial intelligence. Our research focuses on developing algorithms that can recognize, interpret, and simulate human affects. Beyond basic emotion recognition, we apply these technologies to healthcare for the early diagnosis and continuous monitoring of mental health conditions and cognitive impairments. The key research topics include 1) Emotion Recognition: Analyzing micro-expressions and speech prosody to detect subtle emotional changes, 2) Mental Health Monitoring: Non-invasive detection of depression, anxiety, and stress levels using bio-signals and behavioral data, and 3) Cognitive Assessment: Automated screening tools for Alzheimer’s disease, Dementia, and MCI (Mild Cognitive Impairment) based on multimodal biomarkers."
   },
   multimodal: {
     title: "Multimodal Fusion",
     subtitle: "Unified Framework for Fusing Multiple Modalities, including Speech, EEG, Visual, and Textual Data",
-    detail: "We develop unified AI models that integrate information from speech, EEG, visual, and text data, enabling robust interpretation of human behavior and mental states in diverse real-world environments."
+    detail: "Real-world data is inherently multimodal. We investigate robust fusion strategies to integrate heterogeneous data sources such as audio, video, physiological signals (EEG, ECG), and text. Our goal is to build unified frameworks that leverage the complementary nature of these modalities to achieve superior performance and robustness in complex environments. The key research topics include 1) Cross-Modal Learning: Mechanisms to align and learn representations across different sensory inputs (e.g., Audio-Text synchronization), 2) Sensor Fusion Techniques: Late, early, and hybrid fusion architectures for optimal combination of Speech, EEG, and Visual data, and 3) Robustness to Missing Data: Developing models that remain effective even when specific modalities are noisy or unavailable during inference."
   },
   deeplearning: {
     title: "Advanced Deep Learning",
     subtitle: "Transformers, Prompt Distillation, Abnormality Detection & Diagnosis",
-    detail: "We explore state-of-the-art deep learning techniques like transformers, prompt learning, and anomaly detection for reliable and scalable behavior and health analytics."
+    detail: "We push the boundaries of modern deep learning architectures. Our work delves into optimizing large-scale models like Transformers for practical applications through prompt engineering and distillation. Furthermore, we specialize in unsupervised and semi-supervised learning techniques for detecting anomalies in medical and industrial data. The key research topics include 1) Efficient Transformers: Designing lightweight attention mechanisms and architecture search for resource-constrained environments, 2) Prompt Distillation: Transferring knowledge from Large Language Models (LLMs) or Foundation Models to smaller, task-specific models, and 3) Abnormality Detection: Novel approaches for identifying outliers and diagnosing pathological conditions in high-dimensional medical imaging and time-series data."
   },
   hci: {
     title: "HCI & UX Applications",
     subtitle: "Smart Cars, AIoT, and Robotics",
-    detail: "We apply our multimodal AI research to smart vehicles, AIoT systems, and robotics, focusing on improved user experience, safety, and intelligent assistance."
+    detail: "Our research extends to the application of AI in human-centered systems. We explore how intelligent systems can enhance user experience (UX) and safety in smart environments. From monitoring driver states in autonomous vehicles to facilitating natural interaction in robotics and AIoT devices, we focus on practical, context-aware deployments. The key research topics include 1) In-Cabin Monitoring Systems (ICMS): Real-time analysis of driver fatigue, distraction, and emotion for safer autonomous driving experiences, 2) Human-Robot Interaction (HRI): Endowing robots with social intelligence to interact naturally and empathetically with humans, and 3) AIoT & Smart Spaces: Context-aware computing that adapts smart home and office environments based on user behavior and intent."
   }
 };
 
